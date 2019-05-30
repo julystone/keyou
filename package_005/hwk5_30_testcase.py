@@ -2,6 +2,7 @@ from package_005.fun2test import register
 from package_005.R_r_excel import ReadExcel
 import unittest
 from ddt import ddt, data
+from package_005.R_r_log import Mylog
 
 # 优化上一次的作业
 #
@@ -12,6 +13,7 @@ from ddt import ddt, data
 # 4、执行测试集合，生成测试报告。
 
 wb = ReadExcel('cases.xlsx', 'Sheet1')
+my_log = Mylog()
 # cases = wb.r_data_obj_from_column([1, 2, 4])
 cases = wb.read_data_obj()
 print(cases)
@@ -29,15 +31,18 @@ class RegisterTestCase(unittest.TestCase):
     @data(*cases)
     def testRegister(self, case):
         actual = register(*eval(case.data))
+        my_log.info(f'TestCase {case.case_name} starting------')
         try:
             self.assertEqual(eval(case.expected), actual)
         except AssertionError as e:
             print('Not Passed...')
             result = 'failed'
+            my_log.error(f'【Failed】：E{case.expected} != A{actual}')
             raise e
         else:
             print('Passed')
             result = 'passed'
+            my_log.info(f'【Success】')
         finally:
             wb.write_data(case.case_id + 1, 6, result)
-
+            my_log.info(f'TestCase {case.case_name} end')

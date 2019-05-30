@@ -1,0 +1,30 @@
+2019-05-30 19:46:47,274 | 21556 | [hwk5_30_testcase.py-->line:34] | INFO : TestCase "正常账号july401" starting------
+2019-05-30 19:46:47,274 | 21556 | [hwk5_30_testcase.py-->line:45] | INFO : 【Success】
+2019-05-30 19:46:47,294 | 21556 | [hwk5_30_testcase.py-->line:48] | INFO : TestCase "正常账号july401" end
+2019-05-30 19:46:47,295 | 21556 | [hwk5_30_testcase.py-->line:34] | INFO : TestCase "正常账号july402" starting------
+2019-05-30 19:46:47,295 | 21556 | [hwk5_30_testcase.py-->line:45] | INFO : 【Success】
+2019-05-30 19:46:47,313 | 21556 | [hwk5_30_testcase.py-->line:48] | INFO : TestCase "正常账号july402" end
+2019-05-30 19:46:47,314 | 21556 | [hwk5_30_testcase.py-->line:34] | INFO : TestCase "注册重复账号python18" starting------
+2019-05-30 19:46:47,314 | 21556 | [hwk5_30_testcase.py-->line:45] | INFO : 【Success】
+2019-05-30 19:46:47,332 | 21556 | [hwk5_30_testcase.py-->line:48] | INFO : TestCase "注册重复账号python18" end
+2019-05-30 19:46:47,332 | 21556 | [hwk5_30_testcase.py-->line:34] | INFO : TestCase "注册重复账号july401" starting------
+2019-05-30 19:46:47,332 | 21556 | [hwk5_30_testcase.py-->line:45] | INFO : 【Success】
+2019-05-30 19:46:47,350 | 21556 | [hwk5_30_testcase.py-->line:48] | INFO : TestCase "注册重复账号july401" end
+2019-05-30 19:46:47,350 | 21556 | [hwk5_30_testcase.py-->line:34] | INFO : TestCase "两次密码不一致1" starting------
+2019-05-30 19:46:47,350 | 21556 | [hwk5_30_testcase.py-->line:45] | INFO : 【Success】
+2019-05-30 19:46:47,367 | 21556 | [hwk5_30_testcase.py-->line:48] | INFO : TestCase "两次密码不一致1" end
+2019-05-30 19:46:47,368 | 21556 | [hwk5_30_testcase.py-->line:34] | INFO : TestCase "两次密码不一致2" starting------
+2019-05-30 19:46:47,368 | 21556 | [hwk5_30_testcase.py-->line:45] | INFO : 【Success】
+2019-05-30 19:46:47,387 | 21556 | [hwk5_30_testcase.py-->line:48] | INFO : TestCase "两次密码不一致2" end
+2019-05-30 19:46:47,387 | 21556 | [hwk5_30_testcase.py-->line:34] | INFO : TestCase "密码长度低于6位" starting------
+2019-05-30 19:46:47,387 | 21556 | [hwk5_30_testcase.py-->line:45] | INFO : 【Success】
+2019-05-30 19:46:47,406 | 21556 | [hwk5_30_testcase.py-->line:48] | INFO : TestCase "密码长度低于6位" end
+2019-05-30 19:46:47,406 | 21556 | [hwk5_30_testcase.py-->line:34] | INFO : TestCase "密码长度高于18位" starting------
+2019-05-30 19:46:47,406 | 21556 | [hwk5_30_testcase.py-->line:45] | INFO : 【Success】
+2019-05-30 19:46:47,425 | 21556 | [hwk5_30_testcase.py-->line:48] | INFO : TestCase "密码长度高于18位" end
+2019-05-30 19:46:47,425 | 21556 | [hwk5_30_testcase.py-->line:34] | INFO : TestCase "账号长度低于6位" starting------
+2019-05-30 19:46:47,425 | 21556 | [hwk5_30_testcase.py-->line:40] | ERROR: 【Failed】：E{"code": 1, "msg": "注册成功"} != A{'code': 0, 'msg': '账号和密码必须在6-18位之间'}
+2019-05-30 19:46:47,444 | 21556 | [hwk5_30_testcase.py-->line:48] | INFO : TestCase "账号长度低于6位" end
+2019-05-30 19:46:47,445 | 21556 | [hwk5_30_testcase.py-->line:34] | INFO : TestCase "账号长度高于18位" starting------
+2019-05-30 19:46:47,445 | 21556 | [hwk5_30_testcase.py-->line:45] | INFO : 【Success】
+2019-05-30 19:46:47,464 | 21556 | [hwk5_30_testcase.py-->line:48] | INFO : TestCase "账号长度高于18位" end

@@ -1,7 +1,6 @@
 import unittest
-import datetime
+import time
 from package_005.hwk5_30_testcase import RegisterTestCase
-from package_005 import hwk5_30_testcase
 import HTMLTestRunnerNew
 
 # 创建一个测试集合
@@ -13,13 +12,10 @@ loader = unittest.TestLoader()
 
 # 添加测试用例
 suite.addTest(loader.loadTestsFromTestCase(RegisterTestCase))
-# suite.addTest(loader.loadTestsFromModule(hwk5_28_testcase))
 
-i = datetime.datetime.now()
-date2display = '{}_{:02}_{:02}_{:02}_{:02}_{:02}'.format(str(i.year)[-2:], i.month, i.day, i.hour, i.minute, i.second)
+date2display = time.strftime('%y_%m_%d_%H_%M_%S', time.localtime())
 with open('report_{}.html'.format(date2display), 'wb') as fb:
-# with open('report_{}.html'.format('test'), 'wb') as fb:
-    test_run = HTMLTestRunnerNew.HTMLTestRunner(stream=fb, verbosity=2, title='py18_%s_report'% date2display, description='参数化报告', tester='july')
+    test_run = HTMLTestRunnerNew.HTMLTestRunner(stream=fb, verbosity=2, title='py18_%s_report' % date2display, description='参数化报告', tester='july')
     test_run.run(suite)
 
 # runner.run(suite)

@@ -59,7 +59,70 @@ def xing_ps(a,b,c):
     print(a,b,c)
 
 
+def pingjie_pc():
+    a = 'asdf'
+    b = 'axzxcv'
+    c = 'axaszxdfcv'
+    m = 0
+    n = 0
+    for i in c:
+        if b[n] == i:
+            n += 1
+        elif a[m] == i:
+            m += 1
+        else:
+            break
+    flag = 1 if m == len(a) and n == len(b) else 0
+    print(flag)
+
+def pingjie_pc2():
+    a = 'asdf'
+    b = 'axzxcv'
+    c = 'axaszxdfcv'
+    m = 0
+    n = 0
+    for i in c:
+        if b[n] == i:
+            n += 1
+        elif a[m] == i:
+            m += 1
+        else:
+            return False
+    return True
+
+
+
+
+def pinjie():
+    A = "asdf"
+    B = "axazxcv"
+
+    S = "axasazxdfcv"
+    m = 0
+    n = 0
+    temp = []
+    step = 0
+    A = A + ' '
+    B = B + ' '
+    # 预处理一下，防止下标越界
+    for i in S:
+        temp += i
+        step += 1
+        if B[n] == A[m] == i:
+            continue
+        else:
+            if B[n:n+step] == ''.join(temp):
+                n += step
+            elif A[m:m+step] == ''.join(temp):
+                m += step
+            else:
+                return False
+            temp = []
+            step = 0
+    return True
+
 if __name__ == '__main__':
     pass
-    s = time.strftime('%m%d%H', time.localtime())
-    print(s)
+    # s = time.strftime('%m%d%H', time.localtime())
+    # print(s)
+    print(pinjie())

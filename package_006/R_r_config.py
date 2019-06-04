@@ -8,9 +8,9 @@ from collections import namedtuple
 
 
 class Config_data:
-    def decorate(self):
+    def decorate(self, filename='july_config.cfg'):
         cf = configparser.ConfigParser()
-        cf.read('july_config.cfg', encoding='utf8')
+        cf.read(filename, encoding='utf8')
         sections_all = []
         for section_one in cf.sections():
             option_all = []

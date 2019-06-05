@@ -1,21 +1,25 @@
 import logging
 import time
+import os
 from package_102.common.R_r_config import my_config
 
 
 class Mylog:
     def __new__(cls):
+        cur_path = os.path.dirname(os.path.realpath(__file__))
+        log_path = os.path.join(os.path.dirname(cur_path), r'log/')
+
         name = my_config.get('log', 'name')
         ls_level = my_config.get('log', 'ls_level')
         fs_level = my_config.get('log', 'fs_level')
-        log_path = my_config.get('log', 'log_path')
+        # log_path = my_config.get('log', 'log_path')
 
         my_log = logging.getLogger(name)
         my_log.setLevel('DEBUG')
 
         my_ls = logging.StreamHandler()
         my_ls.setLevel(ls_level)
-        my_lf = logging.FileHandler(f"{log_path}{time.strftime('log_%y_%m_%d_%H', time.localtime())}.log",
+        my_lf = logging.FileHandler(f"{log_path}{time.strftime('log_%Y_%m_%d_%H', time.localtime())}.log",
                                     encoding='utf8')
         my_lf.setLevel(fs_level)
 

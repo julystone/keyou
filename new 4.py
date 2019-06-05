@@ -4,7 +4,7 @@ import re
 import time
 
 
-def max_min(amount_min, amount_max, e = 1):
+def max_min(amount_min, amount_max, e=1):
     # e为敏感参数 默认为
     # e = -1
     burden = amount_max - amount_min
@@ -12,14 +12,14 @@ def max_min(amount_min, amount_max, e = 1):
     while temp > 1:
         e += 1
         temp /= 40
-    amount_max_temp = ceil(amount_max / pow(40, e-1)) * pow(40, e-1)
-    amount_min_temp = floor(amount_min / pow(40, e-1)) * pow(40, e-1)
+    amount_max_temp = ceil(amount_max / pow(40, e - 1)) * pow(40, e - 1)
+    amount_min_temp = floor(amount_min / pow(40, e - 1)) * pow(40, e - 1)
     return amount_min_temp, amount_max_temp
 
 
 def try_except_else_finally():
     try:
-        2/0
+        2 / 0
     except:
         print("except")
     else:
@@ -55,8 +55,8 @@ def xl_ps():
     print(pattern.search(str1))
 
 
-def xing_ps(a,b,c):
-    print(a,b,c)
+def xing_ps(a, b, c):
+    print(a, b, c)
 
 
 def pingjie_pc():
@@ -75,6 +75,7 @@ def pingjie_pc():
     flag = 1 if m == len(a) and n == len(b) else 0
     print(flag)
 
+
 def pingjie_pc2():
     a = 'asdf'
     b = 'axzxcv'
@@ -89,8 +90,6 @@ def pingjie_pc2():
         else:
             return False
     return True
-
-
 
 
 def pinjie():
@@ -111,9 +110,9 @@ def pinjie():
         if B[n] == A[m] == i:
             continue
         else:
-            if B[n:n+step] == ''.join(temp):
+            if B[n:n + step] == ''.join(temp):
                 n += step
-            elif A[m:m+step] == ''.join(temp):
+            elif A[m:m + step] == ''.join(temp):
                 m += step
             else:
                 return False
@@ -121,8 +120,19 @@ def pinjie():
             step = 0
     return True
 
+
+def calendar_pc():
+    for i in range(4):
+        for j in range(i * 7 + 1, i * 7 + 8):
+            print(f"{j:3d}", end='')
+        print('\n')
+    for k in range(j, 32):
+        print(f"{k:3d}", end='')
+
+
 if __name__ == '__main__':
     pass
-    # s = time.strftime('%m%d%H', time.localtime())
-    # print(s)
-    print(pinjie())
+    s = time.strftime('%Y%m%d%H', time.localtime())
+    print(s)
+    # print(pinjie())
+    calendar_pc()

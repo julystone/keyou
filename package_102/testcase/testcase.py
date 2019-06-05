@@ -2,6 +2,7 @@ from package_102.fun2test import register
 from package_102.common.R_r_excel import ReadExcel
 from package_102.common.R_r_config import my_config
 from package_102.common.R_r_log import my_log
+from package_102.common.R_r_os import my_os
 import unittest
 from ddt import ddt, data
 
@@ -13,8 +14,8 @@ from ddt import ddt, data
 # 3、创建一个测试集合，读取excel表格中的用例数据，将测试用例全部添加到测试集合中。
 # 4、执行测试集合，生成测试报告。
 
+excel_path = my_os.readpath('data')
 sheet_name = my_config.get('excel', 'sheet_name')
-excel_path = my_config.get('excel', 'excel_path')
 columns_read = my_config.get('excel', 'columns_read')
 
 

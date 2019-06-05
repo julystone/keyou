@@ -148,3 +148,33 @@
 2019-06-05 19:19:09,662 | 3648 | [testcase.py-->line:40] | INFO : TestCase "账号长度高于18位" starting------
 2019-06-05 19:19:09,662 | 3648 | [testcase.py-->line:51] | INFO : 【Success】
 2019-06-05 19:19:09,680 | 3648 | [testcase.py-->line:54] | INFO : TestCase "账号长度高于18位" end
+2019-06-05 19:58:24,593 | 24788 | [testcase.py-->line:40] | INFO : TestCase "正常账号july401" starting------
+2019-06-05 19:58:24,593 | 24788 | [testcase.py-->line:51] | INFO : 【Success】
+2019-06-05 19:58:24,614 | 24788 | [testcase.py-->line:54] | INFO : TestCase "正常账号july401" end
+2019-06-05 19:58:24,614 | 24788 | [testcase.py-->line:40] | INFO : TestCase "正常账号july402" starting------
+2019-06-05 19:58:24,614 | 24788 | [testcase.py-->line:51] | INFO : 【Success】
+2019-06-05 19:58:24,632 | 24788 | [testcase.py-->line:54] | INFO : TestCase "正常账号july402" end
+2019-06-05 19:58:24,633 | 24788 | [testcase.py-->line:40] | INFO : TestCase "注册重复账号python18" starting------
+2019-06-05 19:58:24,633 | 24788 | [testcase.py-->line:51] | INFO : 【Success】
+2019-06-05 19:58:24,651 | 24788 | [testcase.py-->line:54] | INFO : TestCase "注册重复账号python18" end
+2019-06-05 19:58:24,651 | 24788 | [testcase.py-->line:40] | INFO : TestCase "注册重复账号july401" starting------
+2019-06-05 19:58:24,651 | 24788 | [testcase.py-->line:51] | INFO : 【Success】
+2019-06-05 19:58:24,670 | 24788 | [testcase.py-->line:54] | INFO : TestCase "注册重复账号july401" end
+2019-06-05 19:58:24,670 | 24788 | [testcase.py-->line:40] | INFO : TestCase "两次密码不一致1" starting------
+2019-06-05 19:58:24,670 | 24788 | [testcase.py-->line:51] | INFO : 【Success】
+2019-06-05 19:58:24,690 | 24788 | [testcase.py-->line:54] | INFO : TestCase "两次密码不一致1" end
+2019-06-05 19:58:24,690 | 24788 | [testcase.py-->line:40] | INFO : TestCase "两次密码不一致2" starting------
+2019-06-05 19:58:24,690 | 24788 | [testcase.py-->line:51] | INFO : 【Success】
+2019-06-05 19:58:24,708 | 24788 | [testcase.py-->line:54] | INFO : TestCase "两次密码不一致2" end
+2019-06-05 19:58:24,708 | 24788 | [testcase.py-->line:40] | INFO : TestCase "密码长度低于6位" starting------
+2019-06-05 19:58:24,709 | 24788 | [testcase.py-->line:51] | INFO : 【Success】
+2019-06-05 19:58:24,726 | 24788 | [testcase.py-->line:54] | INFO : TestCase "密码长度低于6位" end
+2019-06-05 19:58:24,727 | 24788 | [testcase.py-->line:40] | INFO : TestCase "密码长度高于18位" starting------
+2019-06-05 19:58:24,727 | 24788 | [testcase.py-->line:51] | INFO : 【Success】
+2019-06-05 19:58:24,745 | 24788 | [testcase.py-->line:54] | INFO : TestCase "密码长度高于18位" end
+2019-06-05 19:58:24,745 | 24788 | [testcase.py-->line:40] | INFO : TestCase "账号长度低于6位" starting------
+2019-06-05 19:58:24,745 | 24788 | [testcase.py-->line:46] | ERROR: 【Failed】：E{"code": 1, "msg": "注册成功"} != A{'code': 0, 'msg': '账号和密码必须在6-18位之间'}
+2019-06-05 19:58:24,763 | 24788 | [testcase.py-->line:54] | INFO : TestCase "账号长度低于6位" end
+2019-06-05 19:58:24,764 | 24788 | [testcase.py-->line:40] | INFO : TestCase "账号长度高于18位" starting------
+2019-06-05 19:58:24,764 | 24788 | [testcase.py-->line:51] | INFO : 【Success】
+2019-06-05 19:58:24,783 | 24788 | [testcase.py-->line:54] | INFO : TestCase "账号长度高于18位" end

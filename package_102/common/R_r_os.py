@@ -8,12 +8,28 @@ import os
 
 class OsRead:
     def readpath(self, filepattern, ifsymbol='True'):
-        cur_path = os.path.dirname(os.path.realpath(__file__))
-        dest_path = os.path.join(os.path.dirname(cur_path), filepattern + '\\') if ifsymbol else os.path.join(
-            os.path.dirname(cur_path), filepattern)
+        """
+        基于根目录返回响应pattern的目录
+        :param filepattern: --->    文件夹名称
+        :param ifsymbol:    --->    是否返回值末尾要带反斜杠，默认为带
+        :return:            --->    目标路径
+        """
+        dest_path = os.path.join(BASE_DIR, filepattern) + '/' if ifsymbol else os.path.join(BASE_DIR, filepattern)
         return dest_path
 
 
 my_os = OsRead()
-res = my_os.readpath('log')
-print(res)
+
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+
+CONF_DIR = my_os.readpath('config')
+
+DATA_DIR = my_os.readpath('data')
+
+LOG_DIR = my_os.readpath('log')
+
+REPORT_DIR = my_os.readpath('report')
+
+CASE_DIR = my_os.readpath('testcase')
+
+pass

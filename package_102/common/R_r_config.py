@@ -4,9 +4,9 @@
 # @Email  :   july401@qq.com
 
 import configparser
-from package_102.common.R_r_os import my_os
+from package_102.common.R_r_os import CONF_DIR
 
-config_path = my_os.readpath('config') + 'config.ini'
+config_path = CONF_DIR + 'config.ini'
 
 
 class Config_data(configparser.ConfigParser):

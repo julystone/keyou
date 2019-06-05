@@ -35,7 +35,7 @@ class Action(unittest.TestCase):
         try:
             WebDriverWait(self.driver, 15).until(lambda driver: driver.find_element(*loc).is_displayed())
             return self.driver.find_element(*loc)
-        except:
+        except Exception:
             print('%s 页面中未能找到%s 元素' % (self, loc))
 
     def clear_key(self, loc):

@@ -3,9 +3,11 @@
 # @Date   :   2019/5/30
 # @Email  :   july401@qq.com
 
-import openpyxl
-from package_102.common import R_r_excel
 import json
+
+import openpyxl
+
+from package_102.common import R_r_excel
 
 file_name = "api_test.xlsx"
 sheet_name = 'Sheet1'
@@ -17,43 +19,45 @@ sheet = wb[sheet_name]
 origin_data = R_r_excel.ReadExcel(file_name, sheet_name)
 
 
-def register(item):
-    request_data = f"""{{"mobilephone":"{item.mobilephone}", "pwd":"{item.pwd}", "nickname":"{item.regname}"}}"""
-    json.dump(request_data)
-    print(json)
-    expected_data = f"""{{"status":"{item.status}", "code":"{item.code}", "data":"{item.data}", "msg":"{item.msg}"}}"""
-    json.dump(request_data)
-    print(json)
-    origin_data.w_data(item.case_id + 1, 7, request_data)
-    origin_data.w_data(item.case_id + 1, 8, expected_data)
+def sample_data_json(item, list2convert):
+    keys = list2convert
+    values = []
+    for x in keys:
+        values.append(f"{getattr(item, x)}")
+    result = dict(zip(keys, values))
+    return result
 
 
-def login(item):
-    request_data = f"""{{"mobilephone":"{item.mobilephone}", "pwd":"{item.pwd}"}}"""
-    expected_data = f"""{{"status":"{item.status}", "code":"{item.code}", "data":"{item.data}", "msg":"{item.msg}"}}"""
-    origin_data.w_data(item.case_id + 1, 7, request_data)
-    origin_data.w_data(item.case_id + 1, 8, expected_data)
-
-
-def recharge(item):
-    request_data = f"""{{"mobilephone":"{item.mobilephone}", "amount":"{item.amount}"}}"""
-    expected_data = f"""{{"status":"{item.status}", "code":"{item.code}", "data":"{item.data}", "msg":"{item.msg}"}}"""
-    origin_data.w_data(item.case_id + 1, 7, request_data)
-    origin_data.w_data(item.case_id + 1, 8, expected_data)
-
-
-def withdraw(item):
-    request_data = f"""{{"mobilephone":"{item.mobilephone}", "amount":"{item.amount}"}}"""
-    expected_data = f"""{{"status":"{item.status}", "code":"{item.code}", "data":"{item.data}", "msg":"{item.msg}"}}"""
+def write_in(item):
+    if item.api_name == 'register':
+        res1 = sample_data_json(item, ["mobilephone", "pwd", "regname"])
+    elif item.api_name == 'login':
+        res1 = sample_data_json(item, ["mobilephone", "pwd"])
+    elif item.api_name == 'recharge':
+        res1 = sample_data_json(item, ["mobilephone", "amount"])
+    elif item.api_name == 'withdraw':
+        res1 = sample_data_json(item, ["mobilephone", "amount"])
+    else:
+        return
+    res2 = sample_data_json(item, ["status", "code", "data", "msg"])
+    list2del = []
+    for key, value in res1.items():
+        if value == 'None' or key == 'None':
+            list2del.append(key)
+    for x in list2del:
+        res1.pop(x)
+    request_data = json.dumps(res1, ensure_ascii=False)
+    expected_data = json.dumps(res2, ensure_ascii=False)
     origin_data.w_data(item.case_id + 1, 7, request_data)
     origin_data.w_data(item.case_id + 1, 8, expected_data)
 
 
 list1 = origin_data.read_data_obj()
-
+progress = 0
 for item in list1:
-    if item.api_name == 'register':
-        register(item)
+    write_in(item)
+    progress += 1
+    print(progress, end='->')
     # elif item.api_name == 'login':
     #     login(item)
     # elif item.api_name == 'recharge':

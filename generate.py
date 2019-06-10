@@ -10,7 +10,7 @@ import openpyxl
 from package_102.common import R_r_excel
 
 file_name = "api_test.xlsx"
-sheet_name = 'Sheet1'
+sheet_name = 'Sheet2'
 # 打开工作簿
 wb = openpyxl.load_workbook(file_name)
 # 选择表单
@@ -37,6 +37,12 @@ def write_in(item):
         res1 = sample_data_json(item, ["mobilephone", "amount"])
     elif item.api_name == 'withdraw':
         res1 = sample_data_json(item, ["mobilephone", "amount"])
+    elif item.api_name == 'list':
+        res1 = sample_data_json(item, [])
+    elif item.api_name == 'bidLoan':
+        res1 = sample_data_json(item, ["memberId", "password", "loanId", "amount"])
+    elif item.api_name == 'add':
+        res1 = sample_data_json(item, ["memberId", "title", "amount", "loanRate", "loanTerm", "loanDateType", "repaymemtWay", "biddingDays"])
     else:
         return
     res2 = sample_data_json(item, ["status", "code", "data", "msg"])
@@ -58,9 +64,4 @@ for item in list1:
     write_in(item)
     progress += 1
     print(progress, end='->')
-    # elif item.api_name == 'login':
-    #     login(item)
-    # elif item.api_name == 'recharge':
-    #     recharge(item)
-    # elif item.api_name == 'withdraw':
-    #     withdraw(item)
+print('end'.center('-', 128))

@@ -1,0 +1,36 @@
+---
+# 配置各接口的输入参数及其type
+- register:
+    mobilephone: str
+    pwd: str
+    regname: str
+
+- login:
+    mobilephone: str
+    pwd: str
+
+- recharge:
+    mobilephone: str
+    amount: double
+
+- withdraw:
+    mobilephone: str
+    amount: double
+
+- list:
+
+- bidLoan:
+    memberId: int
+    password: str
+    loanId: double
+    amount: double
+
+- add:
+    memberId: int
+    title: str
+    amount: double
+    loanRate: double
+    loanTerm: int
+    loanDateType: int
+    repaymemtWay: int
+    biddingDays: int

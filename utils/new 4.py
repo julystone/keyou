@@ -1,7 +1,9 @@
 from math import floor
 from math import ceil
+import csv
 import re
 import time
+import pandas as pd
 
 
 def max_min(amount_min, amount_max, e=1):
@@ -121,18 +123,54 @@ def pinjie():
     return True
 
 
-def calendar_pc():
-    for i in range(4):
-        for j in range(i * 7 + 1, i * 7 + 8):
-            print(f"{j:3d}", end='')
-        print('\n')
-    for k in range(j, 32):
-        print(f"{k:3d}", end='')
+def csv_pc():
+    with open("测试成绩统计.csv", "r+") as file1:
+        file1reader = csv.reader(file1)
+        file1writer = csv.writer(file1)
+        header = next(file1reader)
+        for row_list in file1reader:
+            a = float(row_list[1]) + float(row_list[2]) + float(row_list[3]) + float(row_list[4]) + float(row_list[5]) \
+                + float(row_list[6]) + float(row_list[7]) + float(row_list[8]) + float(row_list[9])
+            res = str(a / 9)
+            row_list.append(res)
+            pass
+            file1writer.writerow(row_list[10])
+
+
+def csv_pc2():
+    with open("测试成绩统计.csv", "r+", encoding='utf-8') as file1:
+        file1reader = csv.reader(file1)
+        file1writer = csv.writer(file1)
+        file1writer['avg'] = ' '
+        for i in file1reader:
+            if i[1] == '1':
+                continue
+            sum = 0
+            for y in i:
+                sum += float(y)
+            avg = sum / 9
+            # print(avg)
+            i.append(avg)
+            print(i)
+            file1writer.writerow(i[10])
+
+
+def pd_pc():
+    res = pd.read_csv('测试成绩统计_back.csv', encoding='gb2312')
+    res.insert(res.shape[1], 'avg', None)
+    for x in range(res.shape[0]):
+        sum = 0
+        for y in range(res.shape[1]-2):
+            sum += res.iloc[x][y+1]
+        avg = sum / 9
+        res.loc[x, 'avg'] = round(avg, 2)
+    res.to_csv('测试成绩统计2.csv', index=False)
 
 
 if __name__ == '__main__':
     pass
     s = time.strftime('%Y%m%d%H', time.localtime())
-    print(s)
+    # print(s)
     # print(pinjie())
-    calendar_pc()
+    # csv_pc2()
+    pd_pc()

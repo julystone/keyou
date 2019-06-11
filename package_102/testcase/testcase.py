@@ -52,4 +52,5 @@ class RegisterTestCase(unittest.TestCase):
             my_log.info(f'【Success】')
         finally:
             wb.w_data(case.case_id + 1, 6, result)
+            wb.w_save()
             my_log.info(f'TestCase {case.case_name} end')

@@ -26,7 +26,7 @@ cases = wb.read_data_obj()
 
 
 @ddt
-class RegisterTestCase(unittest.TestCase):
+class LoginTestCase(unittest.TestCase):
 
     def setUp(self) -> None:
         print('\n' + 'start'.center(32, '-'))

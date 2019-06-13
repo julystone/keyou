@@ -14,7 +14,7 @@ runner = unittest.TextTestRunner()
 loader = unittest.TestLoader()
 
 # 添加测试用例
-suite.addTest(loader.discover('./testcase', pattern='case_bid*'))
+suite.addTest(loader.discover('./testcase', pattern='case_*'))
 
 date2display = time.strftime('%Y_%m_%d_%H_%M_%S', time.localtime())
 with open(f'{report_path}report_{date2display}.html', 'wb') as fb:

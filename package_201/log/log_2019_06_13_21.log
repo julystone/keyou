@@ -1,0 +1,123 @@
+2019-06-13 21:13:28,889 | 26980 | [case_bidLoan.py-->line:47] | INFO : TestCase 竞标成功 starting------
+2019-06-13 21:13:28,889 | 26980 | [R_request.py-->line:38] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/login {'mobilephone': '13912345611', 'pwd': '123456'}
+2019-06-13 21:13:29,004 | 26980 | [R_request.py-->line:31] | INFO : Sending get:http://test.lemonban.com/futureloan/mvc/api/member/bidLoan {'memberId': 77777, 'password': '12345678', 'loanId': 66666, 'amount': 500}
+2019-06-13 21:13:29,041 | 26980 | [case_bidLoan.py-->line:63] | ERROR: 【Failed】：E{'status': 1, 'code': '10001', 'data': None, 'msg': '成功'} != A{'status': 0, 'code': '', 'data': None, 'msg': '密码错误'}
+2019-06-13 21:13:29,042 | 26980 | [case_bidLoan.py-->line:71] | INFO : TestCase 竞标成功 end------
+2019-06-13 21:13:29,043 | 26980 | [case_bidLoan.py-->line:47] | INFO : TestCase 竞标失败，memberId为空 starting------
+2019-06-13 21:13:29,043 | 26980 | [R_request.py-->line:38] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/login {'mobilephone': '13912345611', 'pwd': '123456'}
+2019-06-13 21:13:29,117 | 26980 | [R_request.py-->line:38] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/add {'password': '12345678', 'loanId': 66666, 'amount': 500}
+2019-06-13 21:13:29,150 | 26980 | [case_bidLoan.py-->line:47] | INFO : TestCase 竞标失败，loanId为空 starting------
+2019-06-13 21:13:29,151 | 26980 | [R_request.py-->line:38] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/login {'mobilephone': '13912345611', 'pwd': '123456'}
+2019-06-13 21:13:29,226 | 26980 | [R_request.py-->line:38] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/bidLoan {'memberId': 77777, 'password': '12345678', 'amount': 500}
+2019-06-13 21:13:29,259 | 26980 | [case_bidLoan.py-->line:68] | INFO : 【Success】
+2019-06-13 21:13:29,259 | 26980 | [case_bidLoan.py-->line:71] | INFO : TestCase 竞标失败，loanId为空 end------
+2019-06-13 21:13:29,259 | 26980 | [case_bidLoan.py-->line:47] | INFO : TestCase 竞标失败，password为空 starting------
+2019-06-13 21:13:29,259 | 26980 | [R_request.py-->line:38] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/login {'mobilephone': '13912345611', 'pwd': '123456'}
+2019-06-13 21:13:29,320 | 26980 | [R_request.py-->line:38] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/bidLoan {'memberId': 77777, 'loanId': 66666, 'amount': 500}
+2019-06-13 21:13:29,353 | 26980 | [case_bidLoan.py-->line:68] | INFO : 【Success】
+2019-06-13 21:13:29,353 | 26980 | [case_bidLoan.py-->line:71] | INFO : TestCase 竞标失败，password为空 end------
+2019-06-13 21:13:29,353 | 26980 | [case_bidLoan.py-->line:47] | INFO : TestCase 竞标失败，amount为空 starting------
+2019-06-13 21:13:29,353 | 26980 | [R_request.py-->line:38] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/login {'mobilephone': '13912345611', 'pwd': '123456'}
+2019-06-13 21:13:29,416 | 26980 | [R_request.py-->line:38] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/bidLoan {'memberId': 77777, 'password': '12345678', 'loanId': 66666}
+2019-06-13 21:13:29,449 | 26980 | [case_bidLoan.py-->line:68] | INFO : 【Success】
+2019-06-13 21:13:29,449 | 26980 | [case_bidLoan.py-->line:71] | INFO : TestCase 竞标失败，amount为空 end------
+2019-06-13 21:13:29,449 | 26980 | [case_bidLoan.py-->line:47] | INFO : TestCase 竞标失败，memberId小于0 starting------
+2019-06-13 21:13:29,449 | 26980 | [R_request.py-->line:38] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/login {'mobilephone': '13912345611', 'pwd': '123456'}
+2019-06-13 21:13:29,518 | 26980 | [R_request.py-->line:38] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/bidLoan {'memberId': -1, 'password': '12345678', 'loanId': 66666, 'amount': 500}
+2019-06-13 21:13:29,550 | 26980 | [case_bidLoan.py-->line:68] | INFO : 【Success】
+2019-06-13 21:13:29,551 | 26980 | [case_bidLoan.py-->line:71] | INFO : TestCase 竞标失败，memberId小于0 end------
+2019-06-13 21:13:29,551 | 26980 | [case_bidLoan.py-->line:47] | INFO : TestCase 竞标失败，memberId等于0 starting------
+2019-06-13 21:13:29,551 | 26980 | [R_request.py-->line:38] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/login {'mobilephone': '13912345611', 'pwd': '123456'}
+2019-06-13 21:13:29,613 | 26980 | [R_request.py-->line:38] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/bidLoan {'memberId': 0, 'password': '12345678', 'loanId': 66666, 'amount': 500}
+2019-06-13 21:13:29,647 | 26980 | [case_bidLoan.py-->line:68] | INFO : 【Success】
+2019-06-13 21:13:29,647 | 26980 | [case_bidLoan.py-->line:71] | INFO : TestCase 竞标失败，memberId等于0 end------
+2019-06-13 21:13:29,647 | 26980 | [case_bidLoan.py-->line:47] | INFO : TestCase 竞标失败，memberId为小数 starting------
+2019-06-13 21:13:29,647 | 26980 | [R_request.py-->line:38] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/login {'mobilephone': '13912345611', 'pwd': '123456'}
+2019-06-13 21:13:29,710 | 26980 | [R_request.py-->line:38] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/bidLoan {'memberId': 77777.5, 'password': '12345678', 'loanId': 66666, 'amount': 500}
+2019-06-13 21:13:29,743 | 26980 | [case_bidLoan.py-->line:63] | ERROR: 【Failed】：E{'status': 0, 'code': '11004', 'data': None, 'msg': '参数错误，memberId必须是大于0的正整数'} != A{'status': 0, 'code': '11013', 'data': None, 'msg': '请根据数值参数的类型对应输入合法的数字'}
+2019-06-13 21:13:29,743 | 26980 | [case_bidLoan.py-->line:71] | INFO : TestCase 竞标失败，memberId为小数 end------
+2019-06-13 21:13:29,744 | 26980 | [case_bidLoan.py-->line:47] | INFO : TestCase 竞标失败，loanId为小于0 starting------
+2019-06-13 21:13:29,744 | 26980 | [R_request.py-->line:38] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/login {'mobilephone': '13912345611', 'pwd': '123456'}
+2019-06-13 21:13:29,805 | 26980 | [R_request.py-->line:38] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/bidLoan {'memberId': 77777, 'password': '12345678', 'loanId': -1, 'amount': 500}
+2019-06-13 21:13:29,844 | 26980 | [case_bidLoan.py-->line:63] | ERROR: 【Failed】：E{'status': 0, 'code': '11005', 'data': None, 'msg': '参数错误，loanId必须是大于0的正整数'} != A{'status': 0, 'code': '', 'data': None, 'msg': '密码错误'}
+2019-06-13 21:13:29,844 | 26980 | [case_bidLoan.py-->line:71] | INFO : TestCase 竞标失败，loanId为小于0 end------
+2019-06-13 21:13:29,845 | 26980 | [case_bidLoan.py-->line:47] | INFO : TestCase 竞标失败，loanId为等于0 starting------
+2019-06-13 21:13:29,845 | 26980 | [R_request.py-->line:38] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/login {'mobilephone': '13912345611', 'pwd': '123456'}
+2019-06-13 21:13:29,907 | 26980 | [R_request.py-->line:38] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/bidLoan {'memberId': 77777, 'password': '12345678', 'loanId': 0, 'amount': 500}
+2019-06-13 21:13:29,941 | 26980 | [case_bidLoan.py-->line:63] | ERROR: 【Failed】：E{'status': 0, 'code': '11005', 'data': None, 'msg': '参数错误，loanId必须是大于0的正整数'} != A{'status': 0, 'code': '', 'data': None, 'msg': '密码错误'}
+2019-06-13 21:13:29,942 | 26980 | [case_bidLoan.py-->line:71] | INFO : TestCase 竞标失败，loanId为等于0 end------
+2019-06-13 21:13:29,942 | 26980 | [case_bidLoan.py-->line:47] | INFO : TestCase 竞标失败，loanId为小数 starting------
+2019-06-13 21:13:29,942 | 26980 | [R_request.py-->line:38] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/login {'mobilephone': '13912345611', 'pwd': '123456'}
+2019-06-13 21:13:30,007 | 26980 | [R_request.py-->line:38] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/bidLoan {'memberId': 77777, 'password': '12345678', 'loanId': 66666.6, 'amount': 500}
+2019-06-13 21:13:30,041 | 26980 | [case_bidLoan.py-->line:63] | ERROR: 【Failed】：E{'status': 0, 'code': '11005', 'data': None, 'msg': '参数错误，loanId必须是大于0的正整数'} != A{'status': 0, 'code': '', 'data': None, 'msg': '密码错误'}
+2019-06-13 21:13:30,042 | 26980 | [case_bidLoan.py-->line:71] | INFO : TestCase 竞标失败，loanId为小数 end------
+2019-06-13 21:13:30,042 | 26980 | [case_bidLoan.py-->line:47] | INFO : TestCase 竞标失败，password长度小于6位 starting------
+2019-06-13 21:13:30,042 | 26980 | [R_request.py-->line:38] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/login {'mobilephone': '13912345611', 'pwd': '123456'}
+2019-06-13 21:13:30,105 | 26980 | [R_request.py-->line:38] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/bidLoan {'memberId': 77777, 'password': '123', 'loanId': 66666.6, 'amount': 500}
+2019-06-13 21:13:30,139 | 26980 | [case_bidLoan.py-->line:68] | INFO : 【Success】
+2019-06-13 21:13:30,139 | 26980 | [case_bidLoan.py-->line:71] | INFO : TestCase 竞标失败，password长度小于6位 end------
+2019-06-13 21:13:30,139 | 26980 | [case_bidLoan.py-->line:47] | INFO : TestCase 竞标失败，password长度等于6位 starting------
+2019-06-13 21:13:30,139 | 26980 | [R_request.py-->line:38] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/login {'mobilephone': '13912345611', 'pwd': '123456'}
+2019-06-13 21:13:30,217 | 26980 | [R_request.py-->line:38] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/bidLoan {'memberId': 77777, 'password': '111111', 'loanId': 66666.6, 'amount': 500}
+2019-06-13 21:13:30,252 | 26980 | [case_bidLoan.py-->line:63] | ERROR: 【Failed】：E{'status': 0, 'code': None, 'data': None, 'msg': '密码错误'} != A{'status': 0, 'code': '', 'data': None, 'msg': '密码错误'}
+2019-06-13 21:13:30,252 | 26980 | [case_bidLoan.py-->line:71] | INFO : TestCase 竞标失败，password长度等于6位 end------
+2019-06-13 21:13:30,252 | 26980 | [case_bidLoan.py-->line:47] | INFO : TestCase 竞标失败，password长度等于18位 starting------
+2019-06-13 21:13:30,253 | 26980 | [R_request.py-->line:38] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/login {'mobilephone': '13912345611', 'pwd': '123456'}
+2019-06-13 21:13:30,317 | 26980 | [R_request.py-->line:38] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/bidLoan {'memberId': 77777, 'password': '123456789123456789', 'loanId': 66666.6, 'amount': 500}
+2019-06-13 21:13:30,351 | 26980 | [case_bidLoan.py-->line:63] | ERROR: 【Failed】：E{'status': 0, 'code': None, 'data': None, 'msg': '密码错误'} != A{'status': 0, 'code': '', 'data': None, 'msg': '密码错误'}
+2019-06-13 21:13:30,351 | 26980 | [case_bidLoan.py-->line:71] | INFO : TestCase 竞标失败，password长度等于18位 end------
+2019-06-13 21:13:30,352 | 26980 | [case_bidLoan.py-->line:47] | INFO : TestCase 竞标失败，password长度大于18位 starting------
+2019-06-13 21:13:30,352 | 26980 | [R_request.py-->line:38] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/login {'mobilephone': '13912345611', 'pwd': '123456'}
+2019-06-13 21:13:30,423 | 26980 | [R_request.py-->line:38] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/bidLoan {'memberId': 77777, 'password': '12345678912345678912', 'loanId': 66666.6, 'amount': 500}
+2019-06-13 21:13:30,455 | 26980 | [case_bidLoan.py-->line:68] | INFO : 【Success】
+2019-06-13 21:13:30,455 | 26980 | [case_bidLoan.py-->line:71] | INFO : TestCase 竞标失败，password长度大于18位 end------
+2019-06-13 21:13:30,455 | 26980 | [case_bidLoan.py-->line:47] | INFO : TestCase 竞标失败，amount小于0 starting------
+2019-06-13 21:13:30,456 | 26980 | [R_request.py-->line:38] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/login {'mobilephone': '13912345611', 'pwd': '123456'}
+2019-06-13 21:13:30,518 | 26980 | [R_request.py-->line:38] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/bidLoan {'memberId': 77777, 'password': '12345678', 'loanId': 66666, 'amount': -500}
+2019-06-13 21:13:30,551 | 26980 | [case_bidLoan.py-->line:68] | INFO : 【Success】
+2019-06-13 21:13:30,551 | 26980 | [case_bidLoan.py-->line:71] | INFO : TestCase 竞标失败，amount小于0 end------
+2019-06-13 21:13:30,551 | 26980 | [case_bidLoan.py-->line:47] | INFO : TestCase 竞标失败，amount为小数 starting------
+2019-06-13 21:13:30,551 | 26980 | [R_request.py-->line:38] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/login {'mobilephone': '13912345611', 'pwd': '123456'}
+2019-06-13 21:13:30,615 | 26980 | [R_request.py-->line:38] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/bidLoan {'memberId': 77777, 'password': '12345678', 'loanId': 66666, 'amount': 500.5}
+2019-06-13 21:13:30,647 | 26980 | [case_bidLoan.py-->line:68] | INFO : 【Success】
+2019-06-13 21:13:30,647 | 26980 | [case_bidLoan.py-->line:71] | INFO : TestCase 竞标失败，amount为小数 end------
+2019-06-13 21:13:30,647 | 26980 | [case_bidLoan.py-->line:47] | INFO : TestCase 竞标失败，amount不能被500整除 starting------
+2019-06-13 21:13:30,648 | 26980 | [R_request.py-->line:38] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/login {'mobilephone': '13912345611', 'pwd': '123456'}
+2019-06-13 21:13:30,708 | 26980 | [R_request.py-->line:38] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/bidLoan {'memberId': 77777, 'password': '12345678', 'loanId': 66666, 'amount': 501}
+2019-06-13 21:13:30,742 | 26980 | [case_bidLoan.py-->line:68] | INFO : 【Success】
+2019-06-13 21:13:30,742 | 26980 | [case_bidLoan.py-->line:71] | INFO : TestCase 竞标失败，amount不能被500整除 end------
+2019-06-13 21:13:30,742 | 26980 | [case_bidLoan.py-->line:47] | INFO : TestCase 竞标失败，不存在该用户 starting------
+2019-06-13 21:13:30,742 | 26980 | [R_request.py-->line:38] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/login {'mobilephone': '13912345611', 'pwd': '123456'}
+2019-06-13 21:13:30,808 | 26980 | [R_request.py-->line:38] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/bidLoan {'memberId': 'xxx', 'password': 'xxx', 'loanId': 'xxx', 'amount': 'xxx'}
+2019-06-13 21:13:30,841 | 26980 | [case_bidLoan.py-->line:63] | ERROR: 【Failed】：E{'status': 0, 'code': '11008', 'data': None, 'msg': '不存在该用户'} != A{'status': 0, 'code': '11013', 'data': None, 'msg': '请根据数值参数的类型对应输入合法的数字'}
+2019-06-13 21:13:30,841 | 26980 | [case_bidLoan.py-->line:71] | INFO : TestCase 竞标失败，不存在该用户 end------
+2019-06-13 21:13:30,842 | 26980 | [case_bidLoan.py-->line:47] | INFO : TestCase 竞标失败，不存在该标的 starting------
+2019-06-13 21:13:30,842 | 26980 | [R_request.py-->line:38] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/login {'mobilephone': '13912345611', 'pwd': '123456'}
+2019-06-13 21:13:30,905 | 26980 | [R_request.py-->line:38] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/bidLoan {'memberId': 'xxx', 'password': 'xxx', 'loanId': 'xxx', 'amount': 'xxx'}
+2019-06-13 21:13:30,939 | 26980 | [case_bidLoan.py-->line:63] | ERROR: 【Failed】：E{'status': 0, 'code': '11009', 'data': None, 'msg': '不存在该标的'} != A{'status': 0, 'code': '11013', 'data': None, 'msg': '请根据数值参数的类型对应输入合法的数字'}
+2019-06-13 21:13:30,939 | 26980 | [case_bidLoan.py-->line:71] | INFO : TestCase 竞标失败，不存在该标的 end------
+2019-06-13 21:13:30,940 | 26980 | [case_bidLoan.py-->line:47] | INFO : TestCase 竞标失败，该标不在竞标中状态，无法完成投标 starting------
+2019-06-13 21:13:30,940 | 26980 | [R_request.py-->line:38] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/login {'mobilephone': '13912345611', 'pwd': '123456'}
+2019-06-13 21:13:31,004 | 26980 | [R_request.py-->line:38] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/bidLoan {'memberId': 'xxx', 'password': 'xxx', 'loanId': 'xxx', 'amount': 'xxx'}
+2019-06-13 21:13:31,041 | 26980 | [case_bidLoan.py-->line:63] | ERROR: 【Failed】：E{'status': 0, 'code': '11010', 'data': None, 'msg': '该标不在竞标中状态，无法完成投标'} != A{'status': 0, 'code': '11013', 'data': None, 'msg': '请根据数值参数的类型对应输入合法的数字'}
+2019-06-13 21:13:31,042 | 26980 | [case_bidLoan.py-->line:71] | INFO : TestCase 竞标失败，该标不在竞标中状态，无法完成投标 end------
+2019-06-13 21:13:31,042 | 26980 | [case_bidLoan.py-->line:47] | INFO : TestCase 竞标失败，该标已经满标,无法进行投资 starting------
+2019-06-13 21:13:31,042 | 26980 | [R_request.py-->line:38] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/login {'mobilephone': '13912345611', 'pwd': '123456'}
+2019-06-13 21:13:31,110 | 26980 | [R_request.py-->line:38] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/bidLoan {'memberId': 'xxx', 'password': 'xxx', 'loanId': 'xxx', 'amount': 'xxx'}
+2019-06-13 21:13:31,145 | 26980 | [case_bidLoan.py-->line:63] | ERROR: 【Failed】：E{'status': 0, 'code': '11011', 'data': None, 'msg': '该标已经满标,无法进行投资'} != A{'status': 0, 'code': '11013', 'data': None, 'msg': '请根据数值参数的类型对应输入合法的数字'}
+2019-06-13 21:13:31,145 | 26980 | [case_bidLoan.py-->line:71] | INFO : TestCase 竞标失败，该标已经满标,无法进行投资 end------
+2019-06-13 21:13:31,146 | 26980 | [case_bidLoan.py-->line:47] | INFO : TestCase 竞标失败，该标可投金额不足 starting------
+2019-06-13 21:13:31,146 | 26980 | [R_request.py-->line:38] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/login {'mobilephone': '13912345611', 'pwd': '123456'}
+2019-06-13 21:13:31,213 | 26980 | [R_request.py-->line:38] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/bidLoan {'memberId': 'xxx', 'password': 'xxx', 'loanId': 'xxx', 'amount': 'xxx'}
+2019-06-13 21:13:31,246 | 26980 | [case_bidLoan.py-->line:63] | ERROR: 【Failed】：E{'status': 0, 'code': '11012', 'data': None, 'msg': '该标可投金额不足'} != A{'status': 0, 'code': '11013', 'data': None, 'msg': '请根据数值参数的类型对应输入合法的数字'}
+2019-06-13 21:13:31,246 | 26980 | [case_bidLoan.py-->line:71] | INFO : TestCase 竞标失败，该标可投金额不足 end------
+2019-06-13 21:13:31,247 | 26980 | [case_bidLoan.py-->line:47] | INFO : TestCase 竞标失败，memberId非数字 starting------
+2019-06-13 21:13:31,247 | 26980 | [R_request.py-->line:38] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/login {'mobilephone': '13912345611', 'pwd': '123456'}
+2019-06-13 21:13:31,316 | 26980 | [R_request.py-->line:38] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/bidLoan {'memberId': 'abc', 'password': '12345678', 'loanId': 66666, 'amount': 500}
+2019-06-13 21:13:31,350 | 26980 | [case_bidLoan.py-->line:68] | INFO : 【Success】
+2019-06-13 21:13:31,350 | 26980 | [case_bidLoan.py-->line:71] | INFO : TestCase 竞标失败，memberId非数字 end------
+2019-06-13 21:13:31,350 | 26980 | [case_bidLoan.py-->line:47] | INFO : TestCase 竞标失败，amount非数字 starting------
+2019-06-13 21:13:31,350 | 26980 | [R_request.py-->line:38] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/login {'mobilephone': '13912345611', 'pwd': '123456'}
+2019-06-13 21:13:31,416 | 26980 | [R_request.py-->line:38] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/bidLoan {'memberId': 77777, 'password': '12345678', 'loanId': 66666, 'amount': 'abc'}
+2019-06-13 21:13:31,449 | 26980 | [case_bidLoan.py-->line:68] | INFO : 【Success】
+2019-06-13 21:13:31,449 | 26980 | [case_bidLoan.py-->line:71] | INFO : TestCase 竞标失败，amount非数字 end------

@@ -88,6 +88,7 @@ class ReadExcel(object):
                 if i[0] == 'result' or i[0] is None:
                     continue
                 setattr(case_obj, i[0], i[1])
+            setattr(case_obj, 'row', case[0].row)
             cases.append(case_obj)
 
         return cases
@@ -203,5 +204,5 @@ if __name__ == '__main__':
     # print('---------------------------------------------------')
     # data = r.r_data_obj_from_column([1, 2, 3])
     # print(data)
-
+    r.read_data_obj()
     print(r.r_max()[1])

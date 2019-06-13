@@ -1,0 +1,2663 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>py18_2019_06_14_01_50_57_report</title>
+    <meta name="generator" content="HTMLTestRunner 0.8.2.2"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+
+    <style type="text/css" media="screen">
+body        { font-family: Microsoft YaHei,Tahoma,arial,helvetica,sans-serif;padding: 20px; font-size: 120%; }
+table       { font-size: 100%; }
+/* -- heading ---------------------------------------------------------------------- */
+.heading {
+    margin-top: 0ex;
+    margin-bottom: 1ex;
+}
+.heading .description {
+    margin-top: 4ex;
+    margin-bottom: 6ex;
+}
+/* -- report ------------------------------------------------------------------------ */
+#total_row  { font-weight: bold; }
+.passCase   { color: #5cb85c; }
+.failCase   { color: #d9534f; font-weight: bold; }
+.errorCase  { color: #f0ad4e; font-weight: bold; }
+.hiddenRow  { display: none; }
+.testcase   { margin-left: 2em; }
+
+    </style>
+
+</head>
+<body>
+<script language="javascript" type="text/javascript">
+output_list = Array();
+/*level 调整增加只显示通过用例的分类 --Findyou
+0:Summary //all hiddenRow
+1:Failed  //pt hiddenRow, ft none
+2:Pass    //pt none, ft hiddenRow
+3:All     //pt none, ft none
+*/
+function showCase(level) {
+    trs = document.getElementsByTagName("tr");
+    for (var i = 0; i < trs.length; i++) {
+        tr = trs[i];
+        id = tr.id;
+        if (id.substr(0,2) == 'ft') {
+            if (level == 2 || level == 0 ) {
+                tr.className = 'hiddenRow';
+            }
+            else {
+                tr.className = '';
+            }
+        }
+        if (id.substr(0,2) == 'pt') {
+            if (level < 2) {
+                tr.className = 'hiddenRow';
+            }
+            else {
+                tr.className = '';
+            }
+        }
+    }
+    //加入【详细】切换文字变化 --Findyou
+    detail_class=document.getElementsByClassName('detail');
+	//console.log(detail_class.length)
+	if (level == 3) {
+		for (var i = 0; i < detail_class.length; i++){
+			detail_class[i].innerHTML="收起"
+		}
+	}
+	else{
+			for (var i = 0; i < detail_class.length; i++){
+			detail_class[i].innerHTML="详细"
+		}
+	}
+}
+function showClassDetail(cid, count) {
+    var id_list = Array(count);
+    var toHide = 1;
+    for (var i = 0; i < count; i++) {
+        //ID修改 点 为 下划线 -Findyou
+        tid0 = 't' + cid.substr(1) + '_' + (i+1);
+        tid = 'f' + tid0;
+        tr = document.getElementById(tid);
+        if (!tr) {
+            tid = 'p' + tid0;
+            tr = document.getElementById(tid);
+        }
+        id_list[i] = tid;
+        if (tr.className) {
+            toHide = 0;
+        }
+    }
+    for (var i = 0; i < count; i++) {
+        tid = id_list[i];
+        //修改点击无法收起的BUG，加入【详细】切换文字变化 --Findyou
+        if (toHide) {
+            document.getElementById(tid).className = 'hiddenRow';
+            document.getElementById(cid).innerText = "详细"
+        }
+        else {
+            document.getElementById(tid).className = '';
+            document.getElementById(cid).innerText = "收起"
+        }
+    }
+}
+function html_escape(s) {
+    s = s.replace(/&/g,'&amp;');
+    s = s.replace(/</g,'&lt;');
+    s = s.replace(/>/g,'&gt;');
+    return s;
+}
+
+</script>
+<div class='heading'>
+    <h1 style="font-family: Microsoft YaHei">py18_2019_06_14_01_50_57_report</h1>
+    <p class='attribute'><strong>测试人员 : </strong> july</p>
+    <p class='attribute'><strong>开始时间 : </strong> 2019-06-14 01:50:57</p>
+    <p class='attribute'><strong>合计耗时 : </strong> 0:00:10.310589</p>
+    <p class='attribute'><strong>测试结果 : </strong> 共 76，通过 33，失败 14，错误 29，通过率= 43.42%</p>
+
+    <p class='description'>参数化报告</p>
+</div>
+
+
+<p id='show_detail_line'>
+    <a class="btn btn-primary" href='javascript:showCase(0)'>概要{ 43.42% }</a>
+    <a class="btn btn-danger" href='javascript:showCase(1)'>失败{ 14 }</a>
+    <a class="btn btn-success" href='javascript:showCase(2)'>通过{ 33 }</a>
+    <a class="btn btn-info" href='javascript:showCase(3)'>所有{ 76 }</a>
+</p>
+<table id='result_table' class="table table-condensed table-bordered table-hover">
+    <colgroup>
+        <col align='left'/>
+        <col align='right'/>
+        <col align='right'/>
+        <col align='right'/>
+        <col align='right'/>
+        <col align='right'/>
+    </colgroup>
+    <tr id='header_row' class="text-center success" style="font-weight: bold;font-size: 16px;">
+        <td>用例集/测试用例</td>
+        <td>总计</td>
+        <td>通过</td>
+        <td>失败</td>
+        <td>错误</td>
+        <td>详细</td>
+    </tr>
+
+    <tr class='errorClass warning'>
+        <td>case_add.AddTestCase</td>
+        <td class="text-center">28</td>
+        <td class="text-center">0</td>
+        <td class="text-center">0</td>
+        <td class="text-center">28</td>
+        <td class="text-center"><a href="javascript:showClassDetail('c1',28)" class="detail" id='c1'>详细</a></td>
+    </tr>
+
+    <tr id='ft1_1' class='none'>
+        <td class='errorCase'>
+            <div class='testcase'>testAdd_01_添加项目成功</div>
+        </td>
+        <td colspan='5' align='center'>
+            <!--默认收起错误信息 -Findyou
+            <button id='btn_ft1_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft1_1'>错误</button>
+            <div id='div_ft1_1' class="collapse">  -->
+            <!-- 默认展开错误信息 -Findyou -->
+            <button id='btn_ft1_1' type="button" class="btn btn-danger btn-xs" data-toggle="collapse"
+                    data-target='#div_ft1_1'>错误
+            </button>
+            <div id='div_ft1_1' class="collapse in" align="left">
+    <pre>
+    
+ft1_1: 
+-------------start--------------
+--------------end---------------
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\library\ddt.py", line 154, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\testcase\case_add.py", line 52, in testAdd
+    params=eval(case.request_data))
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\common\R_request.py", line 41, in request
+    raise RuntimeError
+RuntimeError
+
+
+    </pre>
+            </div>
+        </td>
+    </tr>
+
+    <tr id='ft1_2' class='none'>
+        <td class='errorCase'>
+            <div class='testcase'>testAdd_02_添加项目失败_memberId为空</div>
+        </td>
+        <td colspan='5' align='center'>
+            <!--默认收起错误信息 -Findyou
+            <button id='btn_ft1_2' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft1_2'>错误</button>
+            <div id='div_ft1_2' class="collapse">  -->
+            <!-- 默认展开错误信息 -Findyou -->
+            <button id='btn_ft1_2' type="button" class="btn btn-danger btn-xs" data-toggle="collapse"
+                    data-target='#div_ft1_2'>错误
+            </button>
+            <div id='div_ft1_2' class="collapse in" align="left">
+    <pre>
+    
+ft1_2: 
+-------------start--------------
+--------------end---------------
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\library\ddt.py", line 154, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\testcase\case_add.py", line 52, in testAdd
+    params=eval(case.request_data))
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\common\R_request.py", line 41, in request
+    raise RuntimeError
+RuntimeError
+
+
+    </pre>
+            </div>
+        </td>
+    </tr>
+
+    <tr id='ft1_3' class='none'>
+        <td class='errorCase'>
+            <div class='testcase'>testAdd_03_添加项目失败_title为空</div>
+        </td>
+        <td colspan='5' align='center'>
+            <!--默认收起错误信息 -Findyou
+            <button id='btn_ft1_3' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft1_3'>错误</button>
+            <div id='div_ft1_3' class="collapse">  -->
+            <!-- 默认展开错误信息 -Findyou -->
+            <button id='btn_ft1_3' type="button" class="btn btn-danger btn-xs" data-toggle="collapse"
+                    data-target='#div_ft1_3'>错误
+            </button>
+            <div id='div_ft1_3' class="collapse in" align="left">
+    <pre>
+    
+ft1_3: 
+-------------start--------------
+--------------end---------------
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\library\ddt.py", line 154, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\testcase\case_add.py", line 52, in testAdd
+    params=eval(case.request_data))
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\common\R_request.py", line 41, in request
+    raise RuntimeError
+RuntimeError
+
+
+    </pre>
+            </div>
+        </td>
+    </tr>
+
+    <tr id='ft1_4' class='none'>
+        <td class='errorCase'>
+            <div class='testcase'>testAdd_04_添加项目失败_loanRate为空</div>
+        </td>
+        <td colspan='5' align='center'>
+            <!--默认收起错误信息 -Findyou
+            <button id='btn_ft1_4' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft1_4'>错误</button>
+            <div id='div_ft1_4' class="collapse">  -->
+            <!-- 默认展开错误信息 -Findyou -->
+            <button id='btn_ft1_4' type="button" class="btn btn-danger btn-xs" data-toggle="collapse"
+                    data-target='#div_ft1_4'>错误
+            </button>
+            <div id='div_ft1_4' class="collapse in" align="left">
+    <pre>
+    
+ft1_4: 
+-------------start--------------
+--------------end---------------
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\library\ddt.py", line 154, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\testcase\case_add.py", line 52, in testAdd
+    params=eval(case.request_data))
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\common\R_request.py", line 41, in request
+    raise RuntimeError
+RuntimeError
+
+
+    </pre>
+            </div>
+        </td>
+    </tr>
+
+    <tr id='ft1_5' class='none'>
+        <td class='errorCase'>
+            <div class='testcase'>testAdd_05_添加项目失败_loanTerm为空</div>
+        </td>
+        <td colspan='5' align='center'>
+            <!--默认收起错误信息 -Findyou
+            <button id='btn_ft1_5' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft1_5'>错误</button>
+            <div id='div_ft1_5' class="collapse">  -->
+            <!-- 默认展开错误信息 -Findyou -->
+            <button id='btn_ft1_5' type="button" class="btn btn-danger btn-xs" data-toggle="collapse"
+                    data-target='#div_ft1_5'>错误
+            </button>
+            <div id='div_ft1_5' class="collapse in" align="left">
+    <pre>
+    
+ft1_5: 
+-------------start--------------
+--------------end---------------
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\library\ddt.py", line 154, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\testcase\case_add.py", line 52, in testAdd
+    params=eval(case.request_data))
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\common\R_request.py", line 41, in request
+    raise RuntimeError
+RuntimeError
+
+
+    </pre>
+            </div>
+        </td>
+    </tr>
+
+    <tr id='ft1_6' class='none'>
+        <td class='errorCase'>
+            <div class='testcase'>testAdd_06_添加项目失败_loanDateType为空</div>
+        </td>
+        <td colspan='5' align='center'>
+            <!--默认收起错误信息 -Findyou
+            <button id='btn_ft1_6' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft1_6'>错误</button>
+            <div id='div_ft1_6' class="collapse">  -->
+            <!-- 默认展开错误信息 -Findyou -->
+            <button id='btn_ft1_6' type="button" class="btn btn-danger btn-xs" data-toggle="collapse"
+                    data-target='#div_ft1_6'>错误
+            </button>
+            <div id='div_ft1_6' class="collapse in" align="left">
+    <pre>
+    
+ft1_6: 
+-------------start--------------
+--------------end---------------
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\library\ddt.py", line 154, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\testcase\case_add.py", line 52, in testAdd
+    params=eval(case.request_data))
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\common\R_request.py", line 41, in request
+    raise RuntimeError
+RuntimeError
+
+
+    </pre>
+            </div>
+        </td>
+    </tr>
+
+    <tr id='ft1_7' class='none'>
+        <td class='errorCase'>
+            <div class='testcase'>testAdd_07_添加项目失败_repaymemtWay为空</div>
+        </td>
+        <td colspan='5' align='center'>
+            <!--默认收起错误信息 -Findyou
+            <button id='btn_ft1_7' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft1_7'>错误</button>
+            <div id='div_ft1_7' class="collapse">  -->
+            <!-- 默认展开错误信息 -Findyou -->
+            <button id='btn_ft1_7' type="button" class="btn btn-danger btn-xs" data-toggle="collapse"
+                    data-target='#div_ft1_7'>错误
+            </button>
+            <div id='div_ft1_7' class="collapse in" align="left">
+    <pre>
+    
+ft1_7: 
+-------------start--------------
+--------------end---------------
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\library\ddt.py", line 154, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\testcase\case_add.py", line 52, in testAdd
+    params=eval(case.request_data))
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\common\R_request.py", line 41, in request
+    raise RuntimeError
+RuntimeError
+
+
+    </pre>
+            </div>
+        </td>
+    </tr>
+
+    <tr id='ft1_8' class='none'>
+        <td class='errorCase'>
+            <div class='testcase'>testAdd_08_添加项目失败_biddingDays为空</div>
+        </td>
+        <td colspan='5' align='center'>
+            <!--默认收起错误信息 -Findyou
+            <button id='btn_ft1_8' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft1_8'>错误</button>
+            <div id='div_ft1_8' class="collapse">  -->
+            <!-- 默认展开错误信息 -Findyou -->
+            <button id='btn_ft1_8' type="button" class="btn btn-danger btn-xs" data-toggle="collapse"
+                    data-target='#div_ft1_8'>错误
+            </button>
+            <div id='div_ft1_8' class="collapse in" align="left">
+    <pre>
+    
+ft1_8: 
+-------------start--------------
+--------------end---------------
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\library\ddt.py", line 154, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\testcase\case_add.py", line 52, in testAdd
+    params=eval(case.request_data))
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\common\R_request.py", line 41, in request
+    raise RuntimeError
+RuntimeError
+
+
+    </pre>
+            </div>
+        </td>
+    </tr>
+
+    <tr id='ft1_9' class='none'>
+        <td class='errorCase'>
+            <div class='testcase'>testAdd_09_添加项目失败_amount为空</div>
+        </td>
+        <td colspan='5' align='center'>
+            <!--默认收起错误信息 -Findyou
+            <button id='btn_ft1_9' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft1_9'>错误</button>
+            <div id='div_ft1_9' class="collapse">  -->
+            <!-- 默认展开错误信息 -Findyou -->
+            <button id='btn_ft1_9' type="button" class="btn btn-danger btn-xs" data-toggle="collapse"
+                    data-target='#div_ft1_9'>错误
+            </button>
+            <div id='div_ft1_9' class="collapse in" align="left">
+    <pre>
+    
+ft1_9: 
+-------------start--------------
+--------------end---------------
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\library\ddt.py", line 154, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\testcase\case_add.py", line 52, in testAdd
+    params=eval(case.request_data))
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\common\R_request.py", line 41, in request
+    raise RuntimeError
+RuntimeError
+
+
+    </pre>
+            </div>
+        </td>
+    </tr>
+
+    <tr id='ft1_10' class='none'>
+        <td class='errorCase'>
+            <div class='testcase'>testAdd_10_添加项目失败_memberId小于0</div>
+        </td>
+        <td colspan='5' align='center'>
+            <!--默认收起错误信息 -Findyou
+            <button id='btn_ft1_10' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft1_10'>错误</button>
+            <div id='div_ft1_10' class="collapse">  -->
+            <!-- 默认展开错误信息 -Findyou -->
+            <button id='btn_ft1_10' type="button" class="btn btn-danger btn-xs" data-toggle="collapse"
+                    data-target='#div_ft1_10'>错误
+            </button>
+            <div id='div_ft1_10' class="collapse in" align="left">
+    <pre>
+    
+ft1_10: 
+-------------start--------------
+--------------end---------------
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\library\ddt.py", line 154, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\testcase\case_add.py", line 52, in testAdd
+    params=eval(case.request_data))
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\common\R_request.py", line 41, in request
+    raise RuntimeError
+RuntimeError
+
+
+    </pre>
+            </div>
+        </td>
+    </tr>
+
+    <tr id='ft1_11' class='none'>
+        <td class='errorCase'>
+            <div class='testcase'>testAdd_11_添加项目失败_memberId等于0</div>
+        </td>
+        <td colspan='5' align='center'>
+            <!--默认收起错误信息 -Findyou
+            <button id='btn_ft1_11' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft1_11'>错误</button>
+            <div id='div_ft1_11' class="collapse">  -->
+            <!-- 默认展开错误信息 -Findyou -->
+            <button id='btn_ft1_11' type="button" class="btn btn-danger btn-xs" data-toggle="collapse"
+                    data-target='#div_ft1_11'>错误
+            </button>
+            <div id='div_ft1_11' class="collapse in" align="left">
+    <pre>
+    
+ft1_11: 
+-------------start--------------
+--------------end---------------
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\library\ddt.py", line 154, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\testcase\case_add.py", line 52, in testAdd
+    params=eval(case.request_data))
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\common\R_request.py", line 41, in request
+    raise RuntimeError
+RuntimeError
+
+
+    </pre>
+            </div>
+        </td>
+    </tr>
+
+    <tr id='ft1_12' class='none'>
+        <td class='errorCase'>
+            <div class='testcase'>testAdd_12_添加项目失败_memberId为小数</div>
+        </td>
+        <td colspan='5' align='center'>
+            <!--默认收起错误信息 -Findyou
+            <button id='btn_ft1_12' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft1_12'>错误</button>
+            <div id='div_ft1_12' class="collapse">  -->
+            <!-- 默认展开错误信息 -Findyou -->
+            <button id='btn_ft1_12' type="button" class="btn btn-danger btn-xs" data-toggle="collapse"
+                    data-target='#div_ft1_12'>错误
+            </button>
+            <div id='div_ft1_12' class="collapse in" align="left">
+    <pre>
+    
+ft1_12: 
+-------------start--------------
+--------------end---------------
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\library\ddt.py", line 154, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\testcase\case_add.py", line 52, in testAdd
+    params=eval(case.request_data))
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\common\R_request.py", line 41, in request
+    raise RuntimeError
+RuntimeError
+
+
+    </pre>
+            </div>
+        </td>
+    </tr>
+
+    <tr id='ft1_13' class='none'>
+        <td class='errorCase'>
+            <div class='testcase'>testAdd_13_添加项目失败_amount小于1000</div>
+        </td>
+        <td colspan='5' align='center'>
+            <!--默认收起错误信息 -Findyou
+            <button id='btn_ft1_13' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft1_13'>错误</button>
+            <div id='div_ft1_13' class="collapse">  -->
+            <!-- 默认展开错误信息 -Findyou -->
+            <button id='btn_ft1_13' type="button" class="btn btn-danger btn-xs" data-toggle="collapse"
+                    data-target='#div_ft1_13'>错误
+            </button>
+            <div id='div_ft1_13' class="collapse in" align="left">
+    <pre>
+    
+ft1_13: 
+-------------start--------------
+--------------end---------------
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\library\ddt.py", line 154, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\testcase\case_add.py", line 52, in testAdd
+    params=eval(case.request_data))
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\common\R_request.py", line 41, in request
+    raise RuntimeError
+RuntimeError
+
+
+    </pre>
+            </div>
+        </td>
+    </tr>
+
+    <tr id='ft1_14' class='none'>
+        <td class='errorCase'>
+            <div class='testcase'>testAdd_14_添加项目失败_amount等于1000</div>
+        </td>
+        <td colspan='5' align='center'>
+            <!--默认收起错误信息 -Findyou
+            <button id='btn_ft1_14' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft1_14'>错误</button>
+            <div id='div_ft1_14' class="collapse">  -->
+            <!-- 默认展开错误信息 -Findyou -->
+            <button id='btn_ft1_14' type="button" class="btn btn-danger btn-xs" data-toggle="collapse"
+                    data-target='#div_ft1_14'>错误
+            </button>
+            <div id='div_ft1_14' class="collapse in" align="left">
+    <pre>
+    
+ft1_14: 
+-------------start--------------
+--------------end---------------
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\library\ddt.py", line 154, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\testcase\case_add.py", line 52, in testAdd
+    params=eval(case.request_data))
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\common\R_request.py", line 41, in request
+    raise RuntimeError
+RuntimeError
+
+
+    </pre>
+            </div>
+        </td>
+    </tr>
+
+    <tr id='ft1_15' class='none'>
+        <td class='errorCase'>
+            <div class='testcase'>testAdd_15_添加项目失败_amount不能被100整除</div>
+        </td>
+        <td colspan='5' align='center'>
+            <!--默认收起错误信息 -Findyou
+            <button id='btn_ft1_15' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft1_15'>错误</button>
+            <div id='div_ft1_15' class="collapse">  -->
+            <!-- 默认展开错误信息 -Findyou -->
+            <button id='btn_ft1_15' type="button" class="btn btn-danger btn-xs" data-toggle="collapse"
+                    data-target='#div_ft1_15'>错误
+            </button>
+            <div id='div_ft1_15' class="collapse in" align="left">
+    <pre>
+    
+ft1_15: 
+-------------start--------------
+--------------end---------------
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\library\ddt.py", line 154, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\testcase\case_add.py", line 52, in testAdd
+    params=eval(case.request_data))
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\common\R_request.py", line 41, in request
+    raise RuntimeError
+RuntimeError
+
+
+    </pre>
+            </div>
+        </td>
+    </tr>
+
+    <tr id='ft1_16' class='none'>
+        <td class='errorCase'>
+            <div class='testcase'>testAdd_16_添加项目失败_amount为小数</div>
+        </td>
+        <td colspan='5' align='center'>
+            <!--默认收起错误信息 -Findyou
+            <button id='btn_ft1_16' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft1_16'>错误</button>
+            <div id='div_ft1_16' class="collapse">  -->
+            <!-- 默认展开错误信息 -Findyou -->
+            <button id='btn_ft1_16' type="button" class="btn btn-danger btn-xs" data-toggle="collapse"
+                    data-target='#div_ft1_16'>错误
+            </button>
+            <div id='div_ft1_16' class="collapse in" align="left">
+    <pre>
+    
+ft1_16: 
+-------------start--------------
+--------------end---------------
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\library\ddt.py", line 154, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\testcase\case_add.py", line 52, in testAdd
+    params=eval(case.request_data))
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\common\R_request.py", line 41, in request
+    raise RuntimeError
+RuntimeError
+
+
+    </pre>
+            </div>
+        </td>
+    </tr>
+
+    <tr id='ft1_17' class='none'>
+        <td class='errorCase'>
+            <div class='testcase'>testAdd_17_添加项目失败_loanRate值必须小于0</div>
+        </td>
+        <td colspan='5' align='center'>
+            <!--默认收起错误信息 -Findyou
+            <button id='btn_ft1_17' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft1_17'>错误</button>
+            <div id='div_ft1_17' class="collapse">  -->
+            <!-- 默认展开错误信息 -Findyou -->
+            <button id='btn_ft1_17' type="button" class="btn btn-danger btn-xs" data-toggle="collapse"
+                    data-target='#div_ft1_17'>错误
+            </button>
+            <div id='div_ft1_17' class="collapse in" align="left">
+    <pre>
+    
+ft1_17: 
+-------------start--------------
+--------------end---------------
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\library\ddt.py", line 154, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\testcase\case_add.py", line 52, in testAdd
+    params=eval(case.request_data))
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\common\R_request.py", line 41, in request
+    raise RuntimeError
+RuntimeError
+
+
+    </pre>
+            </div>
+        </td>
+    </tr>
+
+    <tr id='ft1_18' class='none'>
+        <td class='errorCase'>
+            <div class='testcase'>testAdd_18_添加项目失败_loanRate值必须等于0</div>
+        </td>
+        <td colspan='5' align='center'>
+            <!--默认收起错误信息 -Findyou
+            <button id='btn_ft1_18' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft1_18'>错误</button>
+            <div id='div_ft1_18' class="collapse">  -->
+            <!-- 默认展开错误信息 -Findyou -->
+            <button id='btn_ft1_18' type="button" class="btn btn-danger btn-xs" data-toggle="collapse"
+                    data-target='#div_ft1_18'>错误
+            </button>
+            <div id='div_ft1_18' class="collapse in" align="left">
+    <pre>
+    
+ft1_18: 
+-------------start--------------
+--------------end---------------
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\library\ddt.py", line 154, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\testcase\case_add.py", line 52, in testAdd
+    params=eval(case.request_data))
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\common\R_request.py", line 41, in request
+    raise RuntimeError
+RuntimeError
+
+
+    </pre>
+            </div>
+        </td>
+    </tr>
+
+    <tr id='ft1_19' class='none'>
+        <td class='errorCase'>
+            <div class='testcase'>testAdd_19_添加项目失败_loanRate值大于24</div>
+        </td>
+        <td colspan='5' align='center'>
+            <!--默认收起错误信息 -Findyou
+            <button id='btn_ft1_19' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft1_19'>错误</button>
+            <div id='div_ft1_19' class="collapse">  -->
+            <!-- 默认展开错误信息 -Findyou -->
+            <button id='btn_ft1_19' type="button" class="btn btn-danger btn-xs" data-toggle="collapse"
+                    data-target='#div_ft1_19'>错误
+            </button>
+            <div id='div_ft1_19' class="collapse in" align="left">
+    <pre>
+    
+ft1_19: 
+-------------start--------------
+--------------end---------------
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\library\ddt.py", line 154, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\testcase\case_add.py", line 52, in testAdd
+    params=eval(case.request_data))
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\common\R_request.py", line 41, in request
+    raise RuntimeError
+RuntimeError
+
+
+    </pre>
+            </div>
+        </td>
+    </tr>
+
+    <tr id='ft1_20' class='none'>
+        <td class='errorCase'>
+            <div class='testcase'>testAdd_20_添加项目失败_loanDateType不为0_2_4</div>
+        </td>
+        <td colspan='5' align='center'>
+            <!--默认收起错误信息 -Findyou
+            <button id='btn_ft1_20' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft1_20'>错误</button>
+            <div id='div_ft1_20' class="collapse">  -->
+            <!-- 默认展开错误信息 -Findyou -->
+            <button id='btn_ft1_20' type="button" class="btn btn-danger btn-xs" data-toggle="collapse"
+                    data-target='#div_ft1_20'>错误
+            </button>
+            <div id='div_ft1_20' class="collapse in" align="left">
+    <pre>
+    
+ft1_20: 
+-------------start--------------
+--------------end---------------
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\library\ddt.py", line 154, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\testcase\case_add.py", line 52, in testAdd
+    params=eval(case.request_data))
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\common\R_request.py", line 41, in request
+    raise RuntimeError
+RuntimeError
+
+
+    </pre>
+            </div>
+        </td>
+    </tr>
+
+    <tr id='ft1_21' class='none'>
+        <td class='errorCase'>
+            <div class='testcase'>testAdd_21_添加项目失败_memberId非数字</div>
+        </td>
+        <td colspan='5' align='center'>
+            <!--默认收起错误信息 -Findyou
+            <button id='btn_ft1_21' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft1_21'>错误</button>
+            <div id='div_ft1_21' class="collapse">  -->
+            <!-- 默认展开错误信息 -Findyou -->
+            <button id='btn_ft1_21' type="button" class="btn btn-danger btn-xs" data-toggle="collapse"
+                    data-target='#div_ft1_21'>错误
+            </button>
+            <div id='div_ft1_21' class="collapse in" align="left">
+    <pre>
+    
+ft1_21: 
+-------------start--------------
+--------------end---------------
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\library\ddt.py", line 154, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\testcase\case_add.py", line 52, in testAdd
+    params=eval(case.request_data))
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\common\R_request.py", line 41, in request
+    raise RuntimeError
+RuntimeError
+
+
+    </pre>
+            </div>
+        </td>
+    </tr>
+
+    <tr id='ft1_22' class='none'>
+        <td class='errorCase'>
+            <div class='testcase'>testAdd_22_添加项目失败_title非数字</div>
+        </td>
+        <td colspan='5' align='center'>
+            <!--默认收起错误信息 -Findyou
+            <button id='btn_ft1_22' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft1_22'>错误</button>
+            <div id='div_ft1_22' class="collapse">  -->
+            <!-- 默认展开错误信息 -Findyou -->
+            <button id='btn_ft1_22' type="button" class="btn btn-danger btn-xs" data-toggle="collapse"
+                    data-target='#div_ft1_22'>错误
+            </button>
+            <div id='div_ft1_22' class="collapse in" align="left">
+    <pre>
+    
+ft1_22: 
+-------------start--------------
+--------------end---------------
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\library\ddt.py", line 154, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\testcase\case_add.py", line 52, in testAdd
+    params=eval(case.request_data))
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\common\R_request.py", line 41, in request
+    raise RuntimeError
+RuntimeError
+
+
+    </pre>
+            </div>
+        </td>
+    </tr>
+
+    <tr id='ft1_23' class='none'>
+        <td class='errorCase'>
+            <div class='testcase'>testAdd_23_添加项目失败_loanRate非数字</div>
+        </td>
+        <td colspan='5' align='center'>
+            <!--默认收起错误信息 -Findyou
+            <button id='btn_ft1_23' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft1_23'>错误</button>
+            <div id='div_ft1_23' class="collapse">  -->
+            <!-- 默认展开错误信息 -Findyou -->
+            <button id='btn_ft1_23' type="button" class="btn btn-danger btn-xs" data-toggle="collapse"
+                    data-target='#div_ft1_23'>错误
+            </button>
+            <div id='div_ft1_23' class="collapse in" align="left">
+    <pre>
+    
+ft1_23: 
+-------------start--------------
+--------------end---------------
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\library\ddt.py", line 154, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\testcase\case_add.py", line 52, in testAdd
+    params=eval(case.request_data))
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\common\R_request.py", line 41, in request
+    raise RuntimeError
+RuntimeError
+
+
+    </pre>
+            </div>
+        </td>
+    </tr>
+
+    <tr id='ft1_24' class='none'>
+        <td class='errorCase'>
+            <div class='testcase'>testAdd_24_添加项目失败_loanTerm非数字</div>
+        </td>
+        <td colspan='5' align='center'>
+            <!--默认收起错误信息 -Findyou
+            <button id='btn_ft1_24' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft1_24'>错误</button>
+            <div id='div_ft1_24' class="collapse">  -->
+            <!-- 默认展开错误信息 -Findyou -->
+            <button id='btn_ft1_24' type="button" class="btn btn-danger btn-xs" data-toggle="collapse"
+                    data-target='#div_ft1_24'>错误
+            </button>
+            <div id='div_ft1_24' class="collapse in" align="left">
+    <pre>
+    
+ft1_24: 
+-------------start--------------
+--------------end---------------
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\library\ddt.py", line 154, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\testcase\case_add.py", line 52, in testAdd
+    params=eval(case.request_data))
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\common\R_request.py", line 41, in request
+    raise RuntimeError
+RuntimeError
+
+
+    </pre>
+            </div>
+        </td>
+    </tr>
+
+    <tr id='ft1_25' class='none'>
+        <td class='errorCase'>
+            <div class='testcase'>testAdd_25_添加项目失败_loanDateType非数字</div>
+        </td>
+        <td colspan='5' align='center'>
+            <!--默认收起错误信息 -Findyou
+            <button id='btn_ft1_25' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft1_25'>错误</button>
+            <div id='div_ft1_25' class="collapse">  -->
+            <!-- 默认展开错误信息 -Findyou -->
+            <button id='btn_ft1_25' type="button" class="btn btn-danger btn-xs" data-toggle="collapse"
+                    data-target='#div_ft1_25'>错误
+            </button>
+            <div id='div_ft1_25' class="collapse in" align="left">
+    <pre>
+    
+ft1_25: 
+-------------start--------------
+--------------end---------------
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\library\ddt.py", line 154, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\testcase\case_add.py", line 52, in testAdd
+    params=eval(case.request_data))
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\common\R_request.py", line 41, in request
+    raise RuntimeError
+RuntimeError
+
+
+    </pre>
+            </div>
+        </td>
+    </tr>
+
+    <tr id='ft1_26' class='none'>
+        <td class='errorCase'>
+            <div class='testcase'>testAdd_26_添加项目失败_repaymemtWay非数字</div>
+        </td>
+        <td colspan='5' align='center'>
+            <!--默认收起错误信息 -Findyou
+            <button id='btn_ft1_26' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft1_26'>错误</button>
+            <div id='div_ft1_26' class="collapse">  -->
+            <!-- 默认展开错误信息 -Findyou -->
+            <button id='btn_ft1_26' type="button" class="btn btn-danger btn-xs" data-toggle="collapse"
+                    data-target='#div_ft1_26'>错误
+            </button>
+            <div id='div_ft1_26' class="collapse in" align="left">
+    <pre>
+    
+ft1_26: 
+-------------start--------------
+--------------end---------------
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\library\ddt.py", line 154, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\testcase\case_add.py", line 52, in testAdd
+    params=eval(case.request_data))
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\common\R_request.py", line 41, in request
+    raise RuntimeError
+RuntimeError
+
+
+    </pre>
+            </div>
+        </td>
+    </tr>
+
+    <tr id='ft1_27' class='none'>
+        <td class='errorCase'>
+            <div class='testcase'>testAdd_27_添加项目失败_biddingDays非数字</div>
+        </td>
+        <td colspan='5' align='center'>
+            <!--默认收起错误信息 -Findyou
+            <button id='btn_ft1_27' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft1_27'>错误</button>
+            <div id='div_ft1_27' class="collapse">  -->
+            <!-- 默认展开错误信息 -Findyou -->
+            <button id='btn_ft1_27' type="button" class="btn btn-danger btn-xs" data-toggle="collapse"
+                    data-target='#div_ft1_27'>错误
+            </button>
+            <div id='div_ft1_27' class="collapse in" align="left">
+    <pre>
+    
+ft1_27: 
+-------------start--------------
+--------------end---------------
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\library\ddt.py", line 154, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\testcase\case_add.py", line 52, in testAdd
+    params=eval(case.request_data))
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\common\R_request.py", line 41, in request
+    raise RuntimeError
+RuntimeError
+
+
+    </pre>
+            </div>
+        </td>
+    </tr>
+
+    <tr id='ft1_28' class='none'>
+        <td class='errorCase'>
+            <div class='testcase'>testAdd_28_添加项目失败_amount非数字</div>
+        </td>
+        <td colspan='5' align='center'>
+            <!--默认收起错误信息 -Findyou
+            <button id='btn_ft1_28' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft1_28'>错误</button>
+            <div id='div_ft1_28' class="collapse">  -->
+            <!-- 默认展开错误信息 -Findyou -->
+            <button id='btn_ft1_28' type="button" class="btn btn-danger btn-xs" data-toggle="collapse"
+                    data-target='#div_ft1_28'>错误
+            </button>
+            <div id='div_ft1_28' class="collapse in" align="left">
+    <pre>
+    
+ft1_28: 
+-------------start--------------
+--------------end---------------
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\library\ddt.py", line 154, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\testcase\case_add.py", line 52, in testAdd
+    params=eval(case.request_data))
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\common\R_request.py", line 41, in request
+    raise RuntimeError
+RuntimeError
+
+
+    </pre>
+            </div>
+        </td>
+    </tr>
+
+    <tr class='errorClass warning'>
+        <td>case_bidLoan.BidLoanTestCase</td>
+        <td class="text-center">25</td>
+        <td class="text-center">12</td>
+        <td class="text-center">12</td>
+        <td class="text-center">1</td>
+        <td class="text-center"><a href="javascript:showClassDetail('c2',25)" class="detail" id='c2'>详细</a></td>
+    </tr>
+
+    <tr id='ft2_1' class='none'>
+        <td class='failCase'>
+            <div class='testcase'>testBidLoan_01_竞标成功</div>
+        </td>
+        <td colspan='5' align='center'>
+            <!--默认收起错误信息 -Findyou
+            <button id='btn_ft2_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft2_1'>失败</button>
+            <div id='div_ft2_1' class="collapse">  -->
+            <!-- 默认展开错误信息 -Findyou -->
+            <button id='btn_ft2_1' type="button" class="btn btn-danger btn-xs" data-toggle="collapse"
+                    data-target='#div_ft2_1'>失败
+            </button>
+            <div id='div_ft2_1' class="collapse in" align="left">
+    <pre>
+    
+ft2_1: 
+-------------start--------------
+Not Passed...
+成功
+密码错误
+--------------end---------------
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\library\ddt.py", line 154, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\testcase\case_bidLoan.py", line 64, in testBidLoan
+    raise e
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\testcase\case_bidLoan.py", line 58, in testBidLoan
+    self.assertEqual((expect['status'], expect['code']), (actual['status'], actual['code']))
+AssertionError: Tuples differ: (1, '10001') != (0, '')
+
+First differing element 0:
+1
+0
+
+- (1, '10001')
++ (0, '')
+
+
+    </pre>
+            </div>
+        </td>
+    </tr>
+
+    <tr id='ft2_2' class='none'>
+        <td class='errorCase'>
+            <div class='testcase'>testBidLoan_02_竞标失败_memberId为空</div>
+        </td>
+        <td colspan='5' align='center'>
+            <!--默认收起错误信息 -Findyou
+            <button id='btn_ft2_2' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft2_2'>错误</button>
+            <div id='div_ft2_2' class="collapse">  -->
+            <!-- 默认展开错误信息 -Findyou -->
+            <button id='btn_ft2_2' type="button" class="btn btn-danger btn-xs" data-toggle="collapse"
+                    data-target='#div_ft2_2'>错误
+            </button>
+            <div id='div_ft2_2' class="collapse in" align="left">
+    <pre>
+    
+ft2_2: 
+-------------start--------------
+--------------end---------------
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\library\ddt.py", line 154, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\testcase\case_bidLoan.py", line 52, in testBidLoan
+    params=eval(case.request_data))
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\common\R_request.py", line 41, in request
+    raise RuntimeError
+RuntimeError
+
+
+    </pre>
+            </div>
+        </td>
+    </tr>
+
+    <tr id='pt2_3' class='hiddenRow'>
+        <td class='passCase'>
+            <div class='testcase'>testBidLoan_03_竞标失败_loanId为空</div>
+        </td>
+        <td colspan='5' align='center'>
+            <!--默认收起错误信息 -Findyou
+            <button id='btn_pt2_3' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt2_3'>通过</button>
+            <div id='div_pt2_3' class="collapse">  -->
+            <!-- 默认展开错误信息 -Findyou -->
+            <button id='btn_pt2_3' type="button" class="btn btn-danger btn-xs" data-toggle="collapse"
+                    data-target='#div_pt2_3'>通过
+            </button>
+            <div id='div_pt2_3' class="collapse in" align="left">
+    <pre>
+    
+pt2_3: 
+-------------start--------------
+Passed
+--------------end---------------
+
+
+    </pre>
+            </div>
+        </td>
+    </tr>
+
+    <tr id='pt2_4' class='hiddenRow'>
+        <td class='passCase'>
+            <div class='testcase'>testBidLoan_04_竞标失败_password为空</div>
+        </td>
+        <td colspan='5' align='center'>
+            <!--默认收起错误信息 -Findyou
+            <button id='btn_pt2_4' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt2_4'>通过</button>
+            <div id='div_pt2_4' class="collapse">  -->
+            <!-- 默认展开错误信息 -Findyou -->
+            <button id='btn_pt2_4' type="button" class="btn btn-danger btn-xs" data-toggle="collapse"
+                    data-target='#div_pt2_4'>通过
+            </button>
+            <div id='div_pt2_4' class="collapse in" align="left">
+    <pre>
+    
+pt2_4: 
+-------------start--------------
+Passed
+--------------end---------------
+
+
+    </pre>
+            </div>
+        </td>
+    </tr>
+
+    <tr id='pt2_5' class='hiddenRow'>
+        <td class='passCase'>
+            <div class='testcase'>testBidLoan_05_竞标失败_amount为空</div>
+        </td>
+        <td colspan='5' align='center'>
+            <!--默认收起错误信息 -Findyou
+            <button id='btn_pt2_5' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt2_5'>通过</button>
+            <div id='div_pt2_5' class="collapse">  -->
+            <!-- 默认展开错误信息 -Findyou -->
+            <button id='btn_pt2_5' type="button" class="btn btn-danger btn-xs" data-toggle="collapse"
+                    data-target='#div_pt2_5'>通过
+            </button>
+            <div id='div_pt2_5' class="collapse in" align="left">
+    <pre>
+    
+pt2_5: 
+-------------start--------------
+Passed
+--------------end---------------
+
+
+    </pre>
+            </div>
+        </td>
+    </tr>
+
+    <tr id='pt2_6' class='hiddenRow'>
+        <td class='passCase'>
+            <div class='testcase'>testBidLoan_06_竞标失败_memberId小于0</div>
+        </td>
+        <td colspan='5' align='center'>
+            <!--默认收起错误信息 -Findyou
+            <button id='btn_pt2_6' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt2_6'>通过</button>
+            <div id='div_pt2_6' class="collapse">  -->
+            <!-- 默认展开错误信息 -Findyou -->
+            <button id='btn_pt2_6' type="button" class="btn btn-danger btn-xs" data-toggle="collapse"
+                    data-target='#div_pt2_6'>通过
+            </button>
+            <div id='div_pt2_6' class="collapse in" align="left">
+    <pre>
+    
+pt2_6: 
+-------------start--------------
+Passed
+--------------end---------------
+
+
+    </pre>
+            </div>
+        </td>
+    </tr>
+
+    <tr id='pt2_7' class='hiddenRow'>
+        <td class='passCase'>
+            <div class='testcase'>testBidLoan_07_竞标失败_memberId等于0</div>
+        </td>
+        <td colspan='5' align='center'>
+            <!--默认收起错误信息 -Findyou
+            <button id='btn_pt2_7' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt2_7'>通过</button>
+            <div id='div_pt2_7' class="collapse">  -->
+            <!-- 默认展开错误信息 -Findyou -->
+            <button id='btn_pt2_7' type="button" class="btn btn-danger btn-xs" data-toggle="collapse"
+                    data-target='#div_pt2_7'>通过
+            </button>
+            <div id='div_pt2_7' class="collapse in" align="left">
+    <pre>
+    
+pt2_7: 
+-------------start--------------
+Passed
+--------------end---------------
+
+
+    </pre>
+            </div>
+        </td>
+    </tr>
+
+    <tr id='ft2_8' class='none'>
+        <td class='failCase'>
+            <div class='testcase'>testBidLoan_08_竞标失败_memberId为小数</div>
+        </td>
+        <td colspan='5' align='center'>
+            <!--默认收起错误信息 -Findyou
+            <button id='btn_ft2_8' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft2_8'>失败</button>
+            <div id='div_ft2_8' class="collapse">  -->
+            <!-- 默认展开错误信息 -Findyou -->
+            <button id='btn_ft2_8' type="button" class="btn btn-danger btn-xs" data-toggle="collapse"
+                    data-target='#div_ft2_8'>失败
+            </button>
+            <div id='div_ft2_8' class="collapse in" align="left">
+    <pre>
+    
+ft2_8: 
+-------------start--------------
+Not Passed...
+参数错误，memberId必须是大于0的正整数
+请根据数值参数的类型对应输入合法的数字
+--------------end---------------
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\library\ddt.py", line 154, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\testcase\case_bidLoan.py", line 64, in testBidLoan
+    raise e
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\testcase\case_bidLoan.py", line 58, in testBidLoan
+    self.assertEqual((expect['status'], expect['code']), (actual['status'], actual['code']))
+AssertionError: Tuples differ: (0, '11004') != (0, '11013')
+
+First differing element 1:
+'11004'
+'11013'
+
+- (0, '11004')
+?         ^^
+
++ (0, '11013')
+?         ^^
+
+
+
+    </pre>
+            </div>
+        </td>
+    </tr>
+
+    <tr id='ft2_9' class='none'>
+        <td class='failCase'>
+            <div class='testcase'>testBidLoan_09_竞标失败_loanId为小于0</div>
+        </td>
+        <td colspan='5' align='center'>
+            <!--默认收起错误信息 -Findyou
+            <button id='btn_ft2_9' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft2_9'>失败</button>
+            <div id='div_ft2_9' class="collapse">  -->
+            <!-- 默认展开错误信息 -Findyou -->
+            <button id='btn_ft2_9' type="button" class="btn btn-danger btn-xs" data-toggle="collapse"
+                    data-target='#div_ft2_9'>失败
+            </button>
+            <div id='div_ft2_9' class="collapse in" align="left">
+    <pre>
+    
+ft2_9: 
+-------------start--------------
+Not Passed...
+参数错误，loanId必须是大于0的正整数
+密码错误
+--------------end---------------
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\library\ddt.py", line 154, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\testcase\case_bidLoan.py", line 64, in testBidLoan
+    raise e
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\testcase\case_bidLoan.py", line 58, in testBidLoan
+    self.assertEqual((expect['status'], expect['code']), (actual['status'], actual['code']))
+AssertionError: Tuples differ: (0, '11005') != (0, '')
+
+First differing element 1:
+'11005'
+''
+
+- (0, '11005')
++ (0, '')
+
+
+    </pre>
+            </div>
+        </td>
+    </tr>
+
+    <tr id='ft2_10' class='none'>
+        <td class='failCase'>
+            <div class='testcase'>testBidLoan_10_竞标失败_loanId为等于0</div>
+        </td>
+        <td colspan='5' align='center'>
+            <!--默认收起错误信息 -Findyou
+            <button id='btn_ft2_10' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft2_10'>失败</button>
+            <div id='div_ft2_10' class="collapse">  -->
+            <!-- 默认展开错误信息 -Findyou -->
+            <button id='btn_ft2_10' type="button" class="btn btn-danger btn-xs" data-toggle="collapse"
+                    data-target='#div_ft2_10'>失败
+            </button>
+            <div id='div_ft2_10' class="collapse in" align="left">
+    <pre>
+    
+ft2_10: 
+-------------start--------------
+Not Passed...
+参数错误，loanId必须是大于0的正整数
+密码错误
+--------------end---------------
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\library\ddt.py", line 154, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\testcase\case_bidLoan.py", line 64, in testBidLoan
+    raise e
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\testcase\case_bidLoan.py", line 58, in testBidLoan
+    self.assertEqual((expect['status'], expect['code']), (actual['status'], actual['code']))
+AssertionError: Tuples differ: (0, '11005') != (0, '')
+
+First differing element 1:
+'11005'
+''
+
+- (0, '11005')
++ (0, '')
+
+
+    </pre>
+            </div>
+        </td>
+    </tr>
+
+    <tr id='ft2_11' class='none'>
+        <td class='failCase'>
+            <div class='testcase'>testBidLoan_11_竞标失败_loanId为小数</div>
+        </td>
+        <td colspan='5' align='center'>
+            <!--默认收起错误信息 -Findyou
+            <button id='btn_ft2_11' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft2_11'>失败</button>
+            <div id='div_ft2_11' class="collapse">  -->
+            <!-- 默认展开错误信息 -Findyou -->
+            <button id='btn_ft2_11' type="button" class="btn btn-danger btn-xs" data-toggle="collapse"
+                    data-target='#div_ft2_11'>失败
+            </button>
+            <div id='div_ft2_11' class="collapse in" align="left">
+    <pre>
+    
+ft2_11: 
+-------------start--------------
+Not Passed...
+参数错误，loanId必须是大于0的正整数
+密码错误
+--------------end---------------
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\library\ddt.py", line 154, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\testcase\case_bidLoan.py", line 64, in testBidLoan
+    raise e
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\testcase\case_bidLoan.py", line 58, in testBidLoan
+    self.assertEqual((expect['status'], expect['code']), (actual['status'], actual['code']))
+AssertionError: Tuples differ: (0, '11005') != (0, '')
+
+First differing element 1:
+'11005'
+''
+
+- (0, '11005')
++ (0, '')
+
+
+    </pre>
+            </div>
+        </td>
+    </tr>
+
+    <tr id='pt2_12' class='hiddenRow'>
+        <td class='passCase'>
+            <div class='testcase'>testBidLoan_12_竞标失败_password长度小于6位</div>
+        </td>
+        <td colspan='5' align='center'>
+            <!--默认收起错误信息 -Findyou
+            <button id='btn_pt2_12' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt2_12'>通过</button>
+            <div id='div_pt2_12' class="collapse">  -->
+            <!-- 默认展开错误信息 -Findyou -->
+            <button id='btn_pt2_12' type="button" class="btn btn-danger btn-xs" data-toggle="collapse"
+                    data-target='#div_pt2_12'>通过
+            </button>
+            <div id='div_pt2_12' class="collapse in" align="left">
+    <pre>
+    
+pt2_12: 
+-------------start--------------
+Passed
+--------------end---------------
+
+
+    </pre>
+            </div>
+        </td>
+    </tr>
+
+    <tr id='ft2_13' class='none'>
+        <td class='failCase'>
+            <div class='testcase'>testBidLoan_13_竞标失败_password长度等于6位</div>
+        </td>
+        <td colspan='5' align='center'>
+            <!--默认收起错误信息 -Findyou
+            <button id='btn_ft2_13' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft2_13'>失败</button>
+            <div id='div_ft2_13' class="collapse">  -->
+            <!-- 默认展开错误信息 -Findyou -->
+            <button id='btn_ft2_13' type="button" class="btn btn-danger btn-xs" data-toggle="collapse"
+                    data-target='#div_ft2_13'>失败
+            </button>
+            <div id='div_ft2_13' class="collapse in" align="left">
+    <pre>
+    
+ft2_13: 
+-------------start--------------
+Not Passed...
+密码错误
+密码错误
+--------------end---------------
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\library\ddt.py", line 154, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\testcase\case_bidLoan.py", line 64, in testBidLoan
+    raise e
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\testcase\case_bidLoan.py", line 58, in testBidLoan
+    self.assertEqual((expect['status'], expect['code']), (actual['status'], actual['code']))
+AssertionError: Tuples differ: (0, None) != (0, '')
+
+First differing element 1:
+None
+''
+
+- (0, None)
++ (0, '')
+
+
+    </pre>
+            </div>
+        </td>
+    </tr>
+
+    <tr id='ft2_14' class='none'>
+        <td class='failCase'>
+            <div class='testcase'>testBidLoan_14_竞标失败_password长度等于18位</div>
+        </td>
+        <td colspan='5' align='center'>
+            <!--默认收起错误信息 -Findyou
+            <button id='btn_ft2_14' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft2_14'>失败</button>
+            <div id='div_ft2_14' class="collapse">  -->
+            <!-- 默认展开错误信息 -Findyou -->
+            <button id='btn_ft2_14' type="button" class="btn btn-danger btn-xs" data-toggle="collapse"
+                    data-target='#div_ft2_14'>失败
+            </button>
+            <div id='div_ft2_14' class="collapse in" align="left">
+    <pre>
+    
+ft2_14: 
+-------------start--------------
+Not Passed...
+密码错误
+密码错误
+--------------end---------------
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\library\ddt.py", line 154, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\testcase\case_bidLoan.py", line 64, in testBidLoan
+    raise e
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\testcase\case_bidLoan.py", line 58, in testBidLoan
+    self.assertEqual((expect['status'], expect['code']), (actual['status'], actual['code']))
+AssertionError: Tuples differ: (0, None) != (0, '')
+
+First differing element 1:
+None
+''
+
+- (0, None)
++ (0, '')
+
+
+    </pre>
+            </div>
+        </td>
+    </tr>
+
+    <tr id='pt2_15' class='hiddenRow'>
+        <td class='passCase'>
+            <div class='testcase'>testBidLoan_15_竞标失败_password长度大于18位</div>
+        </td>
+        <td colspan='5' align='center'>
+            <!--默认收起错误信息 -Findyou
+            <button id='btn_pt2_15' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt2_15'>通过</button>
+            <div id='div_pt2_15' class="collapse">  -->
+            <!-- 默认展开错误信息 -Findyou -->
+            <button id='btn_pt2_15' type="button" class="btn btn-danger btn-xs" data-toggle="collapse"
+                    data-target='#div_pt2_15'>通过
+            </button>
+            <div id='div_pt2_15' class="collapse in" align="left">
+    <pre>
+    
+pt2_15: 
+-------------start--------------
+Passed
+--------------end---------------
+
+
+    </pre>
+            </div>
+        </td>
+    </tr>
+
+    <tr id='pt2_16' class='hiddenRow'>
+        <td class='passCase'>
+            <div class='testcase'>testBidLoan_16_竞标失败_amount小于0</div>
+        </td>
+        <td colspan='5' align='center'>
+            <!--默认收起错误信息 -Findyou
+            <button id='btn_pt2_16' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt2_16'>通过</button>
+            <div id='div_pt2_16' class="collapse">  -->
+            <!-- 默认展开错误信息 -Findyou -->
+            <button id='btn_pt2_16' type="button" class="btn btn-danger btn-xs" data-toggle="collapse"
+                    data-target='#div_pt2_16'>通过
+            </button>
+            <div id='div_pt2_16' class="collapse in" align="left">
+    <pre>
+    
+pt2_16: 
+-------------start--------------
+Passed
+--------------end---------------
+
+
+    </pre>
+            </div>
+        </td>
+    </tr>
+
+    <tr id='pt2_17' class='hiddenRow'>
+        <td class='passCase'>
+            <div class='testcase'>testBidLoan_17_竞标失败_amount为小数</div>
+        </td>
+        <td colspan='5' align='center'>
+            <!--默认收起错误信息 -Findyou
+            <button id='btn_pt2_17' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt2_17'>通过</button>
+            <div id='div_pt2_17' class="collapse">  -->
+            <!-- 默认展开错误信息 -Findyou -->
+            <button id='btn_pt2_17' type="button" class="btn btn-danger btn-xs" data-toggle="collapse"
+                    data-target='#div_pt2_17'>通过
+            </button>
+            <div id='div_pt2_17' class="collapse in" align="left">
+    <pre>
+    
+pt2_17: 
+-------------start--------------
+Passed
+--------------end---------------
+
+
+    </pre>
+            </div>
+        </td>
+    </tr>
+
+    <tr id='pt2_18' class='hiddenRow'>
+        <td class='passCase'>
+            <div class='testcase'>testBidLoan_18_竞标失败_amount不能被500整除</div>
+        </td>
+        <td colspan='5' align='center'>
+            <!--默认收起错误信息 -Findyou
+            <button id='btn_pt2_18' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt2_18'>通过</button>
+            <div id='div_pt2_18' class="collapse">  -->
+            <!-- 默认展开错误信息 -Findyou -->
+            <button id='btn_pt2_18' type="button" class="btn btn-danger btn-xs" data-toggle="collapse"
+                    data-target='#div_pt2_18'>通过
+            </button>
+            <div id='div_pt2_18' class="collapse in" align="left">
+    <pre>
+    
+pt2_18: 
+-------------start--------------
+Passed
+--------------end---------------
+
+
+    </pre>
+            </div>
+        </td>
+    </tr>
+
+    <tr id='ft2_19' class='none'>
+        <td class='failCase'>
+            <div class='testcase'>testBidLoan_19_竞标失败_不存在该用户</div>
+        </td>
+        <td colspan='5' align='center'>
+            <!--默认收起错误信息 -Findyou
+            <button id='btn_ft2_19' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft2_19'>失败</button>
+            <div id='div_ft2_19' class="collapse">  -->
+            <!-- 默认展开错误信息 -Findyou -->
+            <button id='btn_ft2_19' type="button" class="btn btn-danger btn-xs" data-toggle="collapse"
+                    data-target='#div_ft2_19'>失败
+            </button>
+            <div id='div_ft2_19' class="collapse in" align="left">
+    <pre>
+    
+ft2_19: 
+-------------start--------------
+Not Passed...
+不存在该用户
+请根据数值参数的类型对应输入合法的数字
+--------------end---------------
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\library\ddt.py", line 154, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\testcase\case_bidLoan.py", line 64, in testBidLoan
+    raise e
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\testcase\case_bidLoan.py", line 58, in testBidLoan
+    self.assertEqual((expect['status'], expect['code']), (actual['status'], actual['code']))
+AssertionError: Tuples differ: (0, '11008') != (0, '11013')
+
+First differing element 1:
+'11008'
+'11013'
+
+- (0, '11008')
+?         ^^
+
++ (0, '11013')
+?         ^^
+
+
+
+    </pre>
+            </div>
+        </td>
+    </tr>
+
+    <tr id='ft2_20' class='none'>
+        <td class='failCase'>
+            <div class='testcase'>testBidLoan_20_竞标失败_不存在该标的</div>
+        </td>
+        <td colspan='5' align='center'>
+            <!--默认收起错误信息 -Findyou
+            <button id='btn_ft2_20' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft2_20'>失败</button>
+            <div id='div_ft2_20' class="collapse">  -->
+            <!-- 默认展开错误信息 -Findyou -->
+            <button id='btn_ft2_20' type="button" class="btn btn-danger btn-xs" data-toggle="collapse"
+                    data-target='#div_ft2_20'>失败
+            </button>
+            <div id='div_ft2_20' class="collapse in" align="left">
+    <pre>
+    
+ft2_20: 
+-------------start--------------
+Not Passed...
+不存在该标的
+请根据数值参数的类型对应输入合法的数字
+--------------end---------------
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\library\ddt.py", line 154, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\testcase\case_bidLoan.py", line 64, in testBidLoan
+    raise e
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\testcase\case_bidLoan.py", line 58, in testBidLoan
+    self.assertEqual((expect['status'], expect['code']), (actual['status'], actual['code']))
+AssertionError: Tuples differ: (0, '11009') != (0, '11013')
+
+First differing element 1:
+'11009'
+'11013'
+
+- (0, '11009')
+?         ^^
+
++ (0, '11013')
+?         ^^
+
+
+
+    </pre>
+            </div>
+        </td>
+    </tr>
+
+    <tr id='ft2_21' class='none'>
+        <td class='failCase'>
+            <div class='testcase'>testBidLoan_21_竞标失败_该标不在竞标中状态_无法完成投标</div>
+        </td>
+        <td colspan='5' align='center'>
+            <!--默认收起错误信息 -Findyou
+            <button id='btn_ft2_21' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft2_21'>失败</button>
+            <div id='div_ft2_21' class="collapse">  -->
+            <!-- 默认展开错误信息 -Findyou -->
+            <button id='btn_ft2_21' type="button" class="btn btn-danger btn-xs" data-toggle="collapse"
+                    data-target='#div_ft2_21'>失败
+            </button>
+            <div id='div_ft2_21' class="collapse in" align="left">
+    <pre>
+    
+ft2_21: 
+-------------start--------------
+Not Passed...
+该标不在竞标中状态，无法完成投标
+请根据数值参数的类型对应输入合法的数字
+--------------end---------------
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\library\ddt.py", line 154, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\testcase\case_bidLoan.py", line 64, in testBidLoan
+    raise e
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\testcase\case_bidLoan.py", line 58, in testBidLoan
+    self.assertEqual((expect['status'], expect['code']), (actual['status'], actual['code']))
+AssertionError: Tuples differ: (0, '11010') != (0, '11013')
+
+First differing element 1:
+'11010'
+'11013'
+
+- (0, '11010')
+?          ^
+
++ (0, '11013')
+?          ^
+
+
+
+    </pre>
+            </div>
+        </td>
+    </tr>
+
+    <tr id='ft2_22' class='none'>
+        <td class='failCase'>
+            <div class='testcase'>testBidLoan_22_竞标失败_该标已经满标_无法进行投资</div>
+        </td>
+        <td colspan='5' align='center'>
+            <!--默认收起错误信息 -Findyou
+            <button id='btn_ft2_22' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft2_22'>失败</button>
+            <div id='div_ft2_22' class="collapse">  -->
+            <!-- 默认展开错误信息 -Findyou -->
+            <button id='btn_ft2_22' type="button" class="btn btn-danger btn-xs" data-toggle="collapse"
+                    data-target='#div_ft2_22'>失败
+            </button>
+            <div id='div_ft2_22' class="collapse in" align="left">
+    <pre>
+    
+ft2_22: 
+-------------start--------------
+Not Passed...
+该标已经满标,无法进行投资
+请根据数值参数的类型对应输入合法的数字
+--------------end---------------
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\library\ddt.py", line 154, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\testcase\case_bidLoan.py", line 64, in testBidLoan
+    raise e
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\testcase\case_bidLoan.py", line 58, in testBidLoan
+    self.assertEqual((expect['status'], expect['code']), (actual['status'], actual['code']))
+AssertionError: Tuples differ: (0, '11011') != (0, '11013')
+
+First differing element 1:
+'11011'
+'11013'
+
+- (0, '11011')
+?          ^
+
++ (0, '11013')
+?          ^
+
+
+
+    </pre>
+            </div>
+        </td>
+    </tr>
+
+    <tr id='ft2_23' class='none'>
+        <td class='failCase'>
+            <div class='testcase'>testBidLoan_23_竞标失败_该标可投金额不足</div>
+        </td>
+        <td colspan='5' align='center'>
+            <!--默认收起错误信息 -Findyou
+            <button id='btn_ft2_23' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft2_23'>失败</button>
+            <div id='div_ft2_23' class="collapse">  -->
+            <!-- 默认展开错误信息 -Findyou -->
+            <button id='btn_ft2_23' type="button" class="btn btn-danger btn-xs" data-toggle="collapse"
+                    data-target='#div_ft2_23'>失败
+            </button>
+            <div id='div_ft2_23' class="collapse in" align="left">
+    <pre>
+    
+ft2_23: 
+-------------start--------------
+Not Passed...
+该标可投金额不足
+请根据数值参数的类型对应输入合法的数字
+--------------end---------------
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\library\ddt.py", line 154, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\testcase\case_bidLoan.py", line 64, in testBidLoan
+    raise e
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\testcase\case_bidLoan.py", line 58, in testBidLoan
+    self.assertEqual((expect['status'], expect['code']), (actual['status'], actual['code']))
+AssertionError: Tuples differ: (0, '11012') != (0, '11013')
+
+First differing element 1:
+'11012'
+'11013'
+
+- (0, '11012')
+?          ^
+
++ (0, '11013')
+?          ^
+
+
+
+    </pre>
+            </div>
+        </td>
+    </tr>
+
+    <tr id='pt2_24' class='hiddenRow'>
+        <td class='passCase'>
+            <div class='testcase'>testBidLoan_24_竞标失败_memberId非数字</div>
+        </td>
+        <td colspan='5' align='center'>
+            <!--默认收起错误信息 -Findyou
+            <button id='btn_pt2_24' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt2_24'>通过</button>
+            <div id='div_pt2_24' class="collapse">  -->
+            <!-- 默认展开错误信息 -Findyou -->
+            <button id='btn_pt2_24' type="button" class="btn btn-danger btn-xs" data-toggle="collapse"
+                    data-target='#div_pt2_24'>通过
+            </button>
+            <div id='div_pt2_24' class="collapse in" align="left">
+    <pre>
+    
+pt2_24: 
+-------------start--------------
+Passed
+--------------end---------------
+
+
+    </pre>
+            </div>
+        </td>
+    </tr>
+
+    <tr id='pt2_25' class='hiddenRow'>
+        <td class='passCase'>
+            <div class='testcase'>testBidLoan_25_竞标失败_amount非数字</div>
+        </td>
+        <td colspan='5' align='center'>
+            <!--默认收起错误信息 -Findyou
+            <button id='btn_pt2_25' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt2_25'>通过</button>
+            <div id='div_pt2_25' class="collapse">  -->
+            <!-- 默认展开错误信息 -Findyou -->
+            <button id='btn_pt2_25' type="button" class="btn btn-danger btn-xs" data-toggle="collapse"
+                    data-target='#div_pt2_25'>通过
+            </button>
+            <div id='div_pt2_25' class="collapse in" align="left">
+    <pre>
+    
+pt2_25: 
+-------------start--------------
+Passed
+--------------end---------------
+
+
+    </pre>
+            </div>
+        </td>
+    </tr>
+
+    <tr class='passClass warning'>
+        <td>case_login.LoginTestCase</td>
+        <td class="text-center">4</td>
+        <td class="text-center">4</td>
+        <td class="text-center">0</td>
+        <td class="text-center">0</td>
+        <td class="text-center"><a href="javascript:showClassDetail('c3',4)" class="detail" id='c3'>详细</a></td>
+    </tr>
+
+    <tr id='pt3_1' class='hiddenRow'>
+        <td class='passCase'>
+            <div class='testcase'>testLogin_1_登陆成功</div>
+        </td>
+        <td colspan='5' align='center'>
+            <!--默认收起错误信息 -Findyou
+            <button id='btn_pt3_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt3_1'>通过</button>
+            <div id='div_pt3_1' class="collapse">  -->
+            <!-- 默认展开错误信息 -Findyou -->
+            <button id='btn_pt3_1' type="button" class="btn btn-danger btn-xs" data-toggle="collapse"
+                    data-target='#div_pt3_1'>通过
+            </button>
+            <div id='div_pt3_1' class="collapse in" align="left">
+    <pre>
+    
+pt3_1: 
+-------------start--------------
+Passed
+--------------end---------------
+
+
+    </pre>
+            </div>
+        </td>
+    </tr>
+
+    <tr id='pt3_2' class='hiddenRow'>
+        <td class='passCase'>
+            <div class='testcase'>testLogin_2_登陆失败_手机号码为空</div>
+        </td>
+        <td colspan='5' align='center'>
+            <!--默认收起错误信息 -Findyou
+            <button id='btn_pt3_2' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt3_2'>通过</button>
+            <div id='div_pt3_2' class="collapse">  -->
+            <!-- 默认展开错误信息 -Findyou -->
+            <button id='btn_pt3_2' type="button" class="btn btn-danger btn-xs" data-toggle="collapse"
+                    data-target='#div_pt3_2'>通过
+            </button>
+            <div id='div_pt3_2' class="collapse in" align="left">
+    <pre>
+    
+pt3_2: 
+-------------start--------------
+Passed
+--------------end---------------
+
+
+    </pre>
+            </div>
+        </td>
+    </tr>
+
+    <tr id='pt3_3' class='hiddenRow'>
+        <td class='passCase'>
+            <div class='testcase'>testLogin_3_登陆失败_密码为空</div>
+        </td>
+        <td colspan='5' align='center'>
+            <!--默认收起错误信息 -Findyou
+            <button id='btn_pt3_3' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt3_3'>通过</button>
+            <div id='div_pt3_3' class="collapse">  -->
+            <!-- 默认展开错误信息 -Findyou -->
+            <button id='btn_pt3_3' type="button" class="btn btn-danger btn-xs" data-toggle="collapse"
+                    data-target='#div_pt3_3'>通过
+            </button>
+            <div id='div_pt3_3' class="collapse in" align="left">
+    <pre>
+    
+pt3_3: 
+-------------start--------------
+Passed
+--------------end---------------
+
+
+    </pre>
+            </div>
+        </td>
+    </tr>
+
+    <tr id='pt3_4' class='hiddenRow'>
+        <td class='passCase'>
+            <div class='testcase'>testLogin_4_登陆失败_用户名或者密码错误</div>
+        </td>
+        <td colspan='5' align='center'>
+            <!--默认收起错误信息 -Findyou
+            <button id='btn_pt3_4' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt3_4'>通过</button>
+            <div id='div_pt3_4' class="collapse">  -->
+            <!-- 默认展开错误信息 -Findyou -->
+            <button id='btn_pt3_4' type="button" class="btn btn-danger btn-xs" data-toggle="collapse"
+                    data-target='#div_pt3_4'>通过
+            </button>
+            <div id='div_pt3_4' class="collapse in" align="left">
+    <pre>
+    
+pt3_4: 
+-------------start--------------
+Passed
+--------------end---------------
+
+
+    </pre>
+            </div>
+        </td>
+    </tr>
+
+    <tr class='passClass warning'>
+        <td>case_recharge.RechargeTestCase</td>
+        <td class="text-center">9</td>
+        <td class="text-center">9</td>
+        <td class="text-center">0</td>
+        <td class="text-center">0</td>
+        <td class="text-center"><a href="javascript:showClassDetail('c4',9)" class="detail" id='c4'>详细</a></td>
+    </tr>
+
+    <tr id='pt4_1' class='hiddenRow'>
+        <td class='passCase'>
+            <div class='testcase'>testRecharge_1_充值成功</div>
+        </td>
+        <td colspan='5' align='center'>
+            <!--默认收起错误信息 -Findyou
+            <button id='btn_pt4_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt4_1'>通过</button>
+            <div id='div_pt4_1' class="collapse">  -->
+            <!-- 默认展开错误信息 -Findyou -->
+            <button id='btn_pt4_1' type="button" class="btn btn-danger btn-xs" data-toggle="collapse"
+                    data-target='#div_pt4_1'>通过
+            </button>
+            <div id='div_pt4_1' class="collapse in" align="left">
+    <pre>
+    
+pt4_1: 
+-------------start--------------
+Passed
+--------------end---------------
+
+
+    </pre>
+            </div>
+        </td>
+    </tr>
+
+    <tr id='pt4_2' class='hiddenRow'>
+        <td class='passCase'>
+            <div class='testcase'>testRecharge_2_充值失败_手机号码为空</div>
+        </td>
+        <td colspan='5' align='center'>
+            <!--默认收起错误信息 -Findyou
+            <button id='btn_pt4_2' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt4_2'>通过</button>
+            <div id='div_pt4_2' class="collapse">  -->
+            <!-- 默认展开错误信息 -Findyou -->
+            <button id='btn_pt4_2' type="button" class="btn btn-danger btn-xs" data-toggle="collapse"
+                    data-target='#div_pt4_2'>通过
+            </button>
+            <div id='div_pt4_2' class="collapse in" align="left">
+    <pre>
+    
+pt4_2: 
+-------------start--------------
+Passed
+--------------end---------------
+
+
+    </pre>
+            </div>
+        </td>
+    </tr>
+
+    <tr id='pt4_3' class='hiddenRow'>
+        <td class='passCase'>
+            <div class='testcase'>testRecharge_3_充值失败_此手机号对应的会员不存在</div>
+        </td>
+        <td colspan='5' align='center'>
+            <!--默认收起错误信息 -Findyou
+            <button id='btn_pt4_3' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt4_3'>通过</button>
+            <div id='div_pt4_3' class="collapse">  -->
+            <!-- 默认展开错误信息 -Findyou -->
+            <button id='btn_pt4_3' type="button" class="btn btn-danger btn-xs" data-toggle="collapse"
+                    data-target='#div_pt4_3'>通过
+            </button>
+            <div id='div_pt4_3' class="collapse in" align="left">
+    <pre>
+    
+pt4_3: 
+-------------start--------------
+Passed
+--------------end---------------
+
+
+    </pre>
+            </div>
+        </td>
+    </tr>
+
+    <tr id='pt4_4' class='hiddenRow'>
+        <td class='passCase'>
+            <div class='testcase'>testRecharge_4_充值失败_手机格式不正确</div>
+        </td>
+        <td colspan='5' align='center'>
+            <!--默认收起错误信息 -Findyou
+            <button id='btn_pt4_4' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt4_4'>通过</button>
+            <div id='div_pt4_4' class="collapse">  -->
+            <!-- 默认展开错误信息 -Findyou -->
+            <button id='btn_pt4_4' type="button" class="btn btn-danger btn-xs" data-toggle="collapse"
+                    data-target='#div_pt4_4'>通过
+            </button>
+            <div id='div_pt4_4' class="collapse in" align="left">
+    <pre>
+    
+pt4_4: 
+-------------start--------------
+Passed
+--------------end---------------
+
+
+    </pre>
+            </div>
+        </td>
+    </tr>
+
+    <tr id='pt4_5' class='hiddenRow'>
+        <td class='passCase'>
+            <div class='testcase'>testRecharge_5_充值失败_充值额度为空</div>
+        </td>
+        <td colspan='5' align='center'>
+            <!--默认收起错误信息 -Findyou
+            <button id='btn_pt4_5' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt4_5'>通过</button>
+            <div id='div_pt4_5' class="collapse">  -->
+            <!-- 默认展开错误信息 -Findyou -->
+            <button id='btn_pt4_5' type="button" class="btn btn-danger btn-xs" data-toggle="collapse"
+                    data-target='#div_pt4_5'>通过
+            </button>
+            <div id='div_pt4_5' class="collapse in" align="left">
+    <pre>
+    
+pt4_5: 
+-------------start--------------
+Passed
+--------------end---------------
+
+
+    </pre>
+            </div>
+        </td>
+    </tr>
+
+    <tr id='pt4_6' class='hiddenRow'>
+        <td class='passCase'>
+            <div class='testcase'>testRecharge_6_充值失败_输入金额小数超过两位</div>
+        </td>
+        <td colspan='5' align='center'>
+            <!--默认收起错误信息 -Findyou
+            <button id='btn_pt4_6' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt4_6'>通过</button>
+            <div id='div_pt4_6' class="collapse">  -->
+            <!-- 默认展开错误信息 -Findyou -->
+            <button id='btn_pt4_6' type="button" class="btn btn-danger btn-xs" data-toggle="collapse"
+                    data-target='#div_pt4_6'>通过
+            </button>
+            <div id='div_pt4_6' class="collapse in" align="left">
+    <pre>
+    
+pt4_6: 
+-------------start--------------
+Passed
+--------------end---------------
+
+
+    </pre>
+            </div>
+        </td>
+    </tr>
+
+    <tr id='pt4_7' class='hiddenRow'>
+        <td class='passCase'>
+            <div class='testcase'>testRecharge_7_充值失败_充值额度低于0_负数_</div>
+        </td>
+        <td colspan='5' align='center'>
+            <!--默认收起错误信息 -Findyou
+            <button id='btn_pt4_7' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt4_7'>通过</button>
+            <div id='div_pt4_7' class="collapse">  -->
+            <!-- 默认展开错误信息 -Findyou -->
+            <button id='btn_pt4_7' type="button" class="btn btn-danger btn-xs" data-toggle="collapse"
+                    data-target='#div_pt4_7'>通过
+            </button>
+            <div id='div_pt4_7' class="collapse in" align="left">
+    <pre>
+    
+pt4_7: 
+-------------start--------------
+Passed
+--------------end---------------
+
+
+    </pre>
+            </div>
+        </td>
+    </tr>
+
+    <tr id='pt4_8' class='hiddenRow'>
+        <td class='passCase'>
+            <div class='testcase'>testRecharge_8_充值失败_充值额度高于50万</div>
+        </td>
+        <td colspan='5' align='center'>
+            <!--默认收起错误信息 -Findyou
+            <button id='btn_pt4_8' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt4_8'>通过</button>
+            <div id='div_pt4_8' class="collapse">  -->
+            <!-- 默认展开错误信息 -Findyou -->
+            <button id='btn_pt4_8' type="button" class="btn btn-danger btn-xs" data-toggle="collapse"
+                    data-target='#div_pt4_8'>通过
+            </button>
+            <div id='div_pt4_8' class="collapse in" align="left">
+    <pre>
+    
+pt4_8: 
+-------------start--------------
+Passed
+--------------end---------------
+
+
+    </pre>
+            </div>
+        </td>
+    </tr>
+
+    <tr id='pt4_9' class='hiddenRow'>
+        <td class='passCase'>
+            <div class='testcase'>testRecharge_9_充值失败_充值额度输入非数字</div>
+        </td>
+        <td colspan='5' align='center'>
+            <!--默认收起错误信息 -Findyou
+            <button id='btn_pt4_9' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt4_9'>通过</button>
+            <div id='div_pt4_9' class="collapse">  -->
+            <!-- 默认展开错误信息 -Findyou -->
+            <button id='btn_pt4_9' type="button" class="btn btn-danger btn-xs" data-toggle="collapse"
+                    data-target='#div_pt4_9'>通过
+            </button>
+            <div id='div_pt4_9' class="collapse in" align="left">
+    <pre>
+    
+pt4_9: 
+-------------start--------------
+Passed
+--------------end---------------
+
+
+    </pre>
+            </div>
+        </td>
+    </tr>
+
+    <tr class='failClass warning'>
+        <td>case_withdraw.WithdrawTestCase</td>
+        <td class="text-center">10</td>
+        <td class="text-center">8</td>
+        <td class="text-center">2</td>
+        <td class="text-center">0</td>
+        <td class="text-center"><a href="javascript:showClassDetail('c5',10)" class="detail" id='c5'>详细</a></td>
+    </tr>
+
+    <tr id='pt5_1' class='hiddenRow'>
+        <td class='passCase'>
+            <div class='testcase'>testWithdraw_01_取现成功</div>
+        </td>
+        <td colspan='5' align='center'>
+            <!--默认收起错误信息 -Findyou
+            <button id='btn_pt5_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt5_1'>通过</button>
+            <div id='div_pt5_1' class="collapse">  -->
+            <!-- 默认展开错误信息 -Findyou -->
+            <button id='btn_pt5_1' type="button" class="btn btn-danger btn-xs" data-toggle="collapse"
+                    data-target='#div_pt5_1'>通过
+            </button>
+            <div id='div_pt5_1' class="collapse in" align="left">
+    <pre>
+    
+pt5_1: 
+-------------start--------------
+Passed
+--------------end---------------
+
+
+    </pre>
+            </div>
+        </td>
+    </tr>
+
+    <tr id='pt5_2' class='hiddenRow'>
+        <td class='passCase'>
+            <div class='testcase'>testWithdraw_02_取现失败_手机号码为空</div>
+        </td>
+        <td colspan='5' align='center'>
+            <!--默认收起错误信息 -Findyou
+            <button id='btn_pt5_2' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt5_2'>通过</button>
+            <div id='div_pt5_2' class="collapse">  -->
+            <!-- 默认展开错误信息 -Findyou -->
+            <button id='btn_pt5_2' type="button" class="btn btn-danger btn-xs" data-toggle="collapse"
+                    data-target='#div_pt5_2'>通过
+            </button>
+            <div id='div_pt5_2' class="collapse in" align="left">
+    <pre>
+    
+pt5_2: 
+-------------start--------------
+Passed
+--------------end---------------
+
+
+    </pre>
+            </div>
+        </td>
+    </tr>
+
+    <tr id='ft5_3' class='none'>
+        <td class='failCase'>
+            <div class='testcase'>testWithdraw_03_取现失败_此手机号对应的会员不存在</div>
+        </td>
+        <td colspan='5' align='center'>
+            <!--默认收起错误信息 -Findyou
+            <button id='btn_ft5_3' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft5_3'>失败</button>
+            <div id='div_ft5_3' class="collapse">  -->
+            <!-- 默认展开错误信息 -Findyou -->
+            <button id='btn_ft5_3' type="button" class="btn btn-danger btn-xs" data-toggle="collapse"
+                    data-target='#div_ft5_3'>失败
+            </button>
+            <div id='div_ft5_3' class="collapse in" align="left">
+    <pre>
+    
+ft5_3: 
+-------------start--------------
+Not Passed...
+此手机号对应的会员不存在
+此手机号对应的会员不存在
+--------------end---------------
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\library\ddt.py", line 154, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\testcase\case_withdraw.py", line 64, in testWithdraw
+    raise e
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\testcase\case_withdraw.py", line 58, in testWithdraw
+    self.assertEqual((expect['status'], expect['code']), (actual['status'], actual['code']))
+AssertionError: Tuples differ: (0, '20104') != (1, '20104')
+
+First differing element 0:
+0
+1
+
+- (0, '20104')
+?  ^
+
++ (1, '20104')
+?  ^
+
+
+
+    </pre>
+            </div>
+        </td>
+    </tr>
+
+    <tr id='pt5_4' class='hiddenRow'>
+        <td class='passCase'>
+            <div class='testcase'>testWithdraw_04_取现失败_手机号码格式不正确</div>
+        </td>
+        <td colspan='5' align='center'>
+            <!--默认收起错误信息 -Findyou
+            <button id='btn_pt5_4' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt5_4'>通过</button>
+            <div id='div_pt5_4' class="collapse">  -->
+            <!-- 默认展开错误信息 -Findyou -->
+            <button id='btn_pt5_4' type="button" class="btn btn-danger btn-xs" data-toggle="collapse"
+                    data-target='#div_pt5_4'>通过
+            </button>
+            <div id='div_pt5_4' class="collapse in" align="left">
+    <pre>
+    
+pt5_4: 
+-------------start--------------
+Passed
+--------------end---------------
+
+
+    </pre>
+            </div>
+        </td>
+    </tr>
+
+    <tr id='pt5_5' class='hiddenRow'>
+        <td class='passCase'>
+            <div class='testcase'>testWithdraw_05_取现失败_请输入金额</div>
+        </td>
+        <td colspan='5' align='center'>
+            <!--默认收起错误信息 -Findyou
+            <button id='btn_pt5_5' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt5_5'>通过</button>
+            <div id='div_pt5_5' class="collapse">  -->
+            <!-- 默认展开错误信息 -Findyou -->
+            <button id='btn_pt5_5' type="button" class="btn btn-danger btn-xs" data-toggle="collapse"
+                    data-target='#div_pt5_5'>通过
+            </button>
+            <div id='div_pt5_5' class="collapse in" align="left">
+    <pre>
+    
+pt5_5: 
+-------------start--------------
+Passed
+--------------end---------------
+
+
+    </pre>
+            </div>
+        </td>
+    </tr>
+
+    <tr id='pt5_6' class='hiddenRow'>
+        <td class='passCase'>
+            <div class='testcase'>testWithdraw_06_取现失败_输入金额小数超过两位</div>
+        </td>
+        <td colspan='5' align='center'>
+            <!--默认收起错误信息 -Findyou
+            <button id='btn_pt5_6' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt5_6'>通过</button>
+            <div id='div_pt5_6' class="collapse">  -->
+            <!-- 默认展开错误信息 -Findyou -->
+            <button id='btn_pt5_6' type="button" class="btn btn-danger btn-xs" data-toggle="collapse"
+                    data-target='#div_pt5_6'>通过
+            </button>
+            <div id='div_pt5_6' class="collapse in" align="left">
+    <pre>
+    
+pt5_6: 
+-------------start--------------
+Passed
+--------------end---------------
+
+
+    </pre>
+            </div>
+        </td>
+    </tr>
+
+    <tr id='pt5_7' class='hiddenRow'>
+        <td class='passCase'>
+            <div class='testcase'>testWithdraw_07_取现失败_充值额度低于0_负数_</div>
+        </td>
+        <td colspan='5' align='center'>
+            <!--默认收起错误信息 -Findyou
+            <button id='btn_pt5_7' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt5_7'>通过</button>
+            <div id='div_pt5_7' class="collapse">  -->
+            <!-- 默认展开错误信息 -Findyou -->
+            <button id='btn_pt5_7' type="button" class="btn btn-danger btn-xs" data-toggle="collapse"
+                    data-target='#div_pt5_7'>通过
+            </button>
+            <div id='div_pt5_7' class="collapse in" align="left">
+    <pre>
+    
+pt5_7: 
+-------------start--------------
+Passed
+--------------end---------------
+
+
+    </pre>
+            </div>
+        </td>
+    </tr>
+
+    <tr id='pt5_8' class='hiddenRow'>
+        <td class='passCase'>
+            <div class='testcase'>testWithdraw_08_取现失败_充值额度高于50万</div>
+        </td>
+        <td colspan='5' align='center'>
+            <!--默认收起错误信息 -Findyou
+            <button id='btn_pt5_8' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt5_8'>通过</button>
+            <div id='div_pt5_8' class="collapse">  -->
+            <!-- 默认展开错误信息 -Findyou -->
+            <button id='btn_pt5_8' type="button" class="btn btn-danger btn-xs" data-toggle="collapse"
+                    data-target='#div_pt5_8'>通过
+            </button>
+            <div id='div_pt5_8' class="collapse in" align="left">
+    <pre>
+    
+pt5_8: 
+-------------start--------------
+Passed
+--------------end---------------
+
+
+    </pre>
+            </div>
+        </td>
+    </tr>
+
+    <tr id='pt5_9' class='hiddenRow'>
+        <td class='passCase'>
+            <div class='testcase'>testWithdraw_09_取现失败_取现额度输入非数字</div>
+        </td>
+        <td colspan='5' align='center'>
+            <!--默认收起错误信息 -Findyou
+            <button id='btn_pt5_9' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt5_9'>通过</button>
+            <div id='div_pt5_9' class="collapse">  -->
+            <!-- 默认展开错误信息 -Findyou -->
+            <button id='btn_pt5_9' type="button" class="btn btn-danger btn-xs" data-toggle="collapse"
+                    data-target='#div_pt5_9'>通过
+            </button>
+            <div id='div_pt5_9' class="collapse in" align="left">
+    <pre>
+    
+pt5_9: 
+-------------start--------------
+Passed
+--------------end---------------
+
+
+    </pre>
+            </div>
+        </td>
+    </tr>
+
+    <tr id='ft5_10' class='none'>
+        <td class='failCase'>
+            <div class='testcase'>testWithdraw_10_取现失败_余额不足_请修改提现额度</div>
+        </td>
+        <td colspan='5' align='center'>
+            <!--默认收起错误信息 -Findyou
+            <button id='btn_ft5_10' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft5_10'>失败</button>
+            <div id='div_ft5_10' class="collapse">  -->
+            <!-- 默认展开错误信息 -Findyou -->
+            <button id='btn_ft5_10' type="button" class="btn btn-danger btn-xs" data-toggle="collapse"
+                    data-target='#div_ft5_10'>失败
+            </button>
+            <div id='div_ft5_10' class="collapse in" align="left">
+    <pre>
+    
+ft5_10: 
+-------------start--------------
+Not Passed...
+余额不足，请修改提现额度
+余额不足，请修改提现额度
+--------------end---------------
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\library\ddt.py", line 154, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\testcase\case_withdraw.py", line 64, in testWithdraw
+    raise e
+  File "C:\Users\Administrator\PycharmProjects\keyou\package_201\testcase\case_withdraw.py", line 58, in testWithdraw
+    self.assertEqual((expect['status'], expect['code']), (actual['status'], actual['code']))
+AssertionError: Tuples differ: (0, '20119') != (1, '20119')
+
+First differing element 0:
+0
+1
+
+- (0, '20119')
+?  ^
+
++ (1, '20119')
+?  ^
+
+
+
+    </pre>
+            </div>
+        </td>
+    </tr>
+
+    <tr id='total_row' class="text-center active">
+        <td>总计</td>
+        <td>76</td>
+        <td>33</td>
+        <td>14</td>
+        <td>29</td>
+        <td>通过率：43.42%</td>
+    </tr>
+</table>
+
+<div id='ending'>&nbsp;</div>
+<div style=" position:fixed;right:50px; bottom:30px; width:20px; height:20px;cursor:pointer">
+    <a href="#"><span class="glyphicon glyphicon-eject" style="font-size:30px;" aria-hidden="true">
+    </span></a></div>
+
+</body>
+</html>

@@ -4,10 +4,10 @@
 # @Date   :   2019/6/11
 # @Email  :   july401@qq.com
 
-# TODO: file backup
 # TODO: check before writing operation
 # TODO: yaml to Excel tool
 # TODO: Pandas Version R_r_excel
+# TODO: Excel File Init
 
 import json
 
@@ -63,8 +63,8 @@ class Generate:
         expected_data = json.dumps(res2, ensure_ascii=False)
         # request_data = str(res1)
         # expected_data = str(res2) # 直接强转换为str，双引号会变成单引号，暂不知如何解决
-        self.origin_data.w_data(item.case_id + 1, 7, request_data)
-        self.origin_data.w_data(item.case_id + 1, 8, expected_data)
+        self.origin_data.w_data(item.row, 7, request_data)
+        self.origin_data.w_data(item.row, 8, expected_data)
 
     def checkNone(self, res1, Noneflag):
         list2del = []

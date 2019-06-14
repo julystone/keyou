@@ -67,7 +67,7 @@ class WithdrawTestCase(unittest.TestCase):
             result = 'passed'
             my_log.info(f'【Success】')
         finally:
-            wb.w_data(case.case_id + 1, wb.r_max()[1], result)
+            wb.w_data(case.row + 1, wb.r_max()[1], result)
             my_log.info(f'TestCase {case.case_name} end------')
 
 

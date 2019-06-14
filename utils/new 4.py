@@ -1,8 +1,9 @@
-from math import floor
-from math import ceil
 import csv
 import re
 import time
+from math import ceil
+from math import floor
+
 import pandas as pd
 
 
@@ -49,6 +50,7 @@ def re_ps2():
     regex = r'ever((?!ever).)*ccc'
     res = re.search(regex, str1).group()
     print(res)
+
 
 
 def xl_ps():
@@ -160,8 +162,8 @@ def pd_pc():
     res.insert(res.shape[1], 'avg', None)
     for x in range(res.shape[0]):
         sum = 0
-        for y in range(res.shape[1]-2):
-            sum += res.iloc[x][y+1]
+        for y in range(res.shape[1] - 2):
+            sum += res.iloc[x][y + 1]
         avg = sum / 9
         res.loc[x, 'avg'] = round(avg, 2)
     res.to_csv('测试成绩统计2.csv', index=False)
@@ -173,4 +175,4 @@ if __name__ == '__main__':
     # print(s)
     # print(pinjie())
     # csv_pc2()
-    pd_pc()
+    re_ps3()

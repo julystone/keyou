@@ -42,6 +42,8 @@ class HttpRequest:
             my_log.error(f'404 not found!')
         return res.text
 
+    def close(self):
+        self.session.close()
 
 if __name__ == '__main__':
     r = HttpRequest()

@@ -83,6 +83,8 @@ class ReadExcel(object):
             # 将该条数据放入cases中
             case_data = list(zip(titles, data))
             for i in case_data:
+                if i[0] == 'result' or i[0] is None:
+                    continue
                 setattr(case_obj, i[0], i[1])
             cases.append(case_obj)
 
@@ -162,6 +164,8 @@ class ReadExcel(object):
         :param list1: list1  -->   要求读取的列编号列表，eg:[1,3,5]则会读取所有用例的第1,3,5列
         :return: 包含所有用例对象的列表list
         """
+        if list1 is None:
+            return self.read_data_obj()
         titles = []
         case_all = []
         for row in range(1, self.sheet.max_row + 1):

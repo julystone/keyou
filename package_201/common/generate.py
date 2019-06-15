@@ -5,9 +5,9 @@
 # @Email  :   july401@qq.com
 
 # TODO: check before writing operation
-# TODO: yaml to Excel tool
 # TODO: Pandas Version R_r_excel
-# TODO: Excel File Init
+# TODO: yaml to Excel tool
+# TODO: Excel File Init result titles blanklinesremove
 
 import json
 
@@ -16,36 +16,48 @@ import yaml
 from package_201.common import R_r_excel
 
 
+def checkNone(res1, Noneflag):
+    list2del = []
+    for key in res1.keys():
+        if res1[key] == 'None' or res1[key] is None or res1[key] == 'null':
+            list2del.append(key)
+    if Noneflag == 1:
+        # 方案1：将None的参数去除掉
+        for x in list2del:
+            res1.pop(x)
+    elif Noneflag == 2:
+        # 方案2：将None的参数统一赋值成None   但是现在有问题，被json.dumps后，会变成null。暂不知如何解决
+        for x in list2del:
+            res1[x] = None
+
+
+def sample_data_json(item, list2convert):
+    if list2convert is None:
+        return {}
+    values = []
+    key_all = list2convert.keys()
+    for key in key_all:
+        temp = getattr(item, key)
+        if list2convert[key] == 'str':
+            # 若为str，给excel的数据加上"". 当前仅仅对str特殊化处理，后续可增加
+            values.append(f"{temp}")
+        else:
+            values.append(temp)
+    result = dict(zip(key_all, values))
+    return result
+
+
+def yaml_read(yamlfile):
+    with open(yamlfile) as f:
+        conf = yaml.safe_load(f)
+        title = list(conf)
+        return conf, title
+
+
 class Generate:
 
-    def __init__(self, file_path, sheet_name, yaml_file):
-        self.file_path = file_path
-        self.sheet_name = sheet_name
-        self.yaml_file = yaml_file
-        self.origin_data = R_r_excel.ReadExcel(self.file_path, self.sheet_name)
-
-        (self.conf, self.title) = self.yaml_read(self.yaml_file)
-
-    def yaml_read(self, yamlfile):
-        with open(yamlfile) as f:
-            conf = yaml.safe_load(f)
-            title = list(conf)
-            return conf, title
-
-    def sample_data_json(self, item, list2convert):
-        if list2convert is None:
-            return {}
-        values = []
-        key_all = list2convert.keys()
-        for key in key_all:
-            temp = getattr(item, key)
-            if list2convert[key] == 'str':
-                # 若为str，给excel的数据加上"". 当前仅仅对str特殊化处理，后续可增加
-                values.append(f"{temp}")
-            else:
-                values.append(temp)
-        result = dict(zip(key_all, values))
-        return result
+    def __init__(self):
+        self.origin_data = self.conf = self.title = None
 
     def write_in(self, item):
         for x in range(len(self.title)):
@@ -54,10 +66,10 @@ class Generate:
                 break
         api_list = self.conf[x][name]
 
-        res1 = self.sample_data_json(item, api_list)
-        res2 = self.sample_data_json(item, {"status": "int", "code": "str", "data": "str", "msg": "str"})
-        self.checkNone(res1, 1)
-        self.checkNone(res2, 2)
+        res1 = sample_data_json(item, api_list)
+        res2 = sample_data_json(item, {"status": "int", "code": "str", "data": "str", "msg": "str"})
+        checkNone(res1, 1)
+        checkNone(res2, 2)
 
         request_data = json.dumps(res1, ensure_ascii=False)
         expected_data = json.dumps(res2, ensure_ascii=False)
@@ -66,21 +78,9 @@ class Generate:
         self.origin_data.w_data(item.row, 7, request_data)
         self.origin_data.w_data(item.row, 8, expected_data)
 
-    def checkNone(self, res1, Noneflag):
-        list2del = []
-        for key in res1.keys():
-            if res1[key] == 'None' or res1[key] is None or res1[key] == 'null':
-                list2del.append(key)
-        if Noneflag == 1:
-            # 方案1：将None的参数去除掉
-            for x in list2del:
-                res1.pop(x)
-        elif Noneflag == 2:
-            # 方案2：将None的参数统一赋值成None   但是现在有问题，被json.dumps后，会变成null。暂不知如何解决
-            for x in list2del:
-                res1[x] = None
-
-    def generate(self):
+    def generate(self, sheet_name, file_path, yaml_file):
+        self.origin_data = R_r_excel.ReadExcel(file_path, sheet_name)
+        (self.conf, self.title) = yaml_read(yaml_file)
         rows = self.origin_data.read_data_obj()
         progress = 1
         for item in rows:
@@ -90,3 +90,9 @@ class Generate:
         self.origin_data.w_save()  # 此处需要修改完毕后，单独保存，否则性能很差
         print('')
         print('>end<'.center(64, '-'))
+
+
+my_generate = Generate()
+
+if __name__ == '__main__':
+    my_generate.generate('login', '../data/api_test.xlsx', yaml_file='../config/parms.yaml')

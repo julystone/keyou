@@ -73,6 +73,8 @@ class ReadExcel(object):
         for title in rows_data[0]:
             titles.append(title.value)
         # 定义一个空列表用来存储所有的用例
+        if 'result' not in titles:
+            self.w_data(1, self.r_max()[1] + 1, 'result')
         cases = []
         for case in rows_data[1:]:
             # 创建一个Cases类的对象，用来保存用例数据，
@@ -192,6 +194,10 @@ class ReadExcel(object):
         self.wb.save(self.filename)
 
     def r_max(self):
+        """
+        0 为 最大行数， 1 为最大列数
+        :return:
+        """
         return self.max_row, self.max_column
 
 

@@ -19,12 +19,20 @@ class HttpRequestNoCookie:
             else:
                 my_log.info(f'Sending {method}:{url} {data}')
                 res = requests.post(url=url, data=data, headers=headers, cookies=cookies, timeout=timeout)
+        else:
+            res = None
+        if res.status_code == 404:
+            my_log.error(f'404 not found!')
+            raise RuntimeError
         return res.text
 
 
 class HttpRequest:
     def __init__(self):
         self.session = Session()
+
+    def __del__(self):
+        self.session.close()
 
     def request(self, method, url, data=None, params=None, json=None, headers=None, cookies=None, timeout=None):
         if method.lower() == 'get':
@@ -37,13 +45,16 @@ class HttpRequest:
             else:
                 my_log.info(f'Sending {method}:{url} {data}')
                 res = self.session.post(url=url, data=data, headers=headers, cookies=cookies, timeout=timeout)
+        else:
+            res = None
         if res.status_code == 404:
-            raise RuntimeError
             my_log.error(f'404 not found!')
+            raise RuntimeError
         return res.text
 
     def close(self):
         self.session.close()
+
 
 if __name__ == '__main__':
     r = HttpRequest()

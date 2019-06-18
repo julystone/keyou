@@ -1,4 +1,6 @@
-import os, random
+import os
+import random
+
 
 # 四、对第四次作业的石头剪刀布游戏升级，游戏一轮出拳后进入下一轮，可以手动结束游戏，
 # 手动结束游戏后，打印本次游戏的胜率（胜利的把数除以玩的总把数）  
@@ -6,13 +8,13 @@ import os, random
 
 
 def forth_ans(times):
-    Sumup = [0,0,0]
-    Dic = {1:"石头",2:"剪刀",3:"布"}
-    Res = {0:"平局",1:"胜利",2:"输了"}
+    Sumup = [0, 0, 0]
+    Dic = {1: "石头", 2: "剪刀", 3: "布"}
+    Res = {0: "平局", 1: "胜利", 2: "输了"}
     while 1:
-        pc_choice = random.randint(1,3)
+        pc_choice = random.randint(1, 3)
         player_choice_init = input("请输入要出的拳：\n石头【1】  剪刀【2】  布【3】")
-        while player_choice_init not in ["1","2","3"]:
+        while player_choice_init not in ["1", "2", "3"]:
             player_choice_init = input("输入错误\n请输入要出的拳：\n石头【1】  剪刀【2】  布【3】")
         player_choice = int(player_choice_init)
         # print("{},{},{}".format(player_choice,pc_choice,player_choice - pc_choice))
@@ -43,7 +45,8 @@ def forth_ans(times):
 *****平\t\t{3}局
 *****总胜率为：\t{4:.2f}%
 ***************************
-""".format(Sumup[0]+Sumup[1]+Sumup[2],Sumup[1],Sumup[2],Sumup[0],100*Sumup[1]/(Sumup[0]+Sumup[1]+Sumup[2])))
+""".format(Sumup[0] + Sumup[1] + Sumup[2], Sumup[1], Sumup[2], Sumup[0],
+           100 * Sumup[1] / (Sumup[0] + Sumup[1] + Sumup[2])))
             break
         os.system("cls")
 

@@ -29,7 +29,6 @@ import random
 
 
 class TanKeDaZhan:
-
     class BaseTank:
         live = 1
         postion = random.randint(1, 10)
@@ -87,7 +86,6 @@ class TanKeDaZhan:
     # 3、判断双方坦克是否存活，如果有tank死亡，则宣布存活的一方胜利。都存活则继续游戏。
     # 4、玩家移动、电脑移动
 
-
     def main(self):
         My = self.MyTank()
         PC = self.PCTank()
@@ -106,10 +104,11 @@ class TanKeDaZhan:
                 menu_list = ['', 'Current', 'Ur HP:', 'PC HP:', 'Ur live:', '']
                 data_list = ['', '    ', My.HP, PC.HP, My.live, '']
                 for i in range(len(menu_list)):
-                    print("%s"%menu_list[i].center(28-len(menu_list), ' ') + "%s"%data_list[i])
+                    print("%s" % menu_list[i].center(28 - len(menu_list), ' ') + "%s" % data_list[i])
                 # print('Current: \nUr HP:{}\t PC HP:{}\nUr live:{}'.format(My.HP, PC.HP, My.live))
             My.move()
             PC.move()
+
 
 if __name__ == '__main__':
     zy = TanKeDaZhan()

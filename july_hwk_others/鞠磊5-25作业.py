@@ -3,8 +3,9 @@
 # 实现读取用例数据
 # 实现写入数据的功能
 """
-import openpyxl
 from collections import namedtuple
+
+import openpyxl
 
 
 class Case:
@@ -164,4 +165,3 @@ if __name__ == '__main__':
     data = r.r_data_obj([1, 3])
     for i in data:
         print(i.case_id, i.data, i.expected)
-

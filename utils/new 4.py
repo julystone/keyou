@@ -52,7 +52,6 @@ def re_ps2():
     print(res)
 
 
-
 def xl_ps():
     pattern = re.compile(r"ever((?!ever).)*ccc")
     str1 = u'everasdqgfeverqasdaaaeeeqqeveracaeeewqaccc'

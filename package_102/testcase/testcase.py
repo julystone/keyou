@@ -1,10 +1,12 @@
-from package_102.fun2test import register
-from package_102.common.R_r_excel import ReadExcel
+import unittest
+
+from ddt import ddt, data
+
 from package_102.common.R_r_config import my_config
+from package_102.common.R_r_excel import ReadExcel
 from package_102.common.R_r_log import my_log
 from package_102.common.R_r_os import DATA_DIR
-import unittest
-from ddt import ddt, data
+from package_102.fun2test import register
 
 # 优化上一次的作业
 #
@@ -19,7 +21,6 @@ file_name = my_config.get('excel', 'file_name')
 sheet_name = my_config.get('excel', 'sheet_name')
 columns_read = my_config.get('excel', 'columns_read')
 
-
 wb = ReadExcel(f'{excel_path}{file_name}', sheet_name)
 cases = wb.r_data_obj_from_column(eval(columns_read))
 # cases = wb.read_data_obj()
@@ -30,7 +31,7 @@ print(cases)
 class RegisterTestCase(unittest.TestCase):
 
     def setUp(self) -> None:
-        print('\n'+'start'.center(32, '-'))
+        print('\n' + 'start'.center(32, '-'))
 
     def tearDown(self) -> None:
         print('end'.center(32, '-'))

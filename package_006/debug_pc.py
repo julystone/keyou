@@ -5,7 +5,6 @@
 
 import configparser
 
-
 cf = configparser.ConfigParser()
 cf.read('july_config.cfg', encoding='utf8')
 print(cf.sections())

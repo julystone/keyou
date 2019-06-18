@@ -77,7 +77,6 @@ Version in 0.7.1
 * Fix missing scroll bars in detail log (Podi).
 """
 
-
 import datetime
 import io
 import sys

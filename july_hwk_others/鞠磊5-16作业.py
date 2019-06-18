@@ -31,13 +31,11 @@
 
 
 class home16thMay:
-
     class mobile:
-
         call = '打电话'
         message = '发短信'
 
-        def __init__(self, price = 1000, brand = 'XiaoMi', modelnumber = 'Note'):
+        def __init__(self, price=1000, brand='XiaoMi', modelnumber='Note'):
             self.price = price
             self.brand = brand
             self.modelnumber = modelnumber

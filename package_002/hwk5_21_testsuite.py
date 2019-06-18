@@ -1,7 +1,8 @@
-import unittest
 import datetime
-from package_002.hwk5_21_testcase import RegisterTestCase
+import unittest
+
 from package_002 import hwk5_21_testcase
+from package_002.hwk5_21_testcase import RegisterTestCase
 
 # 创建一个测试集合
 suite = unittest.TestSuite()
@@ -31,8 +32,6 @@ print(date2display)
 #
 #     test_run = HTMLTestRunnerNew.HTMLTestRunner(stream=fb, verbosity=2, title='py18_%s_report'%date2display, description='july', tester='july')
 #     test_run.run(suite)
-
-
 
 
 # runner.run(suite)

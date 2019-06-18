@@ -6,7 +6,6 @@ s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 address = ('www.baidu.com', 80)
 s.connect(address)
 
-
 # http请求，要加请求头
 http_header = b'''GET / HTTP/1.1\r
 Host: www.epolestar.zentaopm.com\r

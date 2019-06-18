@@ -5,11 +5,11 @@
 # DDT is licensed under the MIT License, included in
 # https://github.com/txels/ddt/blob/master/LICENSE.md
 
+import codecs
 import inspect
 import json
 import os
 import re
-import codecs
 from functools import wraps
 
 try:
@@ -25,11 +25,10 @@ __version__ = '1.2.1'
 # They are added to the decorated test method and processed later
 # by the `ddt` class decorator.
 
-DATA_ATTR = '%values'      # store the data the test must run with
-FILE_ATTR = '%file_path'   # store the path to JSON file
-UNPACK_ATTR = '%unpack'    # remember that we have to unpack values
-index_len = 5              # default max length of case index
-
+DATA_ATTR = '%values'  # store the data the test must run with
+FILE_ATTR = '%file_path'  # store the path to JSON file
+UNPACK_ATTR = '%unpack'  # remember that we have to unpack values
+index_len = 5  # default max length of case index
 
 try:
     trivial_types = (type(None), bool, int, float, basestring)
@@ -73,9 +72,11 @@ def idata(iterable):
     Should be added to methods of instances of ``unittest.TestCase``.
 
     """
+
     def wrapper(func):
         setattr(func, DATA_ATTR, iterable)
         return func
+
     return wrapper
 
 
@@ -98,9 +99,11 @@ def file_data(value):
     test case, and values will be fed as test data.
 
     """
+
     def wrapper(func):
         setattr(func, FILE_ATTR, value)
         return func
+
     return wrapper
 
 
@@ -140,9 +143,11 @@ def feed_data(func, new_name, test_data_docstring, *args, **kwargs):
     This internal method decorator feeds the test data item to the test.
 
     """
+
     @wraps(func)
     def wrapper(self):
         return func(self, *args, **kwargs)
+
     wrapper.__name__ = new_name
     wrapper.__wrapped__ = func
     # set docstring if exists
@@ -171,7 +176,7 @@ def add_test(cls, test_name, test_docstring, func, *args, **kwargs):
 
     """
     setattr(cls, test_name, feed_data(func, test_name, test_docstring,
-            *args, **kwargs))
+                                      *args, **kwargs))
 
 
 def process_file_data(cls, name, func, file_attr):
@@ -184,6 +189,7 @@ def process_file_data(cls, name, func, file_attr):
     def create_error_func(message):  # pylint: disable-msg=W0613
         def func(*args):
             raise ValueError(message % file_attr)
+
         return func
 
     # If file does not exist, provide an error function instead

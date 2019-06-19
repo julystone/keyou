@@ -21,7 +21,7 @@ runner = unittest.TextTestRunner()
 loader = unittest.TestLoader()
 
 # 添加测试用例
-suite.addTest(loader.discover('./testcase', pattern='test_*'))
+suite.addTest(loader.discover('./testcase', pattern='case_add*'))
 
 with open(f'{REPORT_DIR}report_{date2display}.html', 'wb') as fb:
     test_run = HTMLTestRunner(stream=fb, verbosity=2, title='py18_%s_report' % date2display,

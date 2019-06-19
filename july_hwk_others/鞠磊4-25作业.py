@@ -58,7 +58,7 @@ def sixth_ans():
         while player_choice not in [1, 2, 3]:
             player_choice = int(input("输入错误\n请输入要出的拳 —— 石头（1）／剪刀（2）／布（3）"))
         if player_choice == pc_choice:
-            result = 0
+            max_n = 0
         elif player_choice == 1:
             if pc_choice == 2:
                 result = 1

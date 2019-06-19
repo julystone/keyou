@@ -30,7 +30,6 @@ class LoginTestCase(unittest.TestCase):
     def tearDownClass(cls):
         # login
         cls.wb.w_save()
-        cls.wb.wb.close()
 
     @data(*cases)
     def test(self, case):
@@ -69,7 +68,6 @@ class RegisterTestCase(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         cls.wb.w_save()
-        cls.wb.wb.close()
 
     @data(*cases)
     def test(self, case):
@@ -114,7 +112,6 @@ class RechargeTestCase(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         cls.wb.w_save()
-        cls.wb.wb.close()
 
     @data(*cases)
     def test(self, case):
@@ -167,7 +164,6 @@ class WithDrawTestCase(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         cls.wb.w_save()
-        cls.wb.wb.close()
 
     @data(*cases)
     def test(self, case):

@@ -7,17 +7,15 @@ from math import floor
 import pandas as pd
 
 
-def max_min(amount_min, amount_max, e=1):
-    # e为敏感参数 默认为
-    # e = -1
-    burden = amount_max - amount_min
-    temp = burden
+def max_min(min_n, max_n, e=0):
+    # e为敏感系数
+    temp = max_n - min_n
     while temp > 1:
         e += 1
         temp /= 40
-    amount_max_temp = ceil(amount_max / pow(40, e - 1)) * pow(40, e - 1)
-    amount_min_temp = floor(amount_min / pow(40, e - 1)) * pow(40, e - 1)
-    return amount_min_temp, amount_max_temp
+    max_rounded = ceil(max_n / pow(40, e - 1)) * pow(40, e - 1)
+    min_rounded = floor(min_n / pow(40, e - 1)) * pow(40, e - 1)
+    return min_rounded, max_rounded
 
 
 def try_except_else_finally():
@@ -174,4 +172,4 @@ if __name__ == '__main__':
     # print(s)
     # print(pinjie())
     # csv_pc2()
-    re_ps3()
+    print(max_min(100, 101))

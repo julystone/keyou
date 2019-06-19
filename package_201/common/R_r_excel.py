@@ -24,10 +24,20 @@ class ReadExcel(object):
         :param file_name:  文件名字  -->  str
         :param sheet_name: 表单名字  -->  str
         """
+        wb = openpyxl.load_workbook(file_name)
+        sheet = wb[sheet_name]
+        for row in list(sheet.rows)[::-1]:
+            if row[0].value is None:
+                sheet.delete_rows(row[0].row, 1)
+
+        for column in list(sheet.columns)[::-1]:
+            if column[0].value is None:
+                sheet.delete_cols(column[0].column, 1)
+        wb.save(file_name)
+        wb.close()
+
         self.filename = file_name
-        # 打开工作簿
         self.wb = openpyxl.load_workbook(file_name)
-        # 选择表单
         self.sheet = self.wb[sheet_name]
         self.max_row = self.sheet.max_row
         self.max_column = self.sheet.max_column

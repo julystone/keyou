@@ -1,0 +1,13 @@
+2019-06-21 12:49:31,528 | 11332 | [test_all.py-->line:84] | INFO : TestCase 注册成功，昵称为空 starting------
+2019-06-21 12:49:31,528 | 11332 | [test_all.py-->line:84] | INFO : TestCase 注册成功，昵称不为空 starting------
+2019-06-21 12:49:31,538 | 11332 | [test_all.py-->line:84] | INFO : TestCase 注册失败，手机号码为空 starting------
+2019-06-21 12:49:31,538 | 11332 | [test_all.py-->line:84] | INFO : TestCase 注册失败，密码为空 starting------
+2019-06-21 12:49:31,538 | 11332 | [test_all.py-->line:84] | INFO : TestCase 注册失败，密码长度小于6位 starting------
+2019-06-21 12:49:31,548 | 11332 | [test_all.py-->line:84] | INFO : TestCase 注册失败，密码长度大于18位 starting------
+2019-06-21 12:49:31,548 | 11332 | [test_all.py-->line:84] | INFO : TestCase 注册失败，手机格式不正确 starting------
+2019-06-21 12:49:31,548 | 11332 | [test_all.py-->line:84] | INFO : TestCase 注册失败，手机号码已被注册 starting------
+2019-06-21 12:49:50,378 | 8716 | [test_all.py-->line:84] | INFO : TestCase 注册成功，昵称为空 starting------
+2019-06-21 12:52:17,283 | 10360 | [test_all.py-->line:84] | INFO : TestCase 注册成功，昵称为空 starting------
+2019-06-21 12:57:42,368 | 14712 | [test_all.py-->line:84] | INFO : TestCase 注册成功，昵称为空 starting------
+2019-06-21 12:57:48,958 | 14712 | [test_all.py-->line:84] | INFO : TestCase 注册成功，昵称不为空 starting------
+2019-06-21 12:58:27,300 | 14368 | [test_all.py-->line:84] | INFO : TestCase 注册成功，昵称为空 starting------

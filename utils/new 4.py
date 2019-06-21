@@ -1,4 +1,5 @@
 import csv
+import random
 import re
 import time
 from math import ceil
@@ -166,6 +167,14 @@ def pd_pc():
     res.to_csv('测试成绩统计2.csv', index=False)
 
 
+def one_number(word):
+    if '|' in word:
+        temp = re.split("[-|]", word)
+        begin = int(temp[0] + temp[1])
+        end = int(temp[0] + temp[2])
+        return random.randint(begin, end)
+
+
 if __name__ == '__main__':
     pass
     s = time.strftime('%Y%m%d%H', time.localtime())
@@ -173,3 +182,5 @@ if __name__ == '__main__':
     # print(pinjie())
     # csv_pc2()
     print(max_min(100, 101))
+    tt = one_number("1391254|0000-9999|")
+    print(re_ps2())

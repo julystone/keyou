@@ -40,11 +40,11 @@ def pd_pc():
     #     res.to_excel(writer, index=False)
 
     # pandas读csv文件
-    csvdf = pd.read_csv("data.log")
-    csvdf_new = csvdf.loc[csvdf[' Success'] == 0]
-    csvdf_new_tt_max = max(csvdf_new[' TestTime'])
-    csvdf_new_tt_min = min(csvdf_new[' TestTime'])
-    print(csvdf_new[' TestTime'])
+    # csvdf = pd.read_csv("data.log")
+    # csvdf_new = csvdf.loc[csvdf[' Success'] == 0]
+    # csvdf_new_tt_max = max(csvdf_new[' TestTime'])
+    # csvdf_new_tt_min = min(csvdf_new[' TestTime'])
+    # print(csvdf_new[' TestTime'])
 
 
 if __name__ == '__main__':

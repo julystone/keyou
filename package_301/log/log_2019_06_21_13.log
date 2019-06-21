@@ -1,0 +1,119 @@
+2019-06-21 13:12:42,094 | 10880 | [test_all.py-->line:92] | INFO : TestCase 注册成功，昵称为空 starting------
+2019-06-21 13:13:32,157 | 11992 | [test_all.py-->line:92] | INFO : TestCase 注册成功，昵称为空 starting------
+2019-06-21 13:13:32,247 | 11992 | [R_request.py-->line:46] | INFO : Sending post:/member/register {'mobilephone': '13912549795', 'pwd': '123456'}
+2019-06-21 13:13:32,287 | 11992 | [test_all.py-->line:92] | INFO : TestCase 注册成功，昵称不为空 starting------
+2019-06-21 13:13:32,387 | 11992 | [R_request.py-->line:46] | INFO : Sending post:/member/register {'mobilephone': '13912549121', 'pwd': '123456', 'regname': '${nickname1}'}
+2019-06-21 13:13:32,387 | 11992 | [test_all.py-->line:92] | INFO : TestCase 注册失败，手机号码为空 starting------
+2019-06-21 13:13:32,397 | 11992 | [test_all.py-->line:92] | INFO : TestCase 注册失败，密码为空 starting------
+2019-06-21 13:13:32,397 | 11992 | [test_all.py-->line:92] | INFO : TestCase 注册失败，密码长度小于6位 starting------
+2019-06-21 13:13:32,397 | 11992 | [test_all.py-->line:92] | INFO : TestCase 注册失败，密码长度大于18位 starting------
+2019-06-21 13:13:32,407 | 11992 | [test_all.py-->line:92] | INFO : TestCase 注册失败，手机格式不正确 starting------
+2019-06-21 13:13:32,407 | 11992 | [test_all.py-->line:92] | INFO : TestCase 注册失败，手机号码已被注册 starting------
+2019-06-21 13:14:23,707 | 10728 | [test_all.py-->line:92] | INFO : TestCase 注册成功，昵称为空 starting------
+2019-06-21 13:14:23,797 | 10728 | [R_request.py-->line:46] | INFO : Sending post:/member/register {'mobilephone': '13912546727', 'pwd': '123456'}
+2019-06-21 13:20:43,160 | 6912 | [test_all.py-->line:93] | INFO : TestCase 注册成功，昵称为空 starting------
+2019-06-21 13:20:43,250 | 6912 | [R_request.py-->line:46] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/register {'mobilephone': '13912542408', 'pwd': '123456'}
+2019-06-21 13:20:43,380 | 6912 | [test_all.py-->line:120] | INFO : 【Success】：E{'status': 1, 'code': '10001', 'data': None, 'msg': '成功'} == A{'status': 1, 'code': '10001', 'data': None, 'msg': '注册成功'}
+2019-06-21 13:20:43,380 | 6912 | [test_all.py-->line:124] | INFO : TestCase 注册成功，昵称为空 end------
+2019-06-21 13:20:43,380 | 6912 | [test_all.py-->line:93] | INFO : TestCase 注册成功，昵称不为空 starting------
+2019-06-21 13:20:43,470 | 6912 | [R_request.py-->line:46] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/register {'mobilephone': '13912544784', 'pwd': '123456', 'regname': '${nickname1}'}
+2019-06-21 13:20:43,560 | 6912 | [test_all.py-->line:120] | INFO : 【Success】：E{'status': 1, 'code': '10001', 'data': None, 'msg': '成功'} == A{'status': 1, 'code': '10001', 'data': None, 'msg': '注册成功'}
+2019-06-21 13:20:43,560 | 6912 | [test_all.py-->line:124] | INFO : TestCase 注册成功，昵称不为空 end------
+2019-06-21 13:20:43,560 | 6912 | [test_all.py-->line:93] | INFO : TestCase 注册失败，手机号码为空 starting------
+2019-06-21 13:20:43,560 | 6912 | [test_all.py-->line:93] | INFO : TestCase 注册失败，密码为空 starting------
+2019-06-21 13:20:43,570 | 6912 | [test_all.py-->line:93] | INFO : TestCase 注册失败，密码长度小于6位 starting------
+2019-06-21 13:20:43,570 | 6912 | [test_all.py-->line:93] | INFO : TestCase 注册失败，密码长度大于18位 starting------
+2019-06-21 13:20:43,570 | 6912 | [test_all.py-->line:93] | INFO : TestCase 注册失败，手机格式不正确 starting------
+2019-06-21 13:20:43,580 | 6912 | [test_all.py-->line:93] | INFO : TestCase 注册失败，手机号码已被注册 starting------
+2019-06-21 13:33:39,507 | 9860 | [test_all.py-->line:93] | INFO : TestCase 注册成功，昵称为空 starting------
+2019-06-21 13:33:39,617 | 9860 | [R_request.py-->line:46] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/register {'mobilephone': '13912544159', 'pwd': '123456'}
+2019-06-21 13:33:39,777 | 9860 | [test_all.py-->line:123] | INFO : 【Success】：E{'status': 1, 'code': '10001', 'data': None, 'msg': '成功'} == A{'status': 1, 'code': '10001', 'data': None, 'msg': '注册成功'}
+2019-06-21 13:33:39,777 | 9860 | [test_all.py-->line:127] | INFO : TestCase 注册成功，昵称为空 end------
+2019-06-21 13:33:39,777 | 9860 | [test_all.py-->line:93] | INFO : TestCase 注册成功，昵称不为空 starting------
+2019-06-21 13:33:39,877 | 9860 | [R_request.py-->line:46] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/register {'mobilephone': '13912543266', 'pwd': '123456', 'regname': '${nickname1}'}
+2019-06-21 13:33:39,977 | 9860 | [test_all.py-->line:123] | INFO : 【Success】：E{'status': 1, 'code': '10001', 'data': None, 'msg': '成功'} == A{'status': 1, 'code': '10001', 'data': None, 'msg': '注册成功'}
+2019-06-21 13:33:39,977 | 9860 | [test_all.py-->line:127] | INFO : TestCase 注册成功，昵称不为空 end------
+2019-06-21 13:33:39,977 | 9860 | [test_all.py-->line:93] | INFO : TestCase 注册失败，手机号码为空 starting------
+2019-06-21 13:33:39,987 | 9860 | [test_all.py-->line:93] | INFO : TestCase 注册失败，密码为空 starting------
+2019-06-21 13:33:39,997 | 9860 | [test_all.py-->line:93] | INFO : TestCase 注册失败，密码长度小于6位 starting------
+2019-06-21 13:33:39,997 | 9860 | [test_all.py-->line:93] | INFO : TestCase 注册失败，密码长度大于18位 starting------
+2019-06-21 13:33:40,007 | 9860 | [test_all.py-->line:93] | INFO : TestCase 注册失败，手机格式不正确 starting------
+2019-06-21 13:33:40,007 | 9860 | [test_all.py-->line:93] | INFO : TestCase 注册失败，手机号码已被注册 starting------
+2019-06-21 13:34:45,089 | 9208 | [test_all.py-->line:93] | INFO : TestCase 注册成功，昵称为空 starting------
+2019-06-21 13:34:45,179 | 9208 | [R_request.py-->line:46] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/register {'mobilephone': '13912547967', 'pwd': '123456'}
+2019-06-21 13:34:45,339 | 9208 | [test_all.py-->line:123] | INFO : 【Success】：E{'status': 1, 'code': '10001', 'data': None, 'msg': '成功'} == A{'status': 1, 'code': '10001', 'data': None, 'msg': '注册成功'}
+2019-06-21 13:34:45,339 | 9208 | [test_all.py-->line:127] | INFO : TestCase 注册成功，昵称为空 end------
+2019-06-21 13:34:45,339 | 9208 | [test_all.py-->line:93] | INFO : TestCase 注册成功，昵称不为空 starting------
+2019-06-21 13:34:45,439 | 9208 | [R_request.py-->line:46] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/register {'mobilephone': '13912540778', 'pwd': '123456', 'regname': '${nickname1}'}
+2019-06-21 13:34:45,539 | 9208 | [test_all.py-->line:123] | INFO : 【Success】：E{'status': 1, 'code': '10001', 'data': None, 'msg': '成功'} == A{'status': 1, 'code': '10001', 'data': None, 'msg': '注册成功'}
+2019-06-21 13:34:45,539 | 9208 | [test_all.py-->line:127] | INFO : TestCase 注册成功，昵称不为空 end------
+2019-06-21 13:34:45,539 | 9208 | [test_all.py-->line:93] | INFO : TestCase 注册失败，手机号码为空 starting------
+2019-06-21 13:34:45,539 | 9208 | [test_all.py-->line:93] | INFO : TestCase 注册失败，密码为空 starting------
+2019-06-21 13:34:45,549 | 9208 | [test_all.py-->line:93] | INFO : TestCase 注册失败，密码长度小于6位 starting------
+2019-06-21 13:34:45,549 | 9208 | [test_all.py-->line:93] | INFO : TestCase 注册失败，密码长度大于18位 starting------
+2019-06-21 13:34:45,549 | 9208 | [test_all.py-->line:93] | INFO : TestCase 注册失败，手机格式不正确 starting------
+2019-06-21 13:34:45,559 | 9208 | [test_all.py-->line:93] | INFO : TestCase 注册失败，手机号码已被注册 starting------
+2019-06-21 13:35:51,792 | 17388 | [test_all.py-->line:93] | INFO : TestCase 注册成功，昵称为空 starting------
+2019-06-21 13:35:51,912 | 17388 | [R_request.py-->line:46] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/register {'mobilephone': '13912544188', 'pwd': '123456'}
+2019-06-21 13:35:52,082 | 17388 | [test_all.py-->line:123] | INFO : 【Success】：E{'status': 1, 'code': '10001', 'data': None, 'msg': '成功'} == A{'status': 1, 'code': '10001', 'data': None, 'msg': '注册成功'}
+2019-06-21 13:35:52,082 | 17388 | [test_all.py-->line:127] | INFO : TestCase 注册成功，昵称为空 end------
+2019-06-21 13:35:52,092 | 17388 | [test_all.py-->line:93] | INFO : TestCase 注册成功，昵称不为空 starting------
+2019-06-21 13:35:52,212 | 17388 | [R_request.py-->line:46] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/register {'mobilephone': '13912543129', 'pwd': '123456', 'regname': '${nickname1}'}
+2019-06-21 13:35:52,302 | 17388 | [test_all.py-->line:123] | INFO : 【Success】：E{'status': 1, 'code': '10001', 'data': None, 'msg': '成功'} == A{'status': 1, 'code': '10001', 'data': None, 'msg': '注册成功'}
+2019-06-21 13:35:52,302 | 17388 | [test_all.py-->line:127] | INFO : TestCase 注册成功，昵称不为空 end------
+2019-06-21 13:35:52,302 | 17388 | [test_all.py-->line:93] | INFO : TestCase 注册失败，手机号码为空 starting------
+2019-06-21 13:35:52,302 | 17388 | [R_request.py-->line:46] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/register {'pwd': '123456', 'regname': '${nickname1}'}
+2019-06-21 13:35:52,332 | 17388 | [test_all.py-->line:123] | INFO : 【Success】：E{'status': 0, 'code': '20103', 'data': None, 'msg': '参数错误：参数不能为空'} == A{'status': 0, 'code': '20103', 'data': None, 'msg': '手机号不能为空'}
+2019-06-21 13:35:52,332 | 17388 | [test_all.py-->line:127] | INFO : TestCase 注册失败，手机号码为空 end------
+2019-06-21 13:35:52,332 | 17388 | [test_all.py-->line:93] | INFO : TestCase 注册失败，密码为空 starting------
+2019-06-21 13:35:52,332 | 17388 | [R_request.py-->line:46] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/register {'mobilephone': '13912541272', 'regname': '${nickname1}'}
+2019-06-21 13:35:52,362 | 17388 | [test_all.py-->line:123] | INFO : 【Success】：E{'status': 0, 'code': '20103', 'data': None, 'msg': '参数错误：参数不能为空'} == A{'status': 0, 'code': '20103', 'data': None, 'msg': '密码不能为空'}
+2019-06-21 13:35:52,362 | 17388 | [test_all.py-->line:127] | INFO : TestCase 注册失败，密码为空 end------
+2019-06-21 13:35:52,362 | 17388 | [test_all.py-->line:93] | INFO : TestCase 注册失败，密码长度小于6位 starting------
+2019-06-21 13:35:52,362 | 17388 | [R_request.py-->line:46] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/register {'mobilephone': '13912541273', 'pwd': '123', 'regname': '${nickname1}'}
+2019-06-21 13:35:52,402 | 17388 | [test_all.py-->line:123] | INFO : 【Success】：E{'status': 0, 'code': '20108', 'data': None, 'msg': '密码长度必须为6~18'} == A{'status': 0, 'code': '20108', 'data': None, 'msg': '密码长度必须为6~18'}
+2019-06-21 13:35:52,402 | 17388 | [test_all.py-->line:127] | INFO : TestCase 注册失败，密码长度小于6位 end------
+2019-06-21 13:35:52,402 | 17388 | [test_all.py-->line:93] | INFO : TestCase 注册失败，密码长度大于18位 starting------
+2019-06-21 13:35:52,402 | 17388 | [R_request.py-->line:46] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/register {'mobilephone': '13912541274', 'pwd': '12345678901234567890', 'regname': '${nickname1}'}
+2019-06-21 13:35:52,432 | 17388 | [test_all.py-->line:123] | INFO : 【Success】：E{'status': 0, 'code': '20108', 'data': None, 'msg': '密码长度必须为6~18'} == A{'status': 0, 'code': '20108', 'data': None, 'msg': '密码长度必须为6~18'}
+2019-06-21 13:35:52,432 | 17388 | [test_all.py-->line:127] | INFO : TestCase 注册失败，密码长度大于18位 end------
+2019-06-21 13:35:52,432 | 17388 | [test_all.py-->line:93] | INFO : TestCase 注册失败，手机格式不正确 starting------
+2019-06-21 13:35:52,432 | 17388 | [R_request.py-->line:46] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/register {'mobilephone': '175', 'pwd': '123456', 'regname': '${nickname1}'}
+2019-06-21 13:35:52,462 | 17388 | [test_all.py-->line:123] | INFO : 【Success】：E{'status': 0, 'code': '20109', 'data': None, 'msg': '手机号码格式不正确'} == A{'status': 0, 'code': '20109', 'data': None, 'msg': '手机号码格式不正确'}
+2019-06-21 13:35:52,462 | 17388 | [test_all.py-->line:127] | INFO : TestCase 注册失败，手机格式不正确 end------
+2019-06-21 13:35:52,462 | 17388 | [test_all.py-->line:93] | INFO : TestCase 注册失败，手机号码已被注册 starting------
+2019-06-21 13:35:52,462 | 17388 | [R_request.py-->line:46] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/register {'mobilephone': '13912341111', 'pwd': '123456', 'regname': '${nickname1}'}
+2019-06-21 13:35:52,562 | 17388 | [test_all.py-->line:118] | ERROR: 【Failed】：E{'status': 0, 'code': '20110', 'data': None, 'msg': '手机号码已被注册'} != A{'status': 1, 'code': '10001', 'data': None, 'msg': '注册成功'}
+2019-06-21 13:35:52,562 | 17388 | [test_all.py-->line:127] | INFO : TestCase 注册失败，手机号码已被注册 end------
+2019-06-21 13:36:05,624 | 13676 | [test_all.py-->line:93] | INFO : TestCase 注册成功，昵称为空 starting------
+2019-06-21 13:36:05,714 | 13676 | [R_request.py-->line:46] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/register {'mobilephone': '13912543444', 'pwd': '123456'}
+2019-06-21 13:36:05,844 | 13676 | [test_all.py-->line:123] | INFO : 【Success】：E{'status': 1, 'code': '10001', 'data': None, 'msg': '成功'} == A{'status': 1, 'code': '10001', 'data': None, 'msg': '注册成功'}
+2019-06-21 13:36:05,844 | 13676 | [test_all.py-->line:127] | INFO : TestCase 注册成功，昵称为空 end------
+2019-06-21 13:36:05,844 | 13676 | [test_all.py-->line:93] | INFO : TestCase 注册成功，昵称不为空 starting------
+2019-06-21 13:36:06,004 | 13676 | [R_request.py-->line:46] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/register {'mobilephone': '13912545894', 'pwd': '123456', 'regname': '${nickname1}'}
+2019-06-21 13:36:06,124 | 13676 | [test_all.py-->line:123] | INFO : 【Success】：E{'status': 1, 'code': '10001', 'data': None, 'msg': '成功'} == A{'status': 1, 'code': '10001', 'data': None, 'msg': '注册成功'}
+2019-06-21 13:36:06,124 | 13676 | [test_all.py-->line:127] | INFO : TestCase 注册成功，昵称不为空 end------
+2019-06-21 13:36:06,124 | 13676 | [test_all.py-->line:93] | INFO : TestCase 注册失败，手机号码为空 starting------
+2019-06-21 13:36:06,124 | 13676 | [R_request.py-->line:46] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/register {'pwd': '123456', 'regname': '${nickname1}'}
+2019-06-21 13:36:06,164 | 13676 | [test_all.py-->line:123] | INFO : 【Success】：E{'status': 0, 'code': '20103', 'data': None, 'msg': '参数错误：参数不能为空'} == A{'status': 0, 'code': '20103', 'data': None, 'msg': '手机号不能为空'}
+2019-06-21 13:36:06,164 | 13676 | [test_all.py-->line:127] | INFO : TestCase 注册失败，手机号码为空 end------
+2019-06-21 13:36:06,164 | 13676 | [test_all.py-->line:93] | INFO : TestCase 注册失败，密码为空 starting------
+2019-06-21 13:36:06,164 | 13676 | [R_request.py-->line:46] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/register {'mobilephone': '13912541272', 'regname': '${nickname1}'}
+2019-06-21 13:36:06,194 | 13676 | [test_all.py-->line:123] | INFO : 【Success】：E{'status': 0, 'code': '20103', 'data': None, 'msg': '参数错误：参数不能为空'} == A{'status': 0, 'code': '20103', 'data': None, 'msg': '密码不能为空'}
+2019-06-21 13:36:06,194 | 13676 | [test_all.py-->line:127] | INFO : TestCase 注册失败，密码为空 end------
+2019-06-21 13:36:06,204 | 13676 | [test_all.py-->line:93] | INFO : TestCase 注册失败，密码长度小于6位 starting------
+2019-06-21 13:36:06,204 | 13676 | [R_request.py-->line:46] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/register {'mobilephone': '13912541273', 'pwd': '123', 'regname': '${nickname1}'}
+2019-06-21 13:36:06,234 | 13676 | [test_all.py-->line:123] | INFO : 【Success】：E{'status': 0, 'code': '20108', 'data': None, 'msg': '密码长度必须为6~18'} == A{'status': 0, 'code': '20108', 'data': None, 'msg': '密码长度必须为6~18'}
+2019-06-21 13:36:06,234 | 13676 | [test_all.py-->line:127] | INFO : TestCase 注册失败，密码长度小于6位 end------
+2019-06-21 13:36:06,234 | 13676 | [test_all.py-->line:93] | INFO : TestCase 注册失败，密码长度大于18位 starting------
+2019-06-21 13:36:06,234 | 13676 | [R_request.py-->line:46] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/register {'mobilephone': '13912541274', 'pwd': '12345678901234567890', 'regname': '${nickname1}'}
+2019-06-21 13:36:06,274 | 13676 | [test_all.py-->line:123] | INFO : 【Success】：E{'status': 0, 'code': '20108', 'data': None, 'msg': '密码长度必须为6~18'} == A{'status': 0, 'code': '20108', 'data': None, 'msg': '密码长度必须为6~18'}
+2019-06-21 13:36:06,274 | 13676 | [test_all.py-->line:127] | INFO : TestCase 注册失败，密码长度大于18位 end------
+2019-06-21 13:36:06,274 | 13676 | [test_all.py-->line:93] | INFO : TestCase 注册失败，手机格式不正确 starting------
+2019-06-21 13:36:06,274 | 13676 | [R_request.py-->line:46] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/register {'mobilephone': '175', 'pwd': '123456', 'regname': '${nickname1}'}
+2019-06-21 13:36:06,304 | 13676 | [test_all.py-->line:123] | INFO : 【Success】：E{'status': 0, 'code': '20109', 'data': None, 'msg': '手机号码格式不正确'} == A{'status': 0, 'code': '20109', 'data': None, 'msg': '手机号码格式不正确'}
+2019-06-21 13:36:06,304 | 13676 | [test_all.py-->line:127] | INFO : TestCase 注册失败，手机格式不正确 end------
+2019-06-21 13:36:06,304 | 13676 | [test_all.py-->line:93] | INFO : TestCase 注册失败，手机号码已被注册 starting------
+2019-06-21 13:36:06,304 | 13676 | [R_request.py-->line:46] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/register {'mobilephone': '13912341111', 'pwd': '123456', 'regname': '${nickname1}'}
+2019-06-21 13:36:06,414 | 13676 | [test_all.py-->line:123] | INFO : 【Success】：E{'status': 0, 'code': '20110', 'data': None, 'msg': '手机号码已被注册'} == A{'status': 0, 'code': '20110', 'data': None, 'msg': '手机号码已被注册'}
+2019-06-21 13:36:06,414 | 13676 | [test_all.py-->line:127] | INFO : TestCase 注册失败，手机号码已被注册 end------

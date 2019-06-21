@@ -40,8 +40,7 @@ class Mysql:
         # df = pd.read_sql(sql=sql, con=self.con)
         return temp
 
-    def insert(self, sql):
-        self.cur.execute(sql)
+    def commit(self):
         self.con.commit()
 
 

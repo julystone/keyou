@@ -1,0 +1,2 @@
+2019-06-16 13:54:51,758 | 9600 | [http_request.py-->line:52] | INFO : 请求方式是：post，请求的url地址是：http://test.lemonban.com/futureloan/mvc/api/member /login,参数是：{'mobilephone': '15817489106', 'pwd': '123456'}
+2019-06-16 13:54:51,895 | 9600 | [http_request.py-->line:55] | INFO : 请求方式是：get，请求的url地址是：http://test.lemonban.com/futureloan/mvc/api/member/recharge,参数是：{'mobilephone': '15817489106', 'amount': 1000}

@@ -185,10 +185,11 @@ class WithDrawTestCase(unittest.TestCase):
                                          params=eval(case.request_data))
             actual = json.loads(actual)
             if flag:
-                con2 = Mysql()
-                amount_af = con2.select(sql)[0] if con2.select(sql) is not None else 0
+                con1.commit()
+                # con2 = Mysql()
+                amount_af = con1.select(sql)[0] if con1.select(sql) is not None else 0
+                self.assertEqual(amount, amount_bf - amount_af) if flag else print('未校验金额')
             self.assertEqual((expect['status'], expect['code']), (actual['status'], actual['code']))
-            self.assertEqual(amount, amount_bf - amount_af) if flag else print('未校验金额')
         except (AssertionError, TypeError) as e:
             print(f"Not Passed...\n{expect['msg']}\n{actual['msg']}")
             result = 'failed'

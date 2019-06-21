@@ -1,6 +1,6 @@
 import turtle
 
-turtle.setup(340,340,340,340)
+turtle.setup(340, 340, 340, 340)
 t = turtle.Pen()
 t.speed(0)
 t.hideturtle()
@@ -46,22 +46,22 @@ def draw_lines(x, y, distance):
 # 绘制所有横线
 t.setheading(0)
 for i in range(10):
-    draw_lines(-80, 90-20*i, 80*2)
+    draw_lines(-80, 90 - 20 * i, 80 * 2)
 
 # 绘制所有竖线
 t.setheading(-90)
 for i in range(9):
-    draw_lines(80-20*i, 90, 90-10)
+    draw_lines(80 - 20 * i, 90, 90 - 10)
 for i in range(9):
-    draw_lines(80-20*i, -10, 90-10)
+    draw_lines(80 - 20 * i, -10, 90 - 10)
 
 # 绘制所有斜线
 t.setheading(-135)
 for i in range(2):
-    draw_lines(20, 90-i*140, 1.41*40)
+    draw_lines(20, 90 - i * 140, 1.41 * 40)
 t.setheading(-45)
 for i in range(2):
-    draw_lines(-20, 90-i*140, 1.41*40)
+    draw_lines(-20, 90 - i * 140, 1.41 * 40)
 
 # 绘制兵炮位置
 angle(60, 50)
@@ -80,15 +80,13 @@ angle_half(80, -30, 'right')
 angle_half(-80, 30, 'left')
 angle_half(-80, -30, 'left')
 
-
 # 绘制大外框斜线
 t.pensize(5)
 t.setheading(0)
-for i in [95,-95]:
-    draw_lines(-85, i, 85*2)
+for i in [95, -95]:
+    draw_lines(-85, i, 85 * 2)
 t.left(-90)
 for i in [-85, 85]:
-    draw_lines(i, 95, 95*2)
-
+    draw_lines(i, 95, 95 * 2)
 
 turtle.done()

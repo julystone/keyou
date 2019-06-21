@@ -1,7 +1,9 @@
-from package_004.fun2test import register
-from package_004.R_r_excel import ReadExcel
 import unittest
+
 from ddt import ddt, data
+
+from package_004.R_r_excel import ReadExcel
+from package_004.fun2test import register
 
 # 优化上一次的作业
 #
@@ -21,7 +23,7 @@ print(cases)
 class RegisterTestCase(unittest.TestCase):
 
     def setUp(self) -> None:
-        print('\n'+'start'.center(32, '-'))
+        print('\n' + 'start'.center(32, '-'))
 
     def tearDown(self) -> None:
         print('end'.center(32, '-'))
@@ -40,4 +42,3 @@ class RegisterTestCase(unittest.TestCase):
             result = 'passed'
         finally:
             wb.write_data(case.case_id + 1, 6, result)
-

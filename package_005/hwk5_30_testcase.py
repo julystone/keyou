@@ -1,8 +1,10 @@
-from package_005.fun2test import register
-from package_005.R_r_excel import ReadExcel
 import unittest
+
 from ddt import ddt, data
+
+from package_005.R_r_excel import ReadExcel
 from package_005.R_r_log import Mylog
+from package_005.fun2test import register
 
 # 优化上一次的作业
 #
@@ -23,7 +25,7 @@ print(cases)
 class RegisterTestCase(unittest.TestCase):
 
     def setUp(self) -> None:
-        print('\n'+'start'.center(32, '-'))
+        print('\n' + 'start'.center(32, '-'))
 
     def tearDown(self) -> None:
         print('end'.center(32, '-'))

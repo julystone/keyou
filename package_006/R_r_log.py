@@ -1,5 +1,6 @@
 import logging
 import time
+
 from package_006.R_r_config import my_config
 
 
@@ -15,7 +16,8 @@ class Mylog:
 
         my_ls = logging.StreamHandler()
         my_ls.setLevel(log_level_stream)
-        my_lf = logging.FileHandler(f"{log_path}\{time.strftime('log_%y_%m_%d_%H', time.localtime())}.log", encoding='utf8')
+        my_lf = logging.FileHandler(f"{log_path}\{time.strftime('log_%y_%m_%d_%H', time.localtime())}.log",
+                                    encoding='utf8')
         my_lf.setLevel(log_level_file)
 
         format = '%(asctime)s | %(process)s | [%(filename)s-->line:%(lineno)d] | %(levelname)-5s: %(message)s'

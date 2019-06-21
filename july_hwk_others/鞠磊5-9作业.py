@@ -2,8 +2,6 @@
 # 模块就是一个py文件，导入了这个module后，就可以使用这个py文件里面的方法、类等等
 
 
-
-
 # 2.模块的导入方式有哪几种？
 # 有总共5种：
 # import dic_2_file                     dic_2_file.main()
@@ -14,14 +12,9 @@
 # 第1、第2种方式最好，最被推荐
 
 
-
-
 # 3. __name__属性的特性？
 # print(__name__) #__name__   如果是本文件话，返回__main__
 # print(jl.__name__)#__name__   如果是调用的话，返回文件名称
-
-
-
 
 
 # 4、什么是全局变量？ 什么是局部变量？
@@ -32,14 +25,8 @@
 # 4. 使用方式不同：全局变量在声明后程序的各个部分都可以用到，但是局部变量只能在局部使用。函数内部会优先使用局部变量再使用全局变量
 
 
-
-
-
 # 5、函数内部如何修改全局变量？
 # global先声明要使用该变量，随后就能修改该全局变量了
-
-
-
 
 
 # 6、新建一个包pack，在包中新建两个模块module1，module2,   在module1中定义一个函数（函数实现上一次石头、剪刀布游戏的功能），该函数可以通过传入的参数来控制游戏次数，然后在module2中导入module1中定义的函数，并调用。
@@ -49,7 +36,6 @@
 # from pack import filename.func
 # from pack import file as f            f.func()
 from package_001 import Module2 as m2
-
 
 if __name__ == '__main__':
     times = int(input("请输入您想玩的次数："))

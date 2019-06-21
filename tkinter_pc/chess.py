@@ -1,10 +1,10 @@
 # 绘制象棋盘
 import turtle
 
-
 t = turtle.Pen()
 t.speed(50)
 t.hideturtle()
+
 
 def angle(x, y):
     t.penup()

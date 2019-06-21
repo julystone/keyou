@@ -1,5 +1,7 @@
-from package_002.fun2test import register
 import unittest
+
+from package_002.fun2test import register
+
 
 # 优化上一次的作业
 #
@@ -13,12 +15,12 @@ import unittest
 class RegisterTestCase(unittest.TestCase):
 
     def setUp(self) -> None:
-        print('\n'+'start'.center(32, '-'))
+        print('\n' + 'start'.center(32, '-'))
 
     def tearDown(self) -> None:
         print('end'.center(32, '-'))
 
-    def __init__(self,  expected, data, methodName = 'testRegister'):
+    def __init__(self, expected, data, methodName='testRegister'):
         self.expected = expected
         self.data = data
         super().__init__(methodName)
@@ -32,4 +34,3 @@ class RegisterTestCase(unittest.TestCase):
             raise e
         else:
             print('Passed')
-

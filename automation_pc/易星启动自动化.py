@@ -12,6 +12,8 @@ desired_caps['appActivity'] = 'com.esunny.estar.StartActivity'
 desired_caps['noReset'] = 'true'
 
 driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
+
+
 # driver.set_page_load_timeout(5)
 
 def is_element_present(locator):

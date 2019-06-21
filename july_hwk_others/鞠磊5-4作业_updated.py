@@ -59,16 +59,16 @@ class Homework:
         print("")
         idx = ["", "【1】:添加图书", "【2】:修改图书", "【3】:删除图书", "【4】:查询图书", "【5】:退出程序", ""]
         # #         print("""
-# ********************************
-# ********【1】:添加图书
-# ********【2】:修改图书
-# ********【3】:删除图书
-# ********【4】:查询图书
-# ********【5】:退出
-# ********************************
-# """)
+        # ********************************
+        # ********【1】:添加图书
+        # ********【2】:修改图书
+        # ********【3】:删除图书
+        # ********【4】:查询图书
+        # ********【5】:退出
+        # ********************************
+        # """)
         for items in idx:
-            print("%s"%items.center(32-len(items), '-'))
+            print("%s" % items.center(32 - len(items), '-'))
         # print("".center(32,'*'))
         # print("【1】:添加图书".center(32,'*'))
         # print("【2】:修改图书".center(32,'*'))
@@ -107,7 +107,7 @@ class Homework:
         print("#添加图书")
         book_No = input("请输入图书编号：")
         while self.checkIfNumOccpd("Y", book_No, book_all):
-        #如果编号已被占据，则报冲突
+            # 如果编号已被占据，则报冲突
             print("********【Err】图书编号冲突，添加失败")
             if input("\n\n回车重新输入，任意键返回上一菜单") == '':
                 book_No = input("请重新输入图书编号：")
@@ -116,21 +116,21 @@ class Homework:
         book_Name = input("请输入图书名称：")
         book_Pos = input("请输入图书位置：")
         while self.checkIfPosOccpd("Y", book_Pos, book_all):
-        #如果位置已被占据，则报冲突
+            # 如果位置已被占据，则报冲突
             print("********【Err】该位置已被占据，添加失败")
             if input("\n\n回车重新输入，任意键返回上一菜单") == '':
                 book_Pos = input("请重新输入图书位置：")
             else:
                 return
-        book = {'book_Name':book_Name,'book_Pos':book_Pos}
-        book_all[book_No]=book
+        book = {'book_Name': book_Name, 'book_Pos': book_Pos}
+        book_all[book_No] = book
         print("********【系统】图书添加成功")
 
     def update_book(self, book_all):
         print("#修改图书")
         book_No = input("请输入图书编号：")
         while self.checkIfNumOccpd("N", book_No, book_all):
-        # 如果编号不存在，则报错
+            # 如果编号不存在，则报错
             print("********【Err】不存在该图书，无法修改")
             if input("\n\n回车重新输入，任意键返回上一菜单") == '':
                 book_No = input("请重新输入图书编号：")
@@ -139,21 +139,21 @@ class Homework:
         book_Name = input("请输入更改后的图书名称：")
         book_Pos = input("请输入更改后的图书位置：")
         while self.checkIfPosOccpd("Y", book_Pos, book_all):
-        # 如果位置已被占据，则报冲突
+            # 如果位置已被占据，则报冲突
             print("********【Err】该位置已被占据，修改失败")
             if input("\n\n回车重新输入，任意键返回上一菜单") == '':
                 book_Pos = input("请重新输入图书位置：")
             else:
                 return
-        book = {'book_Name':book_Name,'book_Pos':book_Pos}
-        book_all[book_No]=book
+        book = {'book_Name': book_Name, 'book_Pos': book_Pos}
+        book_all[book_No] = book
         print("********【系统】图书修改成功")
 
     def del_book(self, book_all):
         print("#删除图书")
         book_No = input("请输入图书编号：")
         while self.checkIfNumOccpd("N", book_No, book_all):
-        #如果编号不存在，则报错
+            # 如果编号不存在，则报错
             print("********【Err】不存在该图书，无法删除")
             if input("\n\n回车重新输入，任意键返回上一菜单") == '':
                 book_Pos = input("请重新输入图书位置：")
@@ -168,18 +168,20 @@ class Homework:
         if search_me == '1':
             book_No = input("请输入图书编号：")
             while self.checkIfNumOccpd("N", book_No, book_all):
-            #如果编号不存在，则报错
+                # 如果编号不存在，则报错
                 print("********【Err】不存在该图书")
                 if input("\n\n回车重新输入，任意键返回上一菜单") == '':
                     book_Pos = input("请重新输入图书位置：")
                 else:
                     return
-            print("\n********【系统】该书信息如下：\n********【系统】图书名称：《{0}》\n********【系统】图书位置：{1}".format(book_all[book_No]["book_Name"],book_all[book_No]["book_Pos"]))
-        elif search_me =='2' or search_me =='':
-        #返回所有书籍
+            print("\n********【系统】该书信息如下：\n********【系统】图书名称：《{0}》\n********【系统】图书位置：{1}".format(
+                book_all[book_No]["book_Name"], book_all[book_No]["book_Pos"]))
+        elif search_me == '2' or search_me == '':
+            # 返回所有书籍
             print("\n********【系统】所有书信息如下：\n********【系统】图书编号\t图书名称\t图书位置")
             for key_inter in book_all.keys():
-                print("********【系统】No.{}\t\t《{}》\t\t{}".format(key_inter, book_all[key_inter]["book_Name"],book_all[key_inter]["book_Pos"]))
+                print("********【系统】No.{}\t\t《{}》\t\t{}".format(key_inter, book_all[key_inter]["book_Name"],
+                                                               book_all[key_inter]["book_Pos"]))
         else:
             print("********【Err】输入错误")
 
@@ -214,8 +216,7 @@ class Homework:
                         print("输入错误")
                 break
 
+
 if __name__ == "__main__":
     home = Homework()
     home.fifth_ans()
-
-

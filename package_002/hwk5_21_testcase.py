@@ -1,5 +1,7 @@
-from package_002.fun2test import register
 import unittest
+
+from package_002.fun2test import register
+
 
 # 对下面功能函数  设计用例进行单元测试，
 #
@@ -66,6 +68,7 @@ class RegisterTestCase(unittest.TestCase):
             raise e
         else:
             print('Passed')
+
     def test_LenOfPassIllegal(self):
         users = ['muyu18', '1234', '1234']
         expected = {"code": 0, "msg": "账号和密码必须在6-18位之间"}
@@ -77,6 +80,3 @@ class RegisterTestCase(unittest.TestCase):
             raise e
         else:
             print('Passed')
-
-
-    

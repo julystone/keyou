@@ -17,8 +17,8 @@ columns_read = my_config.get('excel', 'columns_read')
 testRequestNoCookie = HttpRequestNoCookie()
 testRequest = HttpRequest()
 
-my_generate = Generate(file_path, sheet_name, yaml_file=f'{CONF_DIR}parms.yaml')
-my_generate.generate()
+my_generate = Generate()
+my_generate.generate(file_path, sheet_name, yaml_file=f'{CONF_DIR}parms.yaml')
 
 wb = ReadExcel(file_path, sheet_name)
 # cases = wb.r_data_obj_from_column(eval(columns_read))

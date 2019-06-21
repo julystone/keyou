@@ -1,4 +1,5 @@
 import csv
+import random
 import re
 import time
 from math import ceil
@@ -7,17 +8,15 @@ from math import floor
 import pandas as pd
 
 
-def max_min(amount_min, amount_max, e=1):
-    # e为敏感参数 默认为
-    # e = -1
-    burden = amount_max - amount_min
-    temp = burden
+def max_min(min_n, max_n, e=0):
+    # e为敏感系数
+    temp = max_n - min_n
     while temp > 1:
         e += 1
         temp /= 40
-    amount_max_temp = ceil(amount_max / pow(40, e - 1)) * pow(40, e - 1)
-    amount_min_temp = floor(amount_min / pow(40, e - 1)) * pow(40, e - 1)
-    return amount_min_temp, amount_max_temp
+    max_rounded = ceil(max_n / pow(40, e - 1)) * pow(40, e - 1)
+    min_rounded = floor(min_n / pow(40, e - 1)) * pow(40, e - 1)
+    return min_rounded, max_rounded
 
 
 def try_except_else_finally():
@@ -50,7 +49,6 @@ def re_ps2():
     regex = r'ever((?!ever).)*ccc'
     res = re.search(regex, str1).group()
     print(res)
-
 
 
 def xl_ps():
@@ -169,10 +167,20 @@ def pd_pc():
     res.to_csv('测试成绩统计2.csv', index=False)
 
 
+def one_number(word):
+    if '|' in word:
+        temp = re.split("[-|]", word)
+        begin = int(temp[0] + temp[1])
+        end = int(temp[0] + temp[2])
+        return random.randint(begin, end)
+
+
 if __name__ == '__main__':
     pass
     s = time.strftime('%Y%m%d%H', time.localtime())
     # print(s)
     # print(pinjie())
     # csv_pc2()
-    re_ps3()
+    print(max_min(100, 101))
+    tt = one_number("1391254|0000-9999|")
+    print(re_ps2())

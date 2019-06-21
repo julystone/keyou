@@ -1,0 +1,190 @@
+2019-06-19 19:15:08,860 | 24464 | [test_all.py-->line:37] | INFO : TestCase 登陆成功 starting------
+2019-06-19 19:15:08,860 | 24464 | [R_request.py-->line:46] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/login {'mobilephone': '13912345611', 'pwd': '123456'}
+2019-06-19 19:15:09,045 | 24464 | [test_all.py-->line:55] | INFO : 【Success】：E{'status': 1, 'code': '10001', 'data': None, 'msg': '成功'} == A{'status': 1, 'code': '10001', 'data': None, 'msg': '登录成功'}
+2019-06-19 19:15:09,045 | 24464 | [test_all.py-->line:58] | INFO : TestCase 登陆成功 end------
+2019-06-19 19:15:09,046 | 24464 | [test_all.py-->line:37] | INFO : TestCase 登陆失败，手机号码为空 starting------
+2019-06-19 19:15:09,046 | 24464 | [R_request.py-->line:46] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/login {'pwd': '123456'}
+2019-06-19 19:15:09,079 | 24464 | [test_all.py-->line:55] | INFO : 【Success】：E{'status': 0, 'code': '20103', 'data': None, 'msg': '参数错误：参数不能为空'} == A{'status': 0, 'code': '20103', 'data': None, 'msg': '手机号不能为空'}
+2019-06-19 19:15:09,079 | 24464 | [test_all.py-->line:58] | INFO : TestCase 登陆失败，手机号码为空 end------
+2019-06-19 19:15:09,080 | 24464 | [test_all.py-->line:37] | INFO : TestCase 登陆失败，密码为空 starting------
+2019-06-19 19:15:09,080 | 24464 | [R_request.py-->line:46] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/login {'mobilephone': '13912345611'}
+2019-06-19 19:15:09,113 | 24464 | [test_all.py-->line:55] | INFO : 【Success】：E{'status': 0, 'code': '20103', 'data': None, 'msg': '参数错误：参数不能为空'} == A{'status': 0, 'code': '20103', 'data': None, 'msg': '密码不能为空'}
+2019-06-19 19:15:09,113 | 24464 | [test_all.py-->line:58] | INFO : TestCase 登陆失败，密码为空 end------
+2019-06-19 19:15:09,113 | 24464 | [test_all.py-->line:37] | INFO : TestCase 登陆失败，用户名或者密码错误 starting------
+2019-06-19 19:15:09,113 | 24464 | [R_request.py-->line:46] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/login {'mobilephone': '13912345611', 'pwd': '123457'}
+2019-06-19 19:15:09,183 | 24464 | [test_all.py-->line:55] | INFO : 【Success】：E{'status': 0, 'code': '20111', 'data': None, 'msg': '用户名或者密码错误'} == A{'status': 0, 'code': '20111', 'data': None, 'msg': '用户名或密码错误'}
+2019-06-19 19:15:09,183 | 24464 | [test_all.py-->line:58] | INFO : TestCase 登陆失败，用户名或者密码错误 end------
+2019-06-19 19:15:09,290 | 24464 | [R_request.py-->line:46] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/login {'mobilephone': '13912345611', 'pwd': '123456'}
+2019-06-19 19:15:09,354 | 24464 | [test_all.py-->line:121] | INFO : TestCase 充值成功 starting------
+2019-06-19 19:15:09,579 | 24464 | [R_request.py-->line:39] | INFO : Sending get:http://test.lemonban.com/futureloan/mvc/api/member/recharge {'mobilephone': '13912345611', 'amount': 500}
+2019-06-19 19:15:10,068 | 24464 | [test_all.py-->line:147] | INFO : 【Success】：E{'status': 1, 'code': '10001', 'data': None, 'msg': '充值成功'} == A{'status': 1, 'code': '10001', 'data': {'id': 76124, 'regname': '小蜜蜂', 'pwd': 'E10ADC3949BA59ABBE56E057F20F883E', 'mobilephone': '13912345611', 'leaveamount': '2500.00', 'type': '1', 'regtime': '2019-06-11 12:16:20.0'}, 'msg': '充值成功'}
+2019-06-19 19:15:10,068 | 24464 | [test_all.py-->line:151] | INFO : TestCase 充值成功 end------
+2019-06-19 19:15:10,069 | 24464 | [test_all.py-->line:121] | INFO : TestCase 充值失败，手机号码为空 starting------
+2019-06-19 19:15:10,069 | 24464 | [R_request.py-->line:39] | INFO : Sending get:http://test.lemonban.com/futureloan/mvc/api/member/recharge {'amount': 500}
+2019-06-19 19:15:10,107 | 24464 | [test_all.py-->line:147] | INFO : 【Success】：E{'status': 0, 'code': '20103', 'data': None, 'msg': '手机号不能为空'} == A{'status': 0, 'code': '20103', 'data': None, 'msg': '手机号不能为空'}
+2019-06-19 19:15:10,107 | 24464 | [test_all.py-->line:151] | INFO : TestCase 充值失败，手机号码为空 end------
+2019-06-19 19:15:10,107 | 24464 | [test_all.py-->line:121] | INFO : TestCase 充值失败，此手机号对应的会员不存在 starting------
+2019-06-19 19:15:10,303 | 24464 | [R_request.py-->line:39] | INFO : Sending get:http://test.lemonban.com/futureloan/mvc/api/member/recharge {'mobilephone': '13912345655', 'amount': 500}
+2019-06-19 19:15:10,559 | 24464 | [test_all.py-->line:147] | INFO : 【Success】：E{'status': 0, 'code': '20104', 'data': None, 'msg': '此手机号对应的会员不存在'} == A{'status': 0, 'code': '20104', 'data': None, 'msg': '此手机号对应的会员不存在'}
+2019-06-19 19:15:10,560 | 24464 | [test_all.py-->line:151] | INFO : TestCase 充值失败，此手机号对应的会员不存在 end------
+2019-06-19 19:15:10,560 | 24464 | [test_all.py-->line:121] | INFO : TestCase 充值失败，手机格式不正确 starting------
+2019-06-19 19:15:10,746 | 24464 | [R_request.py-->line:39] | INFO : Sending get:http://test.lemonban.com/futureloan/mvc/api/member/recharge {'mobilephone': '175', 'amount': 500}
+2019-06-19 19:15:10,971 | 24464 | [test_all.py-->line:147] | INFO : 【Success】：E{'status': 0, 'code': '20109', 'data': None, 'msg': '手机号码格式不正确'} == A{'status': 0, 'code': '20109', 'data': None, 'msg': '手机号码格式不正确'}
+2019-06-19 19:15:10,971 | 24464 | [test_all.py-->line:151] | INFO : TestCase 充值失败，手机格式不正确 end------
+2019-06-19 19:15:10,972 | 24464 | [test_all.py-->line:121] | INFO : TestCase 充值失败，充值额度为空 starting------
+2019-06-19 19:15:10,972 | 24464 | [R_request.py-->line:39] | INFO : Sending get:http://test.lemonban.com/futureloan/mvc/api/member/recharge {'mobilephone': '13912345611'}
+2019-06-19 19:15:11,005 | 24464 | [test_all.py-->line:147] | INFO : 【Success】：E{'status': 0, 'code': '20115', 'data': None, 'msg': '请输入金额'} == A{'status': 0, 'code': '20115', 'data': None, 'msg': '请输入金额'}
+2019-06-19 19:15:11,005 | 24464 | [test_all.py-->line:151] | INFO : TestCase 充值失败，充值额度为空 end------
+2019-06-19 19:15:11,005 | 24464 | [test_all.py-->line:121] | INFO : TestCase 充值失败，输入金额小数超过两位 starting------
+2019-06-19 19:15:11,233 | 24464 | [R_request.py-->line:39] | INFO : Sending get:http://test.lemonban.com/futureloan/mvc/api/member/recharge {'mobilephone': '13912345611', 'amount': 500.123}
+2019-06-19 19:15:11,510 | 24464 | [test_all.py-->line:147] | INFO : 【Success】：E{'status': 0, 'code': '20116', 'data': None, 'msg': '输入金额的金额小数不能超过两位'} == A{'status': 0, 'code': '20116', 'data': None, 'msg': '输入金额的金额小数不能超过两位'}
+2019-06-19 19:15:11,510 | 24464 | [test_all.py-->line:151] | INFO : TestCase 充值失败，输入金额小数超过两位 end------
+2019-06-19 19:15:11,511 | 24464 | [test_all.py-->line:121] | INFO : TestCase 充值失败，充值额度低于0(负数) starting------
+2019-06-19 19:15:11,738 | 24464 | [R_request.py-->line:39] | INFO : Sending get:http://test.lemonban.com/futureloan/mvc/api/member/recharge {'mobilephone': '13912345611', 'amount': -5}
+2019-06-19 19:15:12,025 | 24464 | [test_all.py-->line:147] | INFO : 【Success】：E{'status': 0, 'code': '20117', 'data': None, 'msg': '请输入范围在0到50万之间的正数金额'} == A{'status': 0, 'code': '20117', 'data': None, 'msg': '请输入范围在0到50万之间的正数金额'}
+2019-06-19 19:15:12,025 | 24464 | [test_all.py-->line:151] | INFO : TestCase 充值失败，充值额度低于0(负数) end------
+2019-06-19 19:15:12,025 | 24464 | [test_all.py-->line:121] | INFO : TestCase 充值失败，充值额度高于50万 starting------
+2019-06-19 19:15:12,266 | 24464 | [R_request.py-->line:39] | INFO : Sending get:http://test.lemonban.com/futureloan/mvc/api/member/recharge {'mobilephone': '13912345611', 'amount': 500001}
+2019-06-19 19:15:12,539 | 24464 | [test_all.py-->line:147] | INFO : 【Success】：E{'status': 0, 'code': '20117', 'data': None, 'msg': '请输入范围在0到50万之间的正数金额'} == A{'status': 0, 'code': '20117', 'data': None, 'msg': '请输入范围在0到50万之间的正数金额'}
+2019-06-19 19:15:12,539 | 24464 | [test_all.py-->line:151] | INFO : TestCase 充值失败，充值额度高于50万 end------
+2019-06-19 19:15:12,540 | 24464 | [test_all.py-->line:121] | INFO : TestCase 充值失败，充值额度输入非数字 starting------
+2019-06-19 19:15:12,795 | 24464 | [R_request.py-->line:39] | INFO : Sending get:http://test.lemonban.com/futureloan/mvc/api/member/recharge {'mobilephone': '13912345611', 'amount': 'abc'}
+2019-06-19 19:15:13,071 | 24464 | [test_all.py-->line:147] | INFO : 【Success】：E{'status': 0, 'code': '20118', 'data': None, 'msg': '请输入数字'} == A{'status': 0, 'code': '20118', 'data': None, 'msg': '请输入数字'}
+2019-06-19 19:15:13,071 | 24464 | [test_all.py-->line:151] | INFO : TestCase 充值失败，充值额度输入非数字 end------
+2019-06-19 19:15:13,152 | 24464 | [test_all.py-->line:76] | INFO : TestCase 注册成功，昵称为空 starting------
+2019-06-19 19:15:13,152 | 24464 | [R_request.py-->line:46] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/register {'mobilephone': '13912541270', 'pwd': '123456'}
+2019-06-19 19:15:13,215 | 24464 | [test_all.py-->line:89] | ERROR: 【Failed】：E{'status': 1, 'code': '10001', 'data': None, 'msg': '成功'} != A{'status': 0, 'code': '20110', 'data': None, 'msg': '手机号码已被注册'}
+2019-06-19 19:15:13,215 | 24464 | [test_all.py-->line:98] | INFO : TestCase 注册成功，昵称为空 end------
+2019-06-19 19:15:13,224 | 24464 | [test_all.py-->line:76] | INFO : TestCase 注册成功，昵称不为空 starting------
+2019-06-19 19:15:13,224 | 24464 | [R_request.py-->line:46] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/register {'mobilephone': '13912541271', 'pwd': '123456', 'regname': '${nickname1}'}
+2019-06-19 19:15:13,301 | 24464 | [test_all.py-->line:89] | ERROR: 【Failed】：E{'status': 1, 'code': '10001', 'data': None, 'msg': '成功'} != A{'status': 0, 'code': '20110', 'data': None, 'msg': '手机号码已被注册'}
+2019-06-19 19:15:13,301 | 24464 | [test_all.py-->line:98] | INFO : TestCase 注册成功，昵称不为空 end------
+2019-06-19 19:15:13,301 | 24464 | [test_all.py-->line:76] | INFO : TestCase 注册失败，手机号码为空 starting------
+2019-06-19 19:15:13,301 | 24464 | [R_request.py-->line:46] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/register {'pwd': '123456', 'regname': '${nickname1}'}
+2019-06-19 19:15:13,336 | 24464 | [test_all.py-->line:94] | INFO : 【Success】：E{'status': 0, 'code': '20103', 'data': None, 'msg': '参数错误：参数不能为空'} == A{'status': 0, 'code': '20103', 'data': None, 'msg': '手机号不能为空'}
+2019-06-19 19:15:13,336 | 24464 | [test_all.py-->line:98] | INFO : TestCase 注册失败，手机号码为空 end------
+2019-06-19 19:15:13,336 | 24464 | [test_all.py-->line:76] | INFO : TestCase 注册失败，密码为空 starting------
+2019-06-19 19:15:13,336 | 24464 | [R_request.py-->line:46] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/register {'mobilephone': '13912541272', 'regname': '${nickname1}'}
+2019-06-19 19:15:13,370 | 24464 | [test_all.py-->line:94] | INFO : 【Success】：E{'status': 0, 'code': '20103', 'data': None, 'msg': '参数错误：参数不能为空'} == A{'status': 0, 'code': '20103', 'data': None, 'msg': '密码不能为空'}
+2019-06-19 19:15:13,370 | 24464 | [test_all.py-->line:98] | INFO : TestCase 注册失败，密码为空 end------
+2019-06-19 19:15:13,370 | 24464 | [test_all.py-->line:76] | INFO : TestCase 注册失败，密码长度小于6位 starting------
+2019-06-19 19:15:13,370 | 24464 | [R_request.py-->line:46] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/register {'mobilephone': '13912541273', 'pwd': '123', 'regname': '${nickname1}'}
+2019-06-19 19:15:13,404 | 24464 | [test_all.py-->line:94] | INFO : 【Success】：E{'status': 0, 'code': '20108', 'data': None, 'msg': '密码长度必须为6~18'} == A{'status': 0, 'code': '20108', 'data': None, 'msg': '密码长度必须为6~18'}
+2019-06-19 19:15:13,404 | 24464 | [test_all.py-->line:98] | INFO : TestCase 注册失败，密码长度小于6位 end------
+2019-06-19 19:15:13,404 | 24464 | [test_all.py-->line:76] | INFO : TestCase 注册失败，密码长度大于18位 starting------
+2019-06-19 19:15:13,404 | 24464 | [R_request.py-->line:46] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/register {'mobilephone': '13912541274', 'pwd': '12345678901234567890', 'regname': '${nickname1}'}
+2019-06-19 19:15:13,439 | 24464 | [test_all.py-->line:94] | INFO : 【Success】：E{'status': 0, 'code': '20108', 'data': None, 'msg': '密码长度必须为6~18'} == A{'status': 0, 'code': '20108', 'data': None, 'msg': '密码长度必须为6~18'}
+2019-06-19 19:15:13,439 | 24464 | [test_all.py-->line:98] | INFO : TestCase 注册失败，密码长度大于18位 end------
+2019-06-19 19:15:13,439 | 24464 | [test_all.py-->line:76] | INFO : TestCase 注册失败，手机格式不正确 starting------
+2019-06-19 19:15:13,439 | 24464 | [R_request.py-->line:46] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/register {'mobilephone': '175', 'pwd': '123456', 'regname': '${nickname1}'}
+2019-06-19 19:15:13,474 | 24464 | [test_all.py-->line:94] | INFO : 【Success】：E{'status': 0, 'code': '20109', 'data': None, 'msg': '手机号码格式不正确'} == A{'status': 0, 'code': '20109', 'data': None, 'msg': '手机号码格式不正确'}
+2019-06-19 19:15:13,474 | 24464 | [test_all.py-->line:98] | INFO : TestCase 注册失败，手机格式不正确 end------
+2019-06-19 19:15:13,474 | 24464 | [test_all.py-->line:76] | INFO : TestCase 注册失败，手机号码已被注册 starting------
+2019-06-19 19:15:13,474 | 24464 | [R_request.py-->line:46] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/register {'mobilephone': '13912345611', 'pwd': '123456', 'regname': '${nickname1}'}
+2019-06-19 19:15:13,565 | 24464 | [test_all.py-->line:94] | INFO : 【Success】：E{'status': 0, 'code': '20110', 'data': None, 'msg': '手机号码已被注册'} == A{'status': 0, 'code': '20110', 'data': None, 'msg': '手机号码已被注册'}
+2019-06-19 19:15:13,565 | 24464 | [test_all.py-->line:98] | INFO : TestCase 注册失败，手机号码已被注册 end------
+2019-06-19 19:15:13,647 | 24464 | [R_request.py-->line:46] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/login {'mobilephone': '13912345611', 'pwd': '123456'}
+2019-06-19 19:15:13,732 | 24464 | [test_all.py-->line:174] | INFO : TestCase 取现成功 starting------
+2019-06-19 19:15:13,966 | 24464 | [R_request.py-->line:39] | INFO : Sending get:http://test.lemonban.com/futureloan/mvc/api/member/withdraw {'mobilephone': '13912345611', 'amount': 500}
+2019-06-19 19:15:14,394 | 24464 | [test_all.py-->line:200] | INFO : 【Success】：E{'status': 1, 'code': '10001', 'data': None, 'msg': '成功'} == A{'status': 1, 'code': '10001', 'data': {'id': 76124, 'regname': '小蜜蜂', 'pwd': 'E10ADC3949BA59ABBE56E057F20F883E', 'mobilephone': '13912345611', 'leaveamount': '2000.00', 'type': '1', 'regtime': '2019-06-11 12:16:20.0'}, 'msg': '取现成功'}
+2019-06-19 19:15:14,394 | 24464 | [test_all.py-->line:204] | INFO : TestCase 取现成功 end------
+2019-06-19 19:15:14,394 | 24464 | [test_all.py-->line:174] | INFO : TestCase 取现失败，手机号码为空 starting------
+2019-06-19 19:15:14,395 | 24464 | [R_request.py-->line:39] | INFO : Sending get:http://test.lemonban.com/futureloan/mvc/api/member/withdraw {'amount': 500}
+2019-06-19 19:15:14,427 | 24464 | [test_all.py-->line:200] | INFO : 【Success】：E{'status': 0, 'code': '20103', 'data': None, 'msg': '参数错误：参数不能为空'} == A{'status': 0, 'code': '20103', 'data': None, 'msg': '手机号不能为空'}
+2019-06-19 19:15:14,428 | 24464 | [test_all.py-->line:204] | INFO : TestCase 取现失败，手机号码为空 end------
+2019-06-19 19:15:14,428 | 24464 | [test_all.py-->line:174] | INFO : TestCase 取现失败，此手机号对应的会员不存在 starting------
+2019-06-19 19:15:14,623 | 24464 | [R_request.py-->line:39] | INFO : Sending get:http://test.lemonban.com/futureloan/mvc/api/member/withdraw {'mobilephone': '13912345655', 'amount': 500}
+2019-06-19 19:15:14,916 | 24464 | [test_all.py-->line:195] | ERROR: 【Failed】：E{'status': 0, 'code': '20104', 'data': None, 'msg': '此手机号对应的会员不存在'} != A{'status': 1, 'code': '20104', 'data': None, 'msg': '此手机号对应的会员不存在'}
+2019-06-19 19:15:14,917 | 24464 | [test_all.py-->line:204] | INFO : TestCase 取现失败，此手机号对应的会员不存在 end------
+2019-06-19 19:15:14,917 | 24464 | [test_all.py-->line:174] | INFO : TestCase 取现失败，手机号码格式不正确 starting------
+2019-06-19 19:15:15,104 | 24464 | [R_request.py-->line:39] | INFO : Sending get:http://test.lemonban.com/futureloan/mvc/api/member/withdraw {'mobilephone': '123', 'amount': 500}
+2019-06-19 19:15:15,315 | 24464 | [test_all.py-->line:200] | INFO : 【Success】：E{'status': 0, 'code': '20109', 'data': None, 'msg': '手机号码格式不正确'} == A{'status': 0, 'code': '20109', 'data': None, 'msg': '手机号码格式不正确'}
+2019-06-19 19:15:15,315 | 24464 | [test_all.py-->line:204] | INFO : TestCase 取现失败，手机号码格式不正确 end------
+2019-06-19 19:15:15,315 | 24464 | [test_all.py-->line:174] | INFO : TestCase 取现失败，请输入金额 starting------
+2019-06-19 19:15:15,315 | 24464 | [R_request.py-->line:39] | INFO : Sending get:http://test.lemonban.com/futureloan/mvc/api/member/withdraw {'mobilephone': '13912345611'}
+2019-06-19 19:15:15,352 | 24464 | [test_all.py-->line:200] | INFO : 【Success】：E{'status': 0, 'code': '20115', 'data': None, 'msg': '请输入金额'} == A{'status': 0, 'code': '20115', 'data': None, 'msg': '请输入金额'}
+2019-06-19 19:15:15,352 | 24464 | [test_all.py-->line:204] | INFO : TestCase 取现失败，请输入金额 end------
+2019-06-19 19:15:15,352 | 24464 | [test_all.py-->line:174] | INFO : TestCase 取现失败，输入金额小数超过两位 starting------
+2019-06-19 19:15:15,596 | 24464 | [R_request.py-->line:39] | INFO : Sending get:http://test.lemonban.com/futureloan/mvc/api/member/withdraw {'mobilephone': '13912345611', 'amount': 500.123}
+2019-06-19 19:15:15,913 | 24464 | [test_all.py-->line:200] | INFO : 【Success】：E{'status': 0, 'code': '20116', 'data': None, 'msg': '输入金额的金额小数不能超过两位'} == A{'status': 0, 'code': '20116', 'data': None, 'msg': '输入金额的金额小数不能超过两位'}
+2019-06-19 19:15:15,913 | 24464 | [test_all.py-->line:204] | INFO : TestCase 取现失败，输入金额小数超过两位 end------
+2019-06-19 19:15:15,914 | 24464 | [test_all.py-->line:174] | INFO : TestCase 取现失败，充值额度低于0(负数) starting------
+2019-06-19 19:15:16,150 | 24464 | [R_request.py-->line:39] | INFO : Sending get:http://test.lemonban.com/futureloan/mvc/api/member/withdraw {'mobilephone': '13912345611', 'amount': -5}
+2019-06-19 19:15:16,438 | 24464 | [test_all.py-->line:200] | INFO : 【Success】：E{'status': 0, 'code': '20117', 'data': None, 'msg': '请输入范围在0到50万之间的正数'} == A{'status': 0, 'code': '20117', 'data': None, 'msg': '请输入范围在0到50万之间的正数金额'}
+2019-06-19 19:15:16,438 | 24464 | [test_all.py-->line:204] | INFO : TestCase 取现失败，充值额度低于0(负数) end------
+2019-06-19 19:15:16,439 | 24464 | [test_all.py-->line:174] | INFO : TestCase 取现失败，充值额度高于50万 starting------
+2019-06-19 19:15:16,684 | 24464 | [R_request.py-->line:39] | INFO : Sending get:http://test.lemonban.com/futureloan/mvc/api/member/withdraw {'mobilephone': '13912345611', 'amount': 500001}
+2019-06-19 19:15:17,003 | 24464 | [test_all.py-->line:200] | INFO : 【Success】：E{'status': 0, 'code': '20117', 'data': None, 'msg': '请输入范围在0到50万之间的正数'} == A{'status': 0, 'code': '20117', 'data': None, 'msg': '请输入范围在0到50万之间的正数金额'}
+2019-06-19 19:15:17,003 | 24464 | [test_all.py-->line:204] | INFO : TestCase 取现失败，充值额度高于50万 end------
+2019-06-19 19:15:17,003 | 24464 | [test_all.py-->line:174] | INFO : TestCase 取现失败，取现额度输入非数字 starting------
+2019-06-19 19:15:17,255 | 24464 | [R_request.py-->line:39] | INFO : Sending get:http://test.lemonban.com/futureloan/mvc/api/member/withdraw {'mobilephone': '13912345611', 'amount': 'abc'}
+2019-06-19 19:15:17,514 | 24464 | [test_all.py-->line:200] | INFO : 【Success】：E{'status': 0, 'code': '20118', 'data': None, 'msg': '请输入数字'} == A{'status': 0, 'code': '20118', 'data': None, 'msg': '请输入数字'}
+2019-06-19 19:15:17,514 | 24464 | [test_all.py-->line:204] | INFO : TestCase 取现失败，取现额度输入非数字 end------
+2019-06-19 19:15:17,515 | 24464 | [test_all.py-->line:174] | INFO : TestCase 取现失败，余额不足，请修改提现额度 starting------
+2019-06-19 19:15:17,754 | 24464 | [R_request.py-->line:39] | INFO : Sending get:http://test.lemonban.com/futureloan/mvc/api/member/withdraw {'mobilephone': '13912345611', 'amount': 10000}
+2019-06-19 19:15:18,082 | 24464 | [test_all.py-->line:195] | ERROR: 【Failed】：E{'status': 0, 'code': '20119', 'data': None, 'msg': '余额不足，请修改提现额度'} != A{'status': 1, 'code': '20119', 'data': None, 'msg': '余额不足，请修改提现额度'}
+2019-06-19 19:15:18,082 | 24464 | [test_all.py-->line:204] | INFO : TestCase 取现失败，余额不足，请修改提现额度 end------
+2019-06-19 19:26:40,833 | 25288 | [test_all.py-->line:36] | INFO : TestCase 登陆成功 starting------
+2019-06-19 19:26:40,833 | 25288 | [R_request.py-->line:46] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/login {'mobilephone': '13912345611', 'pwd': '123456'}
+2019-06-19 19:26:40,973 | 25288 | [test_all.py-->line:54] | INFO : 【Success】：E{'status': 1, 'code': '10001', 'data': None, 'msg': '成功'} == A{'status': 1, 'code': '10001', 'data': None, 'msg': '登录成功'}
+2019-06-19 19:26:40,973 | 25288 | [test_all.py-->line:57] | INFO : TestCase 登陆成功 end------
+2019-06-19 19:26:40,973 | 25288 | [test_all.py-->line:36] | INFO : TestCase 登陆失败，手机号码为空 starting------
+2019-06-19 19:26:40,973 | 25288 | [R_request.py-->line:46] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/login {'pwd': '123456'}
+2019-06-19 19:26:41,006 | 25288 | [test_all.py-->line:54] | INFO : 【Success】：E{'status': 0, 'code': '20103', 'data': None, 'msg': '参数错误：参数不能为空'} == A{'status': 0, 'code': '20103', 'data': None, 'msg': '手机号不能为空'}
+2019-06-19 19:26:41,006 | 25288 | [test_all.py-->line:57] | INFO : TestCase 登陆失败，手机号码为空 end------
+2019-06-19 19:26:41,006 | 25288 | [test_all.py-->line:36] | INFO : TestCase 登陆失败，密码为空 starting------
+2019-06-19 19:26:41,007 | 25288 | [R_request.py-->line:46] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/login {'mobilephone': '13912345611'}
+2019-06-19 19:26:41,039 | 25288 | [test_all.py-->line:54] | INFO : 【Success】：E{'status': 0, 'code': '20103', 'data': None, 'msg': '参数错误：参数不能为空'} == A{'status': 0, 'code': '20103', 'data': None, 'msg': '密码不能为空'}
+2019-06-19 19:26:41,039 | 25288 | [test_all.py-->line:57] | INFO : TestCase 登陆失败，密码为空 end------
+2019-06-19 19:26:41,040 | 25288 | [test_all.py-->line:36] | INFO : TestCase 登陆失败，用户名或者密码错误 starting------
+2019-06-19 19:26:41,040 | 25288 | [R_request.py-->line:46] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/login {'mobilephone': '13912345611', 'pwd': '123457'}
+2019-06-19 19:26:41,145 | 25288 | [test_all.py-->line:54] | INFO : 【Success】：E{'status': 0, 'code': '20111', 'data': None, 'msg': '用户名或者密码错误'} == A{'status': 0, 'code': '20111', 'data': None, 'msg': '用户名或密码错误'}
+2019-06-19 19:26:41,146 | 25288 | [test_all.py-->line:57] | INFO : TestCase 登陆失败，用户名或者密码错误 end------
+2019-06-19 19:27:01,322 | 22640 | [test_all.py-->line:36] | INFO : TestCase 登陆成功 starting------
+2019-06-19 19:27:01,322 | 22640 | [R_request.py-->line:46] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/login {'mobilephone': '13912345611', 'pwd': '123456'}
+2019-06-19 19:27:01,448 | 22640 | [test_all.py-->line:54] | INFO : 【Success】：E{'status': 1, 'code': '10001', 'data': None, 'msg': '成功'} == A{'status': 1, 'code': '10001', 'data': None, 'msg': '登录成功'}
+2019-06-19 19:27:01,448 | 22640 | [test_all.py-->line:57] | INFO : TestCase 登陆成功 end------
+2019-06-19 19:27:01,448 | 22640 | [test_all.py-->line:36] | INFO : TestCase 登陆失败，手机号码为空 starting------
+2019-06-19 19:27:01,448 | 22640 | [R_request.py-->line:46] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/login {'pwd': '123456'}
+2019-06-19 19:27:01,482 | 22640 | [test_all.py-->line:54] | INFO : 【Success】：E{'status': 0, 'code': '20103', 'data': None, 'msg': '参数错误：参数不能为空'} == A{'status': 0, 'code': '20103', 'data': None, 'msg': '手机号不能为空'}
+2019-06-19 19:27:01,482 | 22640 | [test_all.py-->line:57] | INFO : TestCase 登陆失败，手机号码为空 end------
+2019-06-19 19:27:01,482 | 22640 | [test_all.py-->line:36] | INFO : TestCase 登陆失败，密码为空 starting------
+2019-06-19 19:27:01,483 | 22640 | [R_request.py-->line:46] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/login {'mobilephone': '13912345611'}
+2019-06-19 19:27:01,516 | 22640 | [test_all.py-->line:54] | INFO : 【Success】：E{'status': 0, 'code': '20103', 'data': None, 'msg': '参数错误：参数不能为空'} == A{'status': 0, 'code': '20103', 'data': None, 'msg': '密码不能为空'}
+2019-06-19 19:27:01,516 | 22640 | [test_all.py-->line:57] | INFO : TestCase 登陆失败，密码为空 end------
+2019-06-19 19:27:01,516 | 22640 | [test_all.py-->line:36] | INFO : TestCase 登陆失败，用户名或者密码错误 starting------
+2019-06-19 19:27:01,517 | 22640 | [R_request.py-->line:46] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/login {'mobilephone': '13912345611', 'pwd': '123457'}
+2019-06-19 19:27:01,585 | 22640 | [test_all.py-->line:54] | INFO : 【Success】：E{'status': 0, 'code': '20111', 'data': None, 'msg': '用户名或者密码错误'} == A{'status': 0, 'code': '20111', 'data': None, 'msg': '用户名或密码错误'}
+2019-06-19 19:27:01,586 | 22640 | [test_all.py-->line:57] | INFO : TestCase 登陆失败，用户名或者密码错误 end------
+2019-06-19 19:27:59,260 | 23652 | [test_all.py-->line:36] | INFO : TestCase 登陆成功 starting------
+2019-06-19 19:27:59,261 | 23652 | [R_request.py-->line:46] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/login {'mobilephone': '13912345611', 'pwd': '123456'}
+2019-06-19 19:27:59,360 | 23652 | [test_all.py-->line:54] | INFO : 【Success】：E{'status': 1, 'code': '10001', 'data': None, 'msg': '成功'} == A{'status': 1, 'code': '10001', 'data': None, 'msg': '登录成功'}
+2019-06-19 19:28:21,621 | 23652 | [test_all.py-->line:57] | INFO : TestCase 登陆成功 end------
+2019-06-19 19:28:21,623 | 23652 | [test_all.py-->line:36] | INFO : TestCase 登陆失败，手机号码为空 starting------
+2019-06-19 19:28:21,623 | 23652 | [R_request.py-->line:46] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/login {'pwd': '123456'}
+2019-06-19 19:28:21,656 | 23652 | [test_all.py-->line:54] | INFO : 【Success】：E{'status': 0, 'code': '20103', 'data': None, 'msg': '参数错误：参数不能为空'} == A{'status': 0, 'code': '20103', 'data': None, 'msg': '手机号不能为空'}
+2019-06-19 19:28:23,990 | 23652 | [test_all.py-->line:57] | INFO : TestCase 登陆失败，手机号码为空 end------
+2019-06-19 19:28:23,992 | 23652 | [test_all.py-->line:36] | INFO : TestCase 登陆失败，密码为空 starting------
+2019-06-19 19:28:23,992 | 23652 | [R_request.py-->line:46] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/login {'mobilephone': '13912345611'}
+2019-06-19 19:28:24,026 | 23652 | [test_all.py-->line:54] | INFO : 【Success】：E{'status': 0, 'code': '20103', 'data': None, 'msg': '参数错误：参数不能为空'} == A{'status': 0, 'code': '20103', 'data': None, 'msg': '密码不能为空'}
+2019-06-19 19:28:24,942 | 23652 | [test_all.py-->line:57] | INFO : TestCase 登陆失败，密码为空 end------
+2019-06-19 19:28:24,949 | 23652 | [test_all.py-->line:36] | INFO : TestCase 登陆失败，用户名或者密码错误 starting------
+2019-06-19 19:28:24,949 | 23652 | [R_request.py-->line:46] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/login {'mobilephone': '13912345611', 'pwd': '123457'}
+2019-06-19 19:28:25,016 | 23652 | [test_all.py-->line:54] | INFO : 【Success】：E{'status': 0, 'code': '20111', 'data': None, 'msg': '用户名或者密码错误'} == A{'status': 0, 'code': '20111', 'data': None, 'msg': '用户名或密码错误'}
+2019-06-19 19:28:29,081 | 23652 | [test_all.py-->line:57] | INFO : TestCase 登陆失败，用户名或者密码错误 end------
+2019-06-19 19:29:37,047 | 24448 | [test_all.py-->line:36] | INFO : TestCase 登陆成功 starting------
+2019-06-19 19:29:37,047 | 24448 | [R_request.py-->line:46] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/login {'mobilephone': '13912345611', 'pwd': '123456'}
+2019-06-19 19:29:37,150 | 24448 | [test_all.py-->line:54] | INFO : 【Success】：E{'status': 1, 'code': '10001', 'data': None, 'msg': '成功'} == A{'status': 1, 'code': '10001', 'data': None, 'msg': '登录成功'}
+2019-06-19 19:29:37,150 | 24448 | [test_all.py-->line:57] | INFO : TestCase 登陆成功 end------
+2019-06-19 19:29:37,151 | 24448 | [test_all.py-->line:36] | INFO : TestCase 登陆失败，手机号码为空 starting------
+2019-06-19 19:29:37,151 | 24448 | [R_request.py-->line:46] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/login {'pwd': '123456'}
+2019-06-19 19:29:37,183 | 24448 | [test_all.py-->line:54] | INFO : 【Success】：E{'status': 0, 'code': '20103', 'data': None, 'msg': '参数错误：参数不能为空'} == A{'status': 0, 'code': '20103', 'data': None, 'msg': '手机号不能为空'}
+2019-06-19 19:29:37,183 | 24448 | [test_all.py-->line:57] | INFO : TestCase 登陆失败，手机号码为空 end------
+2019-06-19 19:29:37,183 | 24448 | [test_all.py-->line:36] | INFO : TestCase 登陆失败，密码为空 starting------
+2019-06-19 19:29:37,183 | 24448 | [R_request.py-->line:46] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/login {'mobilephone': '13912345611'}
+2019-06-19 19:29:37,215 | 24448 | [test_all.py-->line:54] | INFO : 【Success】：E{'status': 0, 'code': '20103', 'data': None, 'msg': '参数错误：参数不能为空'} == A{'status': 0, 'code': '20103', 'data': None, 'msg': '密码不能为空'}
+2019-06-19 19:29:37,215 | 24448 | [test_all.py-->line:57] | INFO : TestCase 登陆失败，密码为空 end------
+2019-06-19 19:29:37,215 | 24448 | [test_all.py-->line:36] | INFO : TestCase 登陆失败，用户名或者密码错误 starting------
+2019-06-19 19:29:37,216 | 24448 | [R_request.py-->line:46] | INFO : Sending post:http://test.lemonban.com/futureloan/mvc/api/member/login {'mobilephone': '13912345611', 'pwd': '123457'}
+2019-06-19 19:29:37,304 | 24448 | [test_all.py-->line:54] | INFO : 【Success】：E{'status': 0, 'code': '20111', 'data': None, 'msg': '用户名或者密码错误'} == A{'status': 0, 'code': '20111', 'data': None, 'msg': '用户名或密码错误'}
+2019-06-19 19:29:37,304 | 24448 | [test_all.py-->line:57] | INFO : TestCase 登陆失败，用户名或者密码错误 end------

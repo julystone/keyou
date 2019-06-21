@@ -33,7 +33,6 @@ print(res)
 # python中操作mysql数据库，默认开启事务。。。事务开启了，必须要提交才生效
 con.commit()
 
-
 # 关闭游标，断开连接
 cur.close()
 con.close()

@@ -184,6 +184,7 @@ class ReadExcel(object):
     def w_save(self):
         self.wb.save(self.filename)
 
+
 if __name__ == '__main__':
     r = ReadExcel('cases.xlsx', 'Sheet1')
     print('---------------------------------------------------')

@@ -7,6 +7,7 @@ from package_301.common.R_r_config import my_config
 from package_301.common.R_r_excel import ReadExcel
 from package_301.common.R_r_log import my_log
 from package_301.common.R_r_os import DATA_DIR, CONF_DIR
+from package_301.common.R_r_re import search
 from package_301.common.R_r_sql import Mysql
 from package_301.common.R_request import HttpRequestNoCookie, HttpRequest
 from package_301.common.generate import my_generate
@@ -95,10 +96,11 @@ class RegisterTestCase(unittest.TestCase):
                 sql = f'SELECT * FROM member where mobilephone = {number}'
                 if self.con.select(sql) is None:
                     break
-            case.request_data = case.request_data.replace(re.search(r"\d*\|.*?\|", case.request_data).group(), number)
+            # case.request_data = case.request_data.replace(re.search(r"\d*\|.*?\|", case.request_data).group(), number)
+            case.request_data = search(case.request_data, content=number)
         elif '$' in case.request_data:
-            case.request_data = case.request_data.replace("${phone}", my_config.get('account', 'phone'))
-            case.request_data = case.request_data.replace("${pwd}", my_config.get('account', 'pwd'))
+            # case.request_data = case.request_data.replace("${phone}", my_config.get('account', 'phone'))
+            case.request_data = search(case.request_data)
 
         case.url = api + case.url
 

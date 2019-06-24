@@ -4,7 +4,7 @@ import unittest
 from package_301.common.R_r_config import my_config
 from package_301.common.R_r_excel import ReadExcel
 from package_301.common.R_r_log import my_log
-from package_301.common.R_r_os import DATA_DIR, CONF_DIR
+from package_301.common.R_r_os import DATA_DIR
 from package_301.common.R_request import HttpRequestNoCookie, HttpRequest
 from package_301.common.generate import Generate
 from package_301.library.ddt import ddt, data
@@ -17,8 +17,7 @@ columns_read = my_config.get('excel', 'columns_read')
 testRequestNoCookie = HttpRequestNoCookie()
 testRequest = HttpRequest()
 
-my_generate = Generate(file_path, sheet_name, yaml_file=f'{CONF_DIR}parms.yaml')
-my_generate.generate()
+my_generate = Generate()
 
 wb = ReadExcel(file_path, sheet_name)
 # cases = wb.r_data_obj_from_column(eval(columns_read))
@@ -40,7 +39,7 @@ class LoginTestCase(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls) -> None:
-        wb.w_save()
+        wb.save()
 
     @data(*cases)
     def testLogin(self, case):

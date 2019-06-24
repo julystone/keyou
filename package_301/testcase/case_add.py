@@ -40,7 +40,7 @@ class AddTestCase(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls) -> None:
-        wb.w_save()
+        wb.save()
 
     @data(*cases)
     def testAdd(self, case):

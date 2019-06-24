@@ -30,7 +30,9 @@ class Mysql:
         self.con.close()
 
     def select(self, sql, resultmode=0):
+        self.con.commit()
         self.cur.execute(sql)
+        self.con.commit()
         if resultmode == 0:
             temp = self.cur.fetchone()
         elif resultmode == 1:

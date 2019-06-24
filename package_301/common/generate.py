@@ -75,10 +75,11 @@ class Generate:
         expected_data = json.dumps(res2, ensure_ascii=False)
         # request_data = str(res1)
         # expected_data = str(res2) # 直接强转换为str，双引号会变成单引号，暂不知如何解决
-        self.origin_data.w_data(item.row, 7, request_data)
-        self.origin_data.w_data(item.row, 8, expected_data)
+        self.origin_data.w_data(item.row, 8, request_data)
+        self.origin_data.w_data(item.row, 9, expected_data)
 
     def generate(self, sheet_name, file_path, yaml_file):
+        pass
         self.origin_data = R_r_excel.ReadExcel(file_path, sheet_name)
         (self.conf, self.title) = yaml_read(yaml_file)
         rows = self.origin_data.read_data_obj()
@@ -87,7 +88,7 @@ class Generate:
             print(progress, end='->')
             self.write_in(item)
             progress += 1
-        self.origin_data.w_save()  # 此处需要修改完毕后，单独保存，否则性能很差
+        self.origin_data.save()  # 此处需要修改完毕后，单独保存，否则性能很差
         print('')
         print('>end<'.center(64, '-'))
 
@@ -95,4 +96,5 @@ class Generate:
 my_generate = Generate()
 
 if __name__ == '__main__':
-    my_generate.generate('register', '../data/api_test.xlsx', yaml_file='../config/parms.yaml')
+    sheet_all = ['register', 'login', 'recharge', 'withdraw', 'add', 'loan']
+    my_generate.generate('withdraw', '../data/api_test.xlsx', yaml_file='../config/parms.yaml')

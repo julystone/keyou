@@ -175,12 +175,20 @@ def one_number(word):
         return random.randint(begin, end)
 
 
+def one_number(number):
+    head = '139'
+    for _ in range(number - len(head)):
+        head += str(random.randint(0, 9))
+    return int(head)
+
+
 if __name__ == '__main__':
     pass
     s = time.strftime('%Y%m%d%H', time.localtime())
     # print(s)
     # print(pinjie())
     # csv_pc2()
-    print(max_min(100, 101))
-    tt = one_number("1391254|0000-9999|")
-    print(re_ps2())
+    # print(max_min(100, 101))
+    # tt = one_number("1391254|0000-9999|")
+    # print(re_ps2())
+    print(one_number(11))

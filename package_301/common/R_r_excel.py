@@ -26,6 +26,8 @@ class ReadExcel(object):
         """
         wb = openpyxl.load_workbook(file_name)
         sheet = wb[sheet_name]
+        self.max_row = sheet.max_row
+        self.max_column = sheet.max_column
         for row in list(sheet.rows)[::-1]:
             if row[0].value is None:
                 sheet.delete_rows(row[0].row, 1)
@@ -36,20 +38,20 @@ class ReadExcel(object):
         wb.save(file_name)
         wb.close()
 
-        self.filename = file_name
-        self.wb = openpyxl.load_workbook(file_name)
-        self.sheet = self.wb[sheet_name]
-        self.max_row = self.sheet.max_row
-        self.max_column = self.sheet.max_column
+        self.file_name = file_name
+        self.sheet_name = sheet_name
+        self.wb = None
+        self.sheet = None
 
     def __del__(self):
-        self.wb.close()
+        self.close()
 
     def read_data_line(self):
         """
         按行读取数据
         :return:  返回一个列表，列表中每个元素为一条用例
         """
+        self.open()
         # 按行获取数据转换成列表
         rows_data = list(self.sheet.rows)
         # 获取表单的表头信息
@@ -76,6 +78,7 @@ class ReadExcel(object):
         每个用例存储在一个对象中
         :return: 返回一个列表，列表中每个元素为一个用例对象
         """
+        self.open()
         # 按行获取数据转换成列表
         rows_data = list(self.sheet.rows)
         # 获取表单的表头信息
@@ -115,6 +118,7 @@ class ReadExcel(object):
         # list1 参数为一个列表，传入的是指定读取数据的行,比如[1,2,3]
         # 每一行[1,3,5]列的数据，读取出来就作为一条测试用例，放在字典中
         # 所有的用例放在列表中并且进行返回
+        self.open()
         rows_data = list(self.sheet.rows)
         titles = []
         for title in rows_data[0]:
@@ -138,6 +142,7 @@ class ReadExcel(object):
         # list1 参数为一个列表，传入的是指定读取数据的列,比如[1,2,3]
         # 每一行[1,3,5]列的数据，读取出来就作为一条测试用例，放在对象中属性中
         # 所有的用例对象放在列表中并且进行返回
+        self.open()
         rows_data = list(self.sheet.rows)
         titles = []
         for title in rows_data[0]:
@@ -179,6 +184,7 @@ class ReadExcel(object):
         :param list1: list1  -->   要求读取的列编号列表，eg:[1,3,5]则会读取所有用例的第1,3,5列
         :return: 包含所有用例对象的列表list
         """
+        self.open()
         if list1 is None:
             return self.read_data_obj()
         titles = []
@@ -196,12 +202,21 @@ class ReadExcel(object):
                 case_all.append(case_obj)
         return case_all
 
-    def w_data(self, row, column, data):
-        self.sheet.cell(row, column, data)
-        # self.wb.save(self.filename)
+    def open(self):
+        self.wb = openpyxl.load_workbook(self.file_name)
+        self.sheet = self.wb[self.sheet_name]
 
-    def w_save(self):
-        self.wb.save(self.filename)
+    def close(self):
+        self.wb.close()
+
+    def w_data(self, row, column, data):
+        self.open()
+        self.sheet.cell(row, column, data)
+        self.save()
+        self.close()
+
+    def save(self):
+        self.wb.save(self.file_name)
 
     def r_max(self):
         """

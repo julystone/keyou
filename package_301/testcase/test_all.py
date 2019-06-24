@@ -1,16 +1,15 @@
 import json
 import random
-import re
 import unittest
 
 from package_301.common.R_r_config import my_config
 from package_301.common.R_r_excel import ReadExcel
 from package_301.common.R_r_log import my_log
 from package_301.common.R_r_os import DATA_DIR, CONF_DIR
-from package_301.common.R_r_re import search
+from package_301.common.R_r_re import my_replace
 from package_301.common.R_r_sql import Mysql
+from package_301.common.R_r_sql import my_sql
 from package_301.common.R_request import HttpRequestNoCookie, HttpRequest
-from package_301.common.generate import my_generate
 from package_301.library.ddt import ddt, data
 
 api = my_config.get('env', 'api')
@@ -23,29 +22,27 @@ testRequestNoCookie = HttpRequestNoCookie()
 testRequest = HttpRequest()
 
 
-def one_number(word):
-    if '|' in word:
-        temp = re.split("[-|]", word)
-        begin = int(temp[0] + temp[1])
-        end = int(temp[0] + temp[2])
-        return str(random.randint(begin, end))
+def one_number(number):
+    head = '139'
+    for _ in range(number - len(head)):
+        head += str(random.randint(0, 9))
+    return head
 
 
 @ddt
 class LoginTestCase(unittest.TestCase):
     sheet_name = 'login'
-    my_generate.generate(sheet_name, file_path, yaml_file)
     wb = ReadExcel(file_path, sheet_name)
     cases = wb.read_data_obj()
 
     @classmethod
     def tearDownClass(cls):
-        # login
-        cls.wb.w_save()
+        pass
 
     @data(*cases)
     def test(self, case):
         my_log.info(f'TestCase {case.case_name} starting------')
+        case.url = api + case.url
         actual = testRequest.request(method=case.method, url=case.url, data=eval(case.request_data),
                                      params=eval(case.request_data))
         actual = json.loads(actual)
@@ -66,44 +63,34 @@ class LoginTestCase(unittest.TestCase):
         finally:
             self.wb.w_data(case.row, self.wb.r_max()[1], result)
             my_log.info(f'TestCase {case.case_name} end------')
-            # self.wb.w_save()
 
 
 @ddt
 class RegisterTestCase(unittest.TestCase):
-    # def __init__(self):
-    #     self.sheet_name = 'register'
-    #     my_generate.generate(self.sheet_name, file_path, yaml_file)
-    #     self.wb = ReadExcel(file_path, self.sheet_name)
-    #     self.con = Mysql()
-    #     self.cases = self.wb.read_data_obj()
     sheet_name = 'register'
-    my_generate.generate(sheet_name, file_path, yaml_file)
     wb = ReadExcel(file_path, sheet_name)
     con = Mysql()
     cases = wb.read_data_obj()
 
     @classmethod
     def tearDownClass(cls):
-        cls.wb.w_save()
+        pass
+
+    def checkNumber(self, case):
+        number = None
+        while '#reg_phone#' in case.request_data:
+            number = one_number(11)
+            sql = f"select * from member where mobilephone = {number}"
+            if self.con.select(sql) is None:
+                break
+        return number
 
     @data(*cases)
     def test(self, case):
         my_log.info(f'TestCase {case.case_name} starting------')
-        if '|' in case.request_data:
-            while 1:
-                number = one_number(case.mobilephone)
-                sql = f'SELECT * FROM member where mobilephone = {number}'
-                if self.con.select(sql) is None:
-                    break
-            # case.request_data = case.request_data.replace(re.search(r"\d*\|.*?\|", case.request_data).group(), number)
-            case.request_data = search(case.request_data, content=number)
-        elif '$' in case.request_data:
-            # case.request_data = case.request_data.replace("${phone}", my_config.get('account', 'phone'))
-            case.request_data = search(case.request_data)
-
+        number = self.checkNumber(case)
+        case.request_data = my_replace(case.request_data, content=number)
         case.url = api + case.url
-
         actual = testRequest.request(method=case.method, url=case.url, data=eval(case.request_data),
                                      params=eval(case.request_data))
         actual = json.loads(actual)
@@ -122,16 +109,13 @@ class RegisterTestCase(unittest.TestCase):
             result = 'passed'
             my_log.info(f'【Success】：E{expect} == A{actual}')
         finally:
-            # 2
             self.wb.w_data(case.row, self.wb.r_max()[1], result)
             my_log.info(f'TestCase {case.case_name} end------')
-            # self.wb.w_save()
 
 
 @ddt
 class RechargeTestCase(unittest.TestCase):
     sheet_name = 'recharge'
-    my_generate.generate(sheet_name, file_path, yaml_file)
     wb = ReadExcel(file_path, sheet_name)
     cases = wb.read_data_obj()
 
@@ -142,28 +126,28 @@ class RechargeTestCase(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        cls.wb.w_save()
+        cls.wb.save()
 
     @data(*cases)
     def test(self, case):
         my_log.info(f'TestCase {case.case_name} starting------')
-        expect = json.loads(case.expected_data)
-        sql = f'SELECT leaveamount FROM member where mobilephone = {case.mobilephone}'
+        case.request_data = my_replace(case.request_data)
+        case.url = api + case.url
 
-        amount = case.amount if expect['code'] == '10001' else 0
-        flag = False if case.mobilephone is None or case.amount is None else True
+        expect = json.loads(case.expected_data)
+
+        amount = case.amount if case.checksql else 0
+        if case.checksql:
+            case.checksql = my_replace(case.checksql)
+            amount_bf = my_sql.select(case.checksql)[0]
+        actual = testRequest.request(method=case.method, url=case.url, data=eval(case.request_data),
+                                     params=eval(case.request_data))
+        actual = json.loads(actual)
+        if case.checksql:
+            amount_af = my_sql.select(case.checksql)[0]
         try:
-            if flag:
-                con1 = Mysql()
-                amount_bf = con1.select(sql)[0] if con1.select(sql) is not None else 0
-            actual = testRequest.request(method=case.method, url=case.url, data=eval(case.request_data),
-                                         params=eval(case.request_data))
-            actual = json.loads(actual)
-            if flag:
-                con2 = Mysql()
-                amount_af = con2.select(sql)[0] if con2.select(sql) is not None else 0
             self.assertEqual((expect['status'], expect['code']), (actual['status'], actual['code']))
-            self.assertEqual(amount, amount_af - amount_bf) if flag else print('未校验金额')
+            self.assertEqual(amount, amount_af - amount_bf) if case.checksql else print('未校验金额')
         except (AssertionError, TypeError) as e:
             print(f"Not Passed...\n{expect['msg']}\n{actual['msg']}")
             result = 'failed'
@@ -177,13 +161,12 @@ class RechargeTestCase(unittest.TestCase):
             # 2
             self.wb.w_data(case.row, self.wb.r_max()[1], result)
             my_log.info(f'TestCase {case.case_name} end------')
-            # self.wb.w_save()
+            # self.wb.save()
 
 
 @ddt
 class WithDrawTestCase(unittest.TestCase):
     sheet_name = 'withdraw'
-    my_generate.generate(sheet_name, file_path, yaml_file)
     wb = ReadExcel(file_path, sheet_name)
     cases = wb.read_data_obj()
 
@@ -194,28 +177,29 @@ class WithDrawTestCase(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        cls.wb.w_save()
+        pass
 
     @data(*cases)
     def test(self, case):
         my_log.info(f'TestCase {case.case_name} starting------')
-        expect = json.loads(case.expected_data)
-        sql = f'SELECT leaveamount FROM member where mobilephone = {case.mobilephone}'
+        case.request_data = my_replace(case.request_data)
+        case.url = api + case.url
 
-        amount = case.amount if expect['code'] == '10001' else 0
-        flag = False if case.mobilephone is None or case.amount is None else True
+        expect = json.loads(case.expected_data)
+
+        amount = case.amount if case.checksql else 0
+        if case.checksql:
+            case.checksql = my_replace(case.checksql)
+            amount_bf = my_sql.select(case.checksql)[0]
+        actual = testRequest.request(method=case.method, url=case.url, data=eval(case.request_data),
+                                     params=eval(case.request_data))
+        actual = json.loads(actual)
+        if case.checksql:
+            amount_af = my_sql.select(case.checksql)[0]
+        result = None
         try:
-            if flag:
-                con1 = Mysql()
-                amount_bf = con1.select(sql)[0] if con1.select(sql) is not None else 0
-            actual = testRequest.request(method=case.method, url=case.url, data=eval(case.request_data),
-                                         params=eval(case.request_data))
-            actual = json.loads(actual)
-            if flag:
-                con2 = Mysql()
-                amount_af = con2.select(sql)[0] if con2.select(sql) is not None else 0
             self.assertEqual((expect['status'], expect['code']), (actual['status'], actual['code']))
-            self.assertEqual(amount, amount_bf - amount_af) if flag else print('未校验金额')
+            self.assertEqual(amount, amount_bf - amount_af) if case.checksql else print('未校验金额')
         except (AssertionError, TypeError) as e:
             print(f"Not Passed...\n{expect['msg']}\n{actual['msg']}")
             result = 'failed'
@@ -229,8 +213,7 @@ class WithDrawTestCase(unittest.TestCase):
             # 2
             self.wb.w_data(case.row, self.wb.r_max()[1], result)
             my_log.info(f'TestCase {case.case_name} end------')
-            # self.wb.w_save()
 
-# if __name__ == '__main__':
-#     # unittest.main()
-# one_number("1391254[0000-9999]")
+
+if __name__ == '__main__':
+    unittest.main()

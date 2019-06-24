@@ -40,7 +40,7 @@ class WithdrawTestCase(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls) -> None:
-        wb.w_save()
+        wb.save()
 
     @data(*cases)
     def testWithdraw(self, case):

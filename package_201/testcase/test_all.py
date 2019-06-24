@@ -55,7 +55,7 @@ class LoginTestCase(unittest.TestCase):
         finally:
             self.wb.w_data(case.row, self.wb.r_max()[1], result)
             my_log.info(f'TestCase {case.case_name} end------')
-            # self.wb.w_save()
+            # self.wb.save()
 
 
 @ddt
@@ -94,7 +94,7 @@ class RegisterTestCase(unittest.TestCase):
             # 2
             self.wb.w_data(case.row, self.wb.r_max()[1], result)
             my_log.info(f'TestCase {case.case_name} end------')
-            # self.wb.w_save()
+            # self.wb.save()
 
 
 @ddt
@@ -146,7 +146,7 @@ class RechargeTestCase(unittest.TestCase):
             # 2
             self.wb.w_data(case.row, self.wb.r_max()[1], result)
             my_log.info(f'TestCase {case.case_name} end------')
-            # self.wb.w_save()
+            # self.wb.save()
 
 
 @ddt
@@ -199,7 +199,7 @@ class WithDrawTestCase(unittest.TestCase):
             # 2
             self.wb.w_data(case.row, self.wb.r_max()[1], result)
             my_log.info(f'TestCase {case.case_name} end------')
-            # self.wb.w_save()
+            # self.wb.save()
 
 
 if __name__ == '__main__':

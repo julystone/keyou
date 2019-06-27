@@ -49,6 +49,7 @@ class HttpRequest:
             res = None
         if res.status_code == 404:
             my_log.error(f'404 not found!')
+            print('404 not found!')
             raise RuntimeError
         return res.text
 

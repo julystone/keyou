@@ -33,3 +33,6 @@ REPORT_DIR = my_os.readpath('report')
 CASE_DIR = my_os.readpath('testcase')
 
 pass
+
+if __name__ == '__main__':
+    print(DATA_DIR)

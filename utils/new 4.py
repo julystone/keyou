@@ -5,7 +5,8 @@ import time
 from math import ceil
 from math import floor
 
-import pandas as pd
+
+# import pandas as pd
 
 
 def max_min(min_n, max_n, e=0):
@@ -182,6 +183,14 @@ def one_number(number):
     return int(head)
 
 
+def re_pc_22():
+    p = r"\${(.+?)}"
+    data = """{"mobilephone":"${phone}"}"""
+    key = re.search(p, data).group()
+    # value = re.search(p, data).group(1)
+    print(key)
+
+
 if __name__ == '__main__':
     pass
     s = time.strftime('%Y%m%d%H', time.localtime())
@@ -191,4 +200,4 @@ if __name__ == '__main__':
     # print(max_min(100, 101))
     # tt = one_number("1391254|0000-9999|")
     # print(re_ps2())
-    print(one_number(11))
+    re_pc_22()

@@ -9,6 +9,11 @@ import re
 from package_301.common.R_r_config import my_config
 
 
+class ParmTemp:
+    # 用来存储临时变量
+    pass
+
+
 def my_replace(string, content=None, split='#'):
     while split in string:
         pattern = f"{split}(.+?){split}"
@@ -16,7 +21,7 @@ def my_replace(string, content=None, split='#'):
             arg = re.search(pattern, string).group(1)
             word = my_config.get('account', arg)
         except configparser.NoOptionError:
-            word = content
+            word = content if content is not None else getattr(ParmTemp, arg)
         string = re.sub(pattern, word, string, count=1)
     return string
 

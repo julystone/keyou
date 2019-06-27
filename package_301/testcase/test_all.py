@@ -6,7 +6,7 @@ from package_301.common.R_r_config import my_config
 from package_301.common.R_r_excel import ReadExcel
 from package_301.common.R_r_log import my_log
 from package_301.common.R_r_os import DATA_DIR, CONF_DIR
-from package_301.common.R_r_re import my_replace
+from package_301.common.R_r_re import my_replace, ParmTemp
 from package_301.common.R_r_sql import Mysql
 from package_301.common.R_r_sql import my_sql
 from package_301.common.R_request import HttpRequestNoCookie, HttpRequest
@@ -202,6 +202,108 @@ class WithDrawTestCase(unittest.TestCase):
             self.assertEqual(amount, amount_bf - amount_af) if case.checksql else print('未校验金额')
         except (AssertionError, TypeError) as e:
             print(f"Not Passed...\n{expect['msg']}\n{actual['msg']}")
+            result = 'failed'
+            my_log.error(f'【Failed】：E{expect} != A{actual}')
+            raise e
+        else:
+            print('Passed')
+            result = 'passed'
+            my_log.info(f'【Success】：E{expect} == A{actual}')
+        finally:
+            # 2
+            self.wb.w_data(case.row, self.wb.r_max()[1], result)
+            my_log.info(f'TestCase {case.case_name} end------')
+
+
+@ddt
+class AddTestCase(unittest.TestCase):
+    sheet_name = 'add'
+    wb = ReadExcel(file_path, sheet_name)
+    cases = wb.read_data_obj()
+
+    @classmethod
+    def setUpClass(cls):
+        testRequest.request(method='post', url='http://test.lemonban.com/futureloan/mvc/api/member/login',
+                            data={"mobilephone": "13912345611", "pwd": "123456"})
+
+    @classmethod
+    def tearDownClass(cls):
+        pass
+
+    @data(*cases)
+    def test(self, case):
+        my_log.info(f'TestCase {case.case_name} starting------')
+        case.request_data = my_replace(case.request_data)
+        case.url = api + case.url
+
+        expect = json.loads(case.expected_data)
+        if case.checksql:
+            case.checksql = my_replace(case.checksql)
+            id_old = my_sql.select(case.checksql)[0] if my_sql.select(case.checksql) is not None else None
+        actual = testRequest.request(method=case.method, url=case.url, data=eval(case.request_data),
+                                     params=eval(case.request_data), timeout=5)
+        actual = json.loads(actual) if actual is not None else None
+        if case.checksql:
+            id_new = my_sql.select(case.checksql)[0]
+        result = None
+        try:
+            self.assertEqual((expect['status'], expect['code']), (actual['status'], actual['code']))
+            self.assertNotEqual(id_old, id_new) if case.checksql else True
+        except (AssertionError, TypeError) as e:
+            print(f"Not Passed...\n{expect['msg']}\n{actual['msg']}")
+            print(f"\n请求参数为{case.request_data}")
+            result = 'failed'
+            my_log.error(f'【Failed】：E{expect} != A{actual}')
+            raise e
+        else:
+            print('Passed')
+            result = 'passed'
+            my_log.info(f'【Success】：E{expect} == A{actual}')
+        finally:
+            # 2
+            self.wb.w_data(case.row, self.wb.r_max()[1], result)
+            my_log.info(f'TestCase {case.case_name} end------')
+
+
+@ddt
+class AuditTestCase(unittest.TestCase):
+    sheet_name = 'audit'
+    wb = ReadExcel(file_path, sheet_name)
+    cases = wb.read_data_obj()
+
+    @classmethod
+    def setUpClass(cls):
+        testRequest.request(method='post', url='http://test.lemonban.com/futureloan/mvc/api/member/login',
+                            data={"mobilephone": "13912345611", "pwd": "123456"})
+        cls.loan = my_sql.select("SELECT id FROM loan WHERE MemberID = 85010 and `Status` = 1")[0]
+        setattr(ParmTemp, 'loanId', str(cls.loan))
+
+    @classmethod
+    def tearDownClass(cls):
+        pass
+
+    @data(*cases)
+    def test(self, case):
+        my_log.info(f'TestCase {case.case_name} starting------')
+        case.request_data = my_replace(case.request_data)
+        case.url = api + case.url
+
+        expect = json.loads(case.expected_data)
+        if case.checksql:
+            case.checksql = my_replace(case.checksql)
+            status_old = my_sql.select(case.checksql)[0] if my_sql.select(case.checksql) is not None else None
+        actual = testRequest.request(method=case.method, url=case.url, data=eval(case.request_data),
+                                     params=eval(case.request_data), timeout=5)
+        actual = json.loads(actual) if actual is not None else None
+        if case.checksql:
+            status_new = my_sql.select(case.checksql)[0]
+        result = None
+        try:
+            self.assertEqual((expect['status'], expect['code']), (actual['status'], actual['code']))
+            self.assertEqual(status_new - status_old, 1) if case.checksql else True
+        except (AssertionError, TypeError) as e:
+            print(f"Not Passed...\n{expect['msg']}\n{actual['msg']}")
+            print(f"\n请求参数为{case.request_data}")
             result = 'failed'
             my_log.error(f'【Failed】：E{expect} != A{actual}')
             raise e

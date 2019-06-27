@@ -35,3 +35,6 @@
     repaymemtWay: int
     biddingDays: int
 
+- audit:
+    loan_id: int
+    loan_status: int

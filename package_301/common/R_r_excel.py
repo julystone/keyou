@@ -24,6 +24,8 @@ class ReadExcel(object):
         :param file_name:  文件名字  -->  str
         :param sheet_name: 表单名字  -->  str
         """
+
+        # 先将多余的行列预处理删除掉
         wb = openpyxl.load_workbook(file_name)
         sheet = wb[sheet_name]
         self.max_row = sheet.max_row
@@ -31,7 +33,6 @@ class ReadExcel(object):
         for row in list(sheet.rows)[::-1]:
             if row[0].value is None:
                 sheet.delete_rows(row[0].row, 1)
-
         for column in list(sheet.columns)[::-1]:
             if column[0].value is None:
                 sheet.delete_cols(column[0].column, 1)
@@ -157,7 +158,7 @@ class ReadExcel(object):
             case_all.append(case_obj)
         return case_all
 
-    def r_data_from_colunm(self, list1):
+    def r_data_from_column(self, list1):
         """
         按list中行读取，表单所有该行数据
         每个用例存储在一个对象中

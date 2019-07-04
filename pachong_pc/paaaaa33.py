@@ -21,6 +21,7 @@ data = {"userid": "july", "password": "wscxz712718", "csrfmiddlewaretoken": get_
 
 my_session.post(url + 'login/', data=data)
 my_excel.open()
+line = 1
 with open("./result.log", 'w', encoding='utf-8') as f:
     for inum in range(350, 700):
         url_new = url + f'feedback/item/{inum}'
@@ -32,7 +33,6 @@ with open("./result.log", 'w', encoding='utf-8') as f:
         mobilephone = html.xpath('//html/body//div[@class="modal-body"]/div[1]/div[2]/div[3]/p/text()')
         version = html.xpath('//html/body//div[@class="modal-body"]/div[1]/div[1]/div[3]/p/text()')
         description = html.xpath('//html/body//div[@class="modal-body"]/div[2]/p[2]/text()')
-        line = 1
         if '1' in str(mobilephone) and '2.1.4' in str(version):
             mobilephone = re.search("'联系电话：(.*)'", str(mobilephone)).group(1)
             version = re.search("'应用版本：(.*)'", str(version)).group(1)
@@ -49,7 +49,7 @@ with open("./result.log", 'w', encoding='utf-8') as f:
 
 my_session.close()
 my_excel.close()
-
+my_excel.save()
 
 # #
 # 前一位：

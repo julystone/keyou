@@ -216,6 +216,9 @@ class ReadExcel(object):
         self.save()
         self.close()
 
+    def w_data_origin(self, row, column, data):
+        self.sheet.cell(row, column, data)
+
     def save(self):
         self.wb.save(self.file_name)
 

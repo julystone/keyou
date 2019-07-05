@@ -1,4 +1,3 @@
-import requests
 from requests.sessions import Session
 from lxml import etree
 import re
@@ -21,29 +20,49 @@ data = {"userid": "july", "password": "wscxz712718", "csrfmiddlewaretoken": get_
 
 my_session.post(url + 'login/', data=data)
 my_excel.open()
-line = 1
+line = 2
 with open("./result.log", 'w', encoding='utf-8') as f:
-    for inum in range(350, 700):
-        url_new = url + f'feedback/item/{inum}'
-        res = my_session.get(url + f'feedback/item/{inum}', timeout=5)
+    for feedback_id in range(350, 700):
+        url_new = url + f'feedback/item/{feedback_id}'
+        res = my_session.get(url + f'feedback/item/{feedback_id}', timeout=5)
         if res.status_code != 200: continue
         html = res.text
         html = etree.HTML(html)
 
-        mobilephone = html.xpath('//html/body//div[@class="modal-body"]/div[1]/div[2]/div[3]/p/text()')
-        version = html.xpath('//html/body//div[@class="modal-body"]/div[1]/div[1]/div[3]/p/text()')
-        description = html.xpath('//html/body//div[@class="modal-body"]/div[2]/p[2]/text()')
-        if '1' in str(mobilephone) and '2.1.4' in str(version):
-            mobilephone = re.search("'联系电话：(.*)'", str(mobilephone)).group(1)
-            version = re.search("'应用版本：(.*)'", str(version)).group(1)
-            description = re.search("'(.*)'", str(description)).group(1)
-            print(url_new, mobilephone, version, description)
-            f.write(f"{url_new}\t{mobilephone}\t{version}\t{description}\n")
-            my_excel.w_data_origin(line, 1, inum)
-            my_excel.w_data_origin(line, 2, url_new)
-            my_excel.w_data_origin(line, 3, mobilephone)
-            my_excel.w_data_origin(line, 4, version)
-            my_excel.w_data_origin(line, 5, description)
+        hardVersion = html.xpath('//html/body//div[@class="modal-body"]/div[1]/div[1]/div[1]/p/text()')
+        Android = html.xpath('//html/body//div[@class="modal-body"]/div[1]/div[1]/div[2]/p/text()')
+        AppVersion = html.xpath('//html/body//div[@class="modal-body"]/div[1]/div[1]/div[3]/p/text()')
+
+        DeviceFac = html.xpath('//html/body//div[@class="modal-body"]/div[1]/div[2]/div[1]/p/text()')
+        MobilePhone = html.xpath('//html/body//div[@class="modal-body"]/div[1]/div[2]/div[3]/p/text()')
+        Desc = html.xpath('//html/body//div[@class="modal-body"]/div[2]/p[2]/text()')
+
+        if not html.xpath('//html/body//div[@class="modal-body"]/div[3]'):
+            picExist = False
+        else:
+            picExist = True
+
+        or_list = [hardVersion, Android, AppVersion, DeviceFac, MobilePhone, Desc]
+        if '1' in str(MobilePhone) and '2.1.4' in str(AppVersion):
+            or_list = [hardVersion, Android, AppVersion, DeviceFac, MobilePhone, Desc]
+            op_list = []
+            for item in or_list:
+                try:
+                    op_list.append(re.search("：(.*)'", str(item)).group(1))
+                except AttributeError:
+                    op_list.append(re.search("'(.*)'", str(item)).group(1))
+            hardVersion, Android, AppVersion, DeviceFac, MobilePhone, Desc = op_list
+
+            f.write(f"{url_new}\t{MobilePhone}\t{AppVersion}\t{Desc}\n")
+            my_excel.w_data_origin(line, 1, feedback_id)
+            my_excel.w_data_origin(line, 2, hardVersion)
+            my_excel.w_data_origin(line, 3, DeviceFac)
+            my_excel.w_data_origin(line, 4, Android)
+            my_excel.w_data_origin(line, 5, AppVersion)
+            my_excel.w_data_origin(line, 6, url_new)
+            my_excel.w_data_origin(line, 7, MobilePhone)
+            my_excel.w_data_origin(line, 8, picExist)
+            my_excel.w_data_origin(line, 9, Desc)
 
             line += 1
 

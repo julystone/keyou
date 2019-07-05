@@ -272,6 +272,17 @@ class CountIter:
         return self
 
 
+def lambda_pc():
+    a = 1
+    b = 2
+    c = 3
+    add = lambda x: (x == x + 1)
+    print(add(a))
+    a = add(a)
+    print(a)
+
+
+
 if __name__ == '__main__':
     pass
     s = time.strftime('%Y%m%d%H', time.localtime())
@@ -283,6 +294,7 @@ if __name__ == '__main__':
     # print(re_ps2())
     # re_pc_22()
     random_pc3()
-    print(number_cmp([5, 2, 3, 54, 4]))
-    for i in CountIter(5):
-        print(i)
+    # print(number_cmp([5, 2, 3, 54, 4]))
+    # for i in CountIter(5):
+    #     print(i)
+    lambda_pc()

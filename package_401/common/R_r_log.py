@@ -1,8 +1,8 @@
 import logging
 import time
 
-from package_301.common.R_r_config import my_config
-from package_301.common.R_r_os import LOG_DIR
+from package_401.common.R_r_config import my_config
+from package_401.common.R_r_os import LOG_DIR
 
 
 class Mylog:

@@ -5,7 +5,7 @@
 
 import yaml
 
-from package_301.common.R_r_os import CONF_DIR
+from package_401.common.R_r_os import CONF_DIR
 
 
 class CapsRead:

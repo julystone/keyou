@@ -6,7 +6,7 @@
 import os
 import shutil
 
-from package_301.common.R_r_os import DATA_DIR
+from package_401.common.R_r_os import DATA_DIR
 
 # cf = configparser.ConfigParser()
 # cf.read('july_config.cfg', encoding='utf8')

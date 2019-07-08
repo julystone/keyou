@@ -5,7 +5,7 @@
 
 import configparser
 
-from package_301.common.R_r_os import CONF_DIR
+from package_401.common.R_r_os import CONF_DIR
 
 config_path = CONF_DIR
 

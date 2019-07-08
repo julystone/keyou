@@ -6,7 +6,7 @@
 import configparser
 import re
 
-from package_301.common.R_r_config import my_config
+from package_401.common.R_r_config import my_config
 
 
 class ParmTemp:

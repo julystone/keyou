@@ -13,7 +13,7 @@ import json
 
 import yaml
 
-from package_301.common import R_r_excel
+from package_401.common import R_r_excel
 
 
 def checkNone(res1, Noneflag):
@@ -67,7 +67,7 @@ class Generate:
         api_list = self.conf[x][name]
 
         res1 = sample_data_json(item, api_list)
-        res2 = sample_data_json(item, {"status": "int", "code": "str", "data": "str", "msg": "str"})
+        res2 = sample_data_json(item, {"retCode": "str", "retInfo": "str"})
         checkNone(res1, 1)
         checkNone(res2, 2)
 
@@ -97,4 +97,4 @@ my_generate = Generate()
 
 if __name__ == '__main__':
     sheet_all = ['register', 'login', 'recharge', 'withdraw', 'add', 'bidLoan', 'audit']
-    my_generate.generate('audit', '../data/api_test.xlsx', yaml_file='../config/parms.yaml')
+    my_generate.generate('userRegister', '../data/api_test.xlsx', yaml_file='../config/parms.yaml')

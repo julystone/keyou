@@ -1,7 +1,7 @@
 import requests
 from requests.sessions import Session
 
-from package_301.common.R_r_log import my_log
+from package_401.common.R_r_log import my_log
 
 
 class HttpRequestNoCookie:

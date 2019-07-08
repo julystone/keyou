@@ -3,8 +3,8 @@ import shutil
 import time
 import unittest
 
-from package_301.common.R_r_os import REPORT_DIR, DATA_DIR
-from package_301.library.HTMLTestRunnerNew import HTMLTestRunner
+from package_401.common.R_r_os import REPORT_DIR, DATA_DIR
+from package_401.library.HTMLTestRunnerNew import HTMLTestRunner
 
 date2display = time.strftime('%Y_%m_%d_%H_%M_%S', time.localtime())
 date2display_cuted = date2display[:10]

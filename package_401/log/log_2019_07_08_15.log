@@ -1,0 +1,12 @@
+2019-07-08 15:00:11,279 | 31612 | [read_request_myself.py-->line:62] | INFO : TestCase 发送验证码成功 starting------
+2019-07-08 15:00:11,591 | 31612 | [read_request_myself.py-->line:43] | INFO : 【Success】：E{'retCode': '0', 'retInfo': 'ok'} == A{'retCode': 0, 'retInfo': ok}
+2019-07-08 15:00:11,800 | 31612 | [read_request_myself.py-->line:46] | INFO : TestCase 发送验证码成功 end------
+2019-07-08 15:00:11,800 | 31612 | [read_request_myself.py-->line:62] | INFO : TestCase 发送失败，无手机号 starting------
+2019-07-08 15:00:11,890 | 31612 | [read_request_myself.py-->line:43] | INFO : 【Success】：E{'retCode': 'soap:Server', 'retInfo': '手机号码错误'} == A{'retCode': soap:Server, 'retInfo': 手机号码错误}
+2019-07-08 15:00:12,096 | 31612 | [read_request_myself.py-->line:46] | INFO : TestCase 发送失败，无手机号 end------
+2019-07-08 15:00:12,096 | 31612 | [read_request_myself.py-->line:62] | INFO : TestCase 发送失败，无ip地址 starting------
+2019-07-08 15:00:12,170 | 31612 | [read_request_myself.py-->line:43] | INFO : 【Success】：E{'retCode': 'soap:Server', 'retInfo': '用户IP不能为空'} == A{'retCode': soap:Server, 'retInfo': 用户IP不能为空}
+2019-07-08 15:00:12,374 | 31612 | [read_request_myself.py-->line:46] | INFO : TestCase 发送失败，无ip地址 end------
+2019-07-08 15:00:12,375 | 31612 | [read_request_myself.py-->line:62] | INFO : TestCase 发送失败，无短信模版 starting------
+2019-07-08 15:00:12,461 | 31612 | [read_request_myself.py-->line:43] | INFO : 【Success】：E{'retCode': 'soap:Server', 'retInfo': '短信模板ID错误'} == A{'retCode': soap:Server, 'retInfo': 短信模板ID错误}
+2019-07-08 15:00:12,667 | 31612 | [read_request_myself.py-->line:46] | INFO : TestCase 发送失败，无短信模版 end------

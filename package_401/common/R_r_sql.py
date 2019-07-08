@@ -5,7 +5,7 @@
 
 import pymysql
 
-from package_301.common.R_r_config import my_config
+from package_401.common.R_r_config import my_config
 
 """
 输入sql，返回一条或多条
@@ -13,12 +13,12 @@ from package_301.common.R_r_config import my_config
 
 
 class Mysql:
-    def __init__(self):
+    def __init__(self, database):
         section = 'database'
         host = my_config.get(section, 'host')
         user = my_config.get(section, 'user')
         password = my_config.get(section, 'password')
-        database = my_config.get(section, 'database')
+        database = database
         port = my_config.get(section, 'port')
         charset = my_config.get(section, 'charset')
         self.con = pymysql.connect(host=host, user=user, password=password, database=database, port=eval(port),
@@ -47,7 +47,7 @@ class Mysql:
         self.con.commit()
 
 
-my_sql = Mysql()
+# my_sql = Mysql()
 
 if __name__ == '__main__':
     sql = f'SELECT leaveamount FROM member where mobilephone = 13912345611'

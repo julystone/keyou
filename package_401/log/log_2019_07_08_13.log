@@ -1,0 +1,4 @@
+2019-07-08 13:37:25,599 | 29196 | [read_request_myself.py-->line:35] | INFO : TestCase 发送验证码成功 starting------
+2019-07-08 13:37:29,385 | 29196 | [read_request_myself.py-->line:56] | INFO : 【Success】：E{'retCode': '0', 'retInfo': 'ok'} == A{'retCode': 0, 'retInfo': ok}
+2019-07-08 13:37:29,818 | 29196 | [read_request_myself.py-->line:59] | INFO : TestCase 发送验证码成功 end------
+2019-07-08 13:37:29,819 | 29196 | [read_request_myself.py-->line:35] | INFO : TestCase 发送失败，无手机号 starting------

@@ -1,6 +1,7 @@
 import csv
 import random
 import re
+import datetime
 import time
 from math import ceil
 from math import floor
@@ -282,10 +283,20 @@ def lambda_pc():
     print(a)
 
 
+from suds import client, WebFault
+
+
+def web_pc():
+    web_service = client.Client(url='http://120.24.235.105:9010/sms-service-war-1.0/ws/smsFacade.ws?wsdl')
+    web_service = client.Client(
+        url='http://120.24.235.105:9010/finance-user_info-war-1.0/ws/financeUserInfoFacade.ws?wsdl')
+    print(web_service)
+
+
 
 if __name__ == '__main__':
     pass
-    s = time.strftime('%Y%m%d%H', time.localtime())
+    # s = time.strftime('%Y%m%d%H', time.localtime())
     # print(s)
     # print(pinjie())
     # csv_pc2()
@@ -298,3 +309,5 @@ if __name__ == '__main__':
     # for i in CountIter(5):
     #     print(i)
     lambda_pc()
+    # print(time.asctime() - time.asctime())
+    print(datetime.datetime.now() - datetime.datetime.now())

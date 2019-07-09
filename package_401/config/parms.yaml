@@ -9,7 +9,7 @@
       verify_code: str
       user_id: str
       channel_id: str
-    pwd: str
+      pwd: str
       mobile: str
       ip: str
 

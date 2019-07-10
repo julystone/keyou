@@ -1,0 +1,160 @@
+2019-07-08 17:03:32,702 | 31116 | [read_request_myself.py-->line:92] | INFO : TestCase 发送验证码成功 starting------
+2019-07-08 17:03:32,946 | 31116 | [read_request_myself.py-->line:40] | ERROR: 【Failed】：E{'retCode': '0', 'retInfo': 'ok'} != A{'retCode': soap:Server, 'retInfo': 手机号码错误}
+2019-07-08 17:03:33,155 | 31116 | [read_request_myself.py-->line:48] | INFO : TestCase 发送验证码成功 end------
+2019-07-08 17:03:33,178 | 31116 | [read_request_myself.py-->line:92] | INFO : TestCase 注册成功 starting------
+2019-07-08 17:03:33,446 | 31116 | [read_request_myself.py-->line:92] | INFO : TestCase ="注册失败，"&T4 starting------
+2019-07-08 17:03:33,503 | 31116 | [read_request_myself.py-->line:92] | INFO : TestCase ="注册失败，"&T5 starting------
+2019-07-08 17:03:33,515 | 31116 | [read_request_myself.py-->line:92] | INFO : TestCase ="注册失败，"&T6 starting------
+2019-07-08 17:03:33,527 | 31116 | [read_request_myself.py-->line:92] | INFO : TestCase ="注册失败，"&T7 starting------
+2019-07-08 17:03:33,558 | 31116 | [read_request_myself.py-->line:92] | INFO : TestCase ="注册失败，"&T8 starting------
+2019-07-08 17:03:33,571 | 31116 | [read_request_myself.py-->line:92] | INFO : TestCase ="注册失败，"&T9 starting------
+2019-07-08 17:04:50,491 | 28800 | [read_request_myself.py-->line:92] | INFO : TestCase 发送验证码成功 starting------
+2019-07-08 17:04:50,768 | 28800 | [read_request_myself.py-->line:40] | ERROR: 【Failed】：E{'retCode': '0', 'retInfo': 'ok'} != A{'retCode': soap:Server, 'retInfo': 手机号码错误}
+2019-07-08 17:04:51,021 | 28800 | [read_request_myself.py-->line:48] | INFO : TestCase 发送验证码成功 end------
+2019-07-08 17:04:51,023 | 28800 | [read_request_myself.py-->line:92] | INFO : TestCase 注册成功 starting------
+2019-07-08 17:04:51,246 | 28800 | [read_request_myself.py-->line:92] | INFO : TestCase ="注册失败，"&T4 starting------
+2019-07-08 17:04:51,262 | 28800 | [read_request_myself.py-->line:92] | INFO : TestCase ="注册失败，"&T5 starting------
+2019-07-08 17:04:51,274 | 28800 | [read_request_myself.py-->line:92] | INFO : TestCase ="注册失败，"&T6 starting------
+2019-07-08 17:04:51,286 | 28800 | [read_request_myself.py-->line:92] | INFO : TestCase ="注册失败，"&T7 starting------
+2019-07-08 17:04:51,320 | 28800 | [read_request_myself.py-->line:92] | INFO : TestCase ="注册失败，"&T8 starting------
+2019-07-08 17:04:51,333 | 28800 | [read_request_myself.py-->line:92] | INFO : TestCase ="注册失败，"&T9 starting------
+2019-07-08 17:05:54,019 | 31708 | [read_request_myself.py-->line:64] | INFO : TestCase 发送验证码成功 starting------
+2019-07-08 17:05:54,378 | 31708 | [read_request_myself.py-->line:45] | INFO : 【Success】：E{'retCode': '0', 'retInfo': 'ok'} == A{'retCode': 0, 'retInfo': ok}
+2019-07-08 17:05:54,587 | 31708 | [read_request_myself.py-->line:48] | INFO : TestCase 发送验证码成功 end------
+2019-07-08 17:05:54,840 | 31708 | [read_request_myself.py-->line:64] | INFO : TestCase 发送失败，无手机号 starting------
+2019-07-08 17:05:54,921 | 31708 | [read_request_myself.py-->line:45] | INFO : 【Success】：E{'retCode': 'soap:Server', 'retInfo': '手机号码错误'} == A{'retCode': soap:Server, 'retInfo': 手机号码错误}
+2019-07-08 17:05:55,139 | 31708 | [read_request_myself.py-->line:48] | INFO : TestCase 发送失败，无手机号 end------
+2019-07-08 17:05:55,140 | 31708 | [read_request_myself.py-->line:64] | INFO : TestCase 发送失败，无ip地址 starting------
+2019-07-08 17:05:55,229 | 31708 | [read_request_myself.py-->line:45] | INFO : 【Success】：E{'retCode': 'soap:Server', 'retInfo': '用户IP不能为空'} == A{'retCode': soap:Server, 'retInfo': 用户IP不能为空}
+2019-07-08 17:05:55,438 | 31708 | [read_request_myself.py-->line:48] | INFO : TestCase 发送失败，无ip地址 end------
+2019-07-08 17:05:55,438 | 31708 | [read_request_myself.py-->line:64] | INFO : TestCase 发送失败，无短信模版 starting------
+2019-07-08 17:05:55,534 | 31708 | [read_request_myself.py-->line:45] | INFO : 【Success】：E{'retCode': 'soap:Server', 'retInfo': '短信模板ID错误'} == A{'retCode': soap:Server, 'retInfo': 短信模板ID错误}
+2019-07-08 17:05:55,742 | 31708 | [read_request_myself.py-->line:48] | INFO : TestCase 发送失败，无短信模版 end------
+2019-07-08 17:05:55,742 | 31708 | [read_request_myself.py-->line:92] | INFO : TestCase 发送验证码成功 starting------
+2019-07-08 17:05:55,948 | 31708 | [read_request_myself.py-->line:45] | INFO : 【Success】：E{'retCode': '0', 'retInfo': 'ok'} == A{'retCode': 0, 'retInfo': ok}
+2019-07-08 17:05:56,164 | 31708 | [read_request_myself.py-->line:48] | INFO : TestCase 发送验证码成功 end------
+2019-07-08 17:05:56,671 | 31708 | [read_request_myself.py-->line:92] | INFO : TestCase 注册成功 starting------
+2019-07-08 17:05:56,997 | 31708 | [read_request_myself.py-->line:92] | INFO : TestCase ="注册失败，"&S4 starting------
+2019-07-08 17:05:57,010 | 31708 | [read_request_myself.py-->line:92] | INFO : TestCase ="注册失败，"&S5 starting------
+2019-07-08 17:05:57,022 | 31708 | [read_request_myself.py-->line:92] | INFO : TestCase ="注册失败，"&S6 starting------
+2019-07-08 17:05:57,033 | 31708 | [read_request_myself.py-->line:92] | INFO : TestCase ="注册失败，"&S7 starting------
+2019-07-08 17:05:57,046 | 31708 | [read_request_myself.py-->line:92] | INFO : TestCase ="注册失败，"&S8 starting------
+2019-07-08 17:05:57,059 | 31708 | [read_request_myself.py-->line:92] | INFO : TestCase ="注册失败，"&S9 starting------
+2019-07-08 17:06:37,242 | 29772 | [read_request_myself.py-->line:92] | INFO : TestCase 发送验证码成功 starting------
+2019-07-08 17:06:37,616 | 29772 | [read_request_myself.py-->line:45] | INFO : 【Success】：E{'retCode': '0', 'retInfo': 'ok'} == A{'retCode': 0, 'retInfo': ok}
+2019-07-08 17:06:38,010 | 29772 | [read_request_myself.py-->line:48] | INFO : TestCase 发送验证码成功 end------
+2019-07-08 17:07:56,210 | 29772 | [read_request_myself.py-->line:92] | INFO : TestCase 注册成功 starting------
+2019-07-08 17:08:23,624 | 29772 | [read_request_myself.py-->line:92] | INFO : TestCase ="注册失败，"&S4 starting------
+2019-07-08 17:08:23,686 | 29772 | [read_request_myself.py-->line:92] | INFO : TestCase ="注册失败，"&S5 starting------
+2019-07-08 17:09:35,103 | 31344 | [read_request_myself.py-->line:92] | INFO : TestCase 发送验证码成功 starting------
+2019-07-08 17:09:35,381 | 31344 | [read_request_myself.py-->line:40] | ERROR: 【Failed】：E{'retCode': '0', 'retInfo': 'ok'} != A{'retCode': soap:Server, 'retInfo': 手机号超过频率限制}
+2019-07-08 17:09:35,793 | 31344 | [read_request_myself.py-->line:48] | INFO : TestCase 发送验证码成功 end------
+2019-07-08 17:09:35,797 | 31344 | [read_request_myself.py-->line:92] | INFO : TestCase 注册成功 starting------
+2019-07-08 17:09:36,067 | 31344 | [read_request_myself.py-->line:92] | INFO : TestCase ="注册失败，"&S4 starting------
+2019-07-08 17:09:36,129 | 31344 | [read_request_myself.py-->line:92] | INFO : TestCase ="注册失败，"&S5 starting------
+2019-07-08 17:09:36,166 | 31344 | [read_request_myself.py-->line:92] | INFO : TestCase ="注册失败，"&S6 starting------
+2019-07-08 17:09:36,203 | 31344 | [read_request_myself.py-->line:92] | INFO : TestCase ="注册失败，"&S7 starting------
+2019-07-08 17:09:36,239 | 31344 | [read_request_myself.py-->line:92] | INFO : TestCase ="注册失败，"&S8 starting------
+2019-07-08 17:09:36,277 | 31344 | [read_request_myself.py-->line:92] | INFO : TestCase ="注册失败，"&S9 starting------
+2019-07-08 17:09:51,596 | 964 | [read_request_myself.py-->line:92] | INFO : TestCase 发送验证码成功 starting------
+2019-07-08 17:09:51,867 | 964 | [read_request_myself.py-->line:40] | ERROR: 【Failed】：E{'retCode': '0', 'retInfo': 'ok'} != A{'retCode': soap:Server, 'retInfo': 手机号超过频率限制}
+2019-07-08 17:09:52,289 | 964 | [read_request_myself.py-->line:48] | INFO : TestCase 发送验证码成功 end------
+2019-07-08 17:09:52,294 | 964 | [read_request_myself.py-->line:92] | INFO : TestCase 注册成功 starting------
+2019-07-08 17:09:52,551 | 964 | [read_request_myself.py-->line:92] | INFO : TestCase ="注册失败，"&S4 starting------
+2019-07-08 17:09:52,612 | 964 | [read_request_myself.py-->line:92] | INFO : TestCase ="注册失败，"&S5 starting------
+2019-07-08 17:09:52,649 | 964 | [read_request_myself.py-->line:92] | INFO : TestCase ="注册失败，"&S6 starting------
+2019-07-08 17:09:52,686 | 964 | [read_request_myself.py-->line:92] | INFO : TestCase ="注册失败，"&S7 starting------
+2019-07-08 17:09:52,724 | 964 | [read_request_myself.py-->line:92] | INFO : TestCase ="注册失败，"&S8 starting------
+2019-07-08 17:09:52,762 | 964 | [read_request_myself.py-->line:92] | INFO : TestCase ="注册失败，"&S9 starting------
+2019-07-08 17:10:05,298 | 28588 | [read_request_myself.py-->line:92] | INFO : TestCase 发送验证码成功 starting------
+2019-07-08 17:10:05,583 | 28588 | [read_request_myself.py-->line:40] | ERROR: 【Failed】：E{'retCode': '0', 'retInfo': 'ok'} != A{'retCode': soap:Server, 'retInfo': 手机号超过频率限制}
+2019-07-08 17:10:05,999 | 28588 | [read_request_myself.py-->line:48] | INFO : TestCase 发送验证码成功 end------
+2019-07-08 17:10:06,003 | 28588 | [read_request_myself.py-->line:92] | INFO : TestCase 注册成功 starting------
+2019-07-08 17:10:06,261 | 28588 | [read_request_myself.py-->line:92] | INFO : TestCase ="注册失败，"&S4 starting------
+2019-07-08 17:10:06,327 | 28588 | [read_request_myself.py-->line:92] | INFO : TestCase ="注册失败，"&S5 starting------
+2019-07-08 17:10:06,366 | 28588 | [read_request_myself.py-->line:92] | INFO : TestCase ="注册失败，"&S6 starting------
+2019-07-08 17:10:06,404 | 28588 | [read_request_myself.py-->line:92] | INFO : TestCase ="注册失败，"&S7 starting------
+2019-07-08 17:10:06,443 | 28588 | [read_request_myself.py-->line:92] | INFO : TestCase ="注册失败，"&S8 starting------
+2019-07-08 17:10:06,479 | 28588 | [read_request_myself.py-->line:92] | INFO : TestCase ="注册失败，"&S9 starting------
+2019-07-08 17:11:04,396 | 25604 | [read_request_myself.py-->line:92] | INFO : TestCase 发送验证码成功 starting------
+2019-07-08 17:11:04,656 | 25604 | [read_request_myself.py-->line:40] | ERROR: 【Failed】：E{'retCode': '0', 'retInfo': 'ok'} != A{'retCode': soap:Server, 'retInfo': 手机号超过频率限制}
+2019-07-08 17:11:04,862 | 25604 | [read_request_myself.py-->line:48] | INFO : TestCase 发送验证码成功 end------
+2019-07-08 17:11:04,864 | 25604 | [read_request_myself.py-->line:92] | INFO : TestCase 注册成功 starting------
+2019-07-08 17:11:05,092 | 25604 | [read_request_myself.py-->line:92] | INFO : TestCase ="注册失败，"&S4 starting------
+2019-07-08 17:11:05,125 | 25604 | [read_request_myself.py-->line:92] | INFO : TestCase ="注册失败，"&S5 starting------
+2019-07-08 17:11:05,137 | 25604 | [read_request_myself.py-->line:92] | INFO : TestCase ="注册失败，"&S6 starting------
+2019-07-08 17:11:05,150 | 25604 | [read_request_myself.py-->line:92] | INFO : TestCase ="注册失败，"&S7 starting------
+2019-07-08 17:11:05,181 | 25604 | [read_request_myself.py-->line:92] | INFO : TestCase ="注册失败，"&S8 starting------
+2019-07-08 17:11:05,192 | 25604 | [read_request_myself.py-->line:92] | INFO : TestCase ="注册失败，"&S9 starting------
+2019-07-08 17:11:48,304 | 22400 | [read_request_myself.py-->line:64] | INFO : TestCase 发送验证码成功 starting------
+2019-07-08 17:11:48,590 | 22400 | [read_request_myself.py-->line:40] | ERROR: 【Failed】：E{'retCode': '0', 'retInfo': 'ok'} != A{'retCode': soap:Server, 'retInfo': 手机号超过频率限制}
+2019-07-08 17:11:48,807 | 22400 | [read_request_myself.py-->line:48] | INFO : TestCase 发送验证码成功 end------
+2019-07-08 17:11:48,809 | 22400 | [read_request_myself.py-->line:64] | INFO : TestCase 发送失败，无手机号 starting------
+2019-07-08 17:11:48,906 | 22400 | [read_request_myself.py-->line:45] | INFO : 【Success】：E{'retCode': 'soap:Server', 'retInfo': '手机号码错误'} == A{'retCode': soap:Server, 'retInfo': 手机号码错误}
+2019-07-08 17:11:49,111 | 22400 | [read_request_myself.py-->line:48] | INFO : TestCase 发送失败，无手机号 end------
+2019-07-08 17:11:49,111 | 22400 | [read_request_myself.py-->line:64] | INFO : TestCase 发送失败，无ip地址 starting------
+2019-07-08 17:11:49,189 | 22400 | [read_request_myself.py-->line:45] | INFO : 【Success】：E{'retCode': 'soap:Server', 'retInfo': '用户IP不能为空'} == A{'retCode': soap:Server, 'retInfo': 用户IP不能为空}
+2019-07-08 17:11:49,403 | 22400 | [read_request_myself.py-->line:48] | INFO : TestCase 发送失败，无ip地址 end------
+2019-07-08 17:11:49,403 | 22400 | [read_request_myself.py-->line:64] | INFO : TestCase 发送失败，无短信模版 starting------
+2019-07-08 17:11:49,496 | 22400 | [read_request_myself.py-->line:45] | INFO : 【Success】：E{'retCode': 'soap:Server', 'retInfo': '短信模板ID错误'} == A{'retCode': soap:Server, 'retInfo': 短信模板ID错误}
+2019-07-08 17:11:49,699 | 22400 | [read_request_myself.py-->line:48] | INFO : TestCase 发送失败，无短信模版 end------
+2019-07-08 17:16:08,234 | 31012 | [read_request_myself.py-->line:92] | INFO : TestCase 发送验证码成功 starting------
+2019-07-08 17:16:08,514 | 31012 | [read_request_myself.py-->line:40] | ERROR: 【Failed】：E{'retCode': '0', 'retInfo': 'ok'} != A{'retCode': soap:Server, 'retInfo': 手机号超过频率限制}
+2019-07-08 17:16:08,749 | 31012 | [read_request_myself.py-->line:48] | INFO : TestCase 发送验证码成功 end------
+2019-07-08 17:16:08,751 | 31012 | [read_request_myself.py-->line:92] | INFO : TestCase 注册成功 starting------
+2019-07-08 17:16:08,971 | 31012 | [read_request_myself.py-->line:92] | INFO : TestCase ="注册失败，"&S4 starting------
+2019-07-08 17:16:08,987 | 31012 | [read_request_myself.py-->line:92] | INFO : TestCase ="注册失败，"&S5 starting------
+2019-07-08 17:16:08,999 | 31012 | [read_request_myself.py-->line:92] | INFO : TestCase ="注册失败，"&S6 starting------
+2019-07-08 17:16:09,011 | 31012 | [read_request_myself.py-->line:92] | INFO : TestCase ="注册失败，"&S7 starting------
+2019-07-08 17:16:09,045 | 31012 | [read_request_myself.py-->line:92] | INFO : TestCase ="注册失败，"&S8 starting------
+2019-07-08 17:16:09,059 | 31012 | [read_request_myself.py-->line:92] | INFO : TestCase ="注册失败，"&S9 starting------
+2019-07-08 17:16:25,508 | 29352 | [read_request_myself.py-->line:93] | INFO : TestCase 发送验证码成功 starting------
+2019-07-08 17:16:25,773 | 29352 | [read_request_myself.py-->line:41] | ERROR: 【Failed】：E{'retCode': '0', 'retInfo': 'ok'} != A{'retCode': soap:Server, 'retInfo': 手机号超过频率限制}
+2019-07-08 17:16:25,993 | 29352 | [read_request_myself.py-->line:49] | INFO : TestCase 发送验证码成功 end------
+2019-07-08 17:16:25,995 | 29352 | [read_request_myself.py-->line:93] | INFO : TestCase 注册成功 starting------
+2019-07-08 17:16:26,211 | 29352 | [read_request_myself.py-->line:93] | INFO : TestCase ="注册失败，"&S4 starting------
+2019-07-08 17:16:26,226 | 29352 | [read_request_myself.py-->line:93] | INFO : TestCase ="注册失败，"&S5 starting------
+2019-07-08 17:16:26,238 | 29352 | [read_request_myself.py-->line:93] | INFO : TestCase ="注册失败，"&S6 starting------
+2019-07-08 17:16:26,250 | 29352 | [read_request_myself.py-->line:93] | INFO : TestCase ="注册失败，"&S7 starting------
+2019-07-08 17:16:26,282 | 29352 | [read_request_myself.py-->line:93] | INFO : TestCase ="注册失败，"&S8 starting------
+2019-07-08 17:16:26,294 | 29352 | [read_request_myself.py-->line:93] | INFO : TestCase ="注册失败，"&S9 starting------
+2019-07-08 17:18:51,430 | 8052 | [read_request_myself.py-->line:93] | INFO : TestCase 发送验证码成功 starting------
+2019-07-08 17:18:51,793 | 8052 | [read_request_myself.py-->line:46] | INFO : 【Success】：E{'retCode': '0', 'retInfo': 'ok'} == A{'retCode': 0, 'retInfo': ok}
+2019-07-08 17:18:51,999 | 8052 | [read_request_myself.py-->line:49] | INFO : TestCase 发送验证码成功 end------
+2019-07-08 17:18:52,261 | 8052 | [read_request_myself.py-->line:93] | INFO : TestCase 注册成功 starting------
+2019-07-08 17:18:52,494 | 8052 | [read_request_myself.py-->line:93] | INFO : TestCase ="注册失败，"&S4 starting------
+2019-07-08 17:18:52,510 | 8052 | [read_request_myself.py-->line:93] | INFO : TestCase ="注册失败，"&S5 starting------
+2019-07-08 17:18:52,522 | 8052 | [read_request_myself.py-->line:93] | INFO : TestCase ="注册失败，"&S6 starting------
+2019-07-08 17:18:52,534 | 8052 | [read_request_myself.py-->line:93] | INFO : TestCase ="注册失败，"&S7 starting------
+2019-07-08 17:18:52,567 | 8052 | [read_request_myself.py-->line:93] | INFO : TestCase ="注册失败，"&S8 starting------
+2019-07-08 17:18:52,579 | 8052 | [read_request_myself.py-->line:93] | INFO : TestCase ="注册失败，"&S9 starting------
+2019-07-08 17:20:13,419 | 30996 | [read_request_myself.py-->line:92] | INFO : TestCase 发送验证码成功 starting------
+2019-07-08 17:20:13,761 | 30996 | [read_request_myself.py-->line:45] | INFO : 【Success】：E{'retCode': '0', 'retInfo': 'ok'} == A{'retCode': 0, 'retInfo': ok}
+2019-07-08 17:20:13,974 | 30996 | [read_request_myself.py-->line:48] | INFO : TestCase 发送验证码成功 end------
+2019-07-08 17:20:14,475 | 30996 | [read_request_myself.py-->line:92] | INFO : TestCase 注册成功 starting------
+2019-07-08 17:20:14,691 | 30996 | [read_request_myself.py-->line:92] | INFO : TestCase ="注册失败，"&S4 starting------
+2019-07-08 17:20:14,706 | 30996 | [read_request_myself.py-->line:92] | INFO : TestCase ="注册失败，"&S5 starting------
+2019-07-08 17:20:14,718 | 30996 | [read_request_myself.py-->line:92] | INFO : TestCase ="注册失败，"&S6 starting------
+2019-07-08 17:20:14,730 | 30996 | [read_request_myself.py-->line:92] | INFO : TestCase ="注册失败，"&S7 starting------
+2019-07-08 17:20:14,762 | 30996 | [read_request_myself.py-->line:92] | INFO : TestCase ="注册失败，"&S8 starting------
+2019-07-08 17:20:14,775 | 30996 | [read_request_myself.py-->line:92] | INFO : TestCase ="注册失败，"&S9 starting------
+2019-07-08 17:36:34,953 | 31732 | [read_request_myself.py-->line:92] | INFO : TestCase 发送验证码成功 starting------
+2019-07-08 17:36:35,160 | 31732 | [read_request_myself.py-->line:92] | INFO : TestCase 注册成功 starting------
+2019-07-08 17:36:35,197 | 31732 | [read_request_myself.py-->line:92] | INFO : TestCase ="注册失败，"&S4 starting------
+2019-07-08 17:36:35,424 | 31732 | [read_request_myself.py-->line:92] | INFO : TestCase ="注册失败，"&S5 starting------
+2019-07-08 17:36:35,425 | 31732 | [read_request_myself.py-->line:92] | INFO : TestCase ="注册失败，"&S6 starting------
+2019-07-08 17:36:35,426 | 31732 | [read_request_myself.py-->line:92] | INFO : TestCase ="注册失败，"&S7 starting------
+2019-07-08 17:36:35,428 | 31732 | [read_request_myself.py-->line:92] | INFO : TestCase ="注册失败，"&S8 starting------
+2019-07-08 17:36:35,429 | 31732 | [read_request_myself.py-->line:92] | INFO : TestCase ="注册失败，"&S9 starting------
+2019-07-08 17:37:14,863 | 31108 | [read_request_myself.py-->line:92] | INFO : TestCase 发送验证码成功 starting------
+2019-07-08 17:37:15,055 | 31108 | [read_request_myself.py-->line:92] | INFO : TestCase 注册成功 starting------
+2019-07-08 17:37:15,057 | 31108 | [read_request_myself.py-->line:92] | INFO : TestCase ="注册失败，"&S4 starting------
+2019-07-08 17:37:15,285 | 31108 | [read_request_myself.py-->line:92] | INFO : TestCase ="注册失败，"&S5 starting------
+2019-07-08 17:37:15,286 | 31108 | [read_request_myself.py-->line:92] | INFO : TestCase ="注册失败，"&S6 starting------
+2019-07-08 17:37:15,287 | 31108 | [read_request_myself.py-->line:92] | INFO : TestCase ="注册失败，"&S7 starting------
+2019-07-08 17:37:15,288 | 31108 | [read_request_myself.py-->line:92] | INFO : TestCase ="注册失败，"&S8 starting------
+2019-07-08 17:37:15,290 | 31108 | [read_request_myself.py-->line:92] | INFO : TestCase ="注册失败，"&S9 starting------
+2019-07-08 17:38:22,543 | 30564 | [read_request_myself.py-->line:64] | INFO : TestCase 发送验证码成功 starting------
+2019-07-08 17:38:22,734 | 30564 | [read_request_myself.py-->line:64] | INFO : TestCase 发送失败，无手机号 starting------
+2019-07-08 17:38:22,790 | 30564 | [read_request_myself.py-->line:64] | INFO : TestCase 发送失败，无ip地址 starting------
+2019-07-08 17:38:22,795 | 30564 | [read_request_myself.py-->line:64] | INFO : TestCase 发送失败，无短信模版 starting------

@@ -1,0 +1,31 @@
+---
+# 配置各接口的输入参数及其type
+- sendMCode:
+      client_ip: str
+      tmpl_id: str
+      mobile: str
+
+- userRegister:
+      verify_code: str
+      user_id: str
+      channel_id: str
+      pwd: str
+      mobile: str
+      ip: str
+
+- verifyUserAuth:
+      uid: long
+      true_name: str
+      cre_id: str
+
+- bindBankCard:
+      uid: long
+      pay_pwd: str
+      mobile: str
+      cre_id: str
+      user_name: str
+      cardid: str
+      bank_type: int
+      bank_name: str
+      bank_area: str
+      bank_city: str

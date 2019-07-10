@@ -1,6 +1,7 @@
 import csv
 import random
 import re
+import datetime
 import time
 from math import ceil
 from math import floor
@@ -191,13 +192,122 @@ def re_pc_22():
     print(key)
 
 
+def random_pc():
+    temp = check_times = 0
+    number = ""
+    random_list = [1, 2, 3, 45, 5]
+    while 1:
+        for i in random_list:
+            number += str(i)
+        if int(number) > temp:
+            temp = int(number)
+            check_times = 0
+        else:
+            check_times += 1
+        random.shuffle(random_list)
+        number = ""
+        if check_times == 100:
+            break
+    print(temp)
+
+
+def random_pc2():
+    aa = [1, 2, 3, 45, 5]
+    bb = aa
+    e = 0
+    aa.sort()
+    cc = []
+    f = aa[-1]
+    while f > 1:
+        f /= 10
+        e += 1
+    print(e)
+    for item in aa:
+        bur = 2 - str(item).__len__()
+        if bur > 0:
+            item *= 10 ** bur
+        cc.append(item)
+    print(aa)
+    print(cc)
+    cc.sort()
+
+
+def random_pc3():
+    aa = [5, 2, 3, 54, 4]
+    bb = []
+    res = ""
+    for item in aa:
+        bb.append(str(item))
+    bb.sort()
+    for item in bb:
+        res += item
+    print(int(res))
+    print(bb)
+
+
+from functools import cmp_to_key
+
+
+def xy_cmp(x, y):
+    if x + y > y + x:
+        return 1
+    elif x + y < y + x:
+        return -1
+    else:
+        return 0
+
+
+def number_cmp(li):
+    li = list(map(str, li))
+    li.sort(key=cmp_to_key(xy_cmp))
+    # li.sort()
+    return ''.join(li)
+
+
+class CountIter:
+    def __init__(self, n):
+        self.n = n
+
+    def __iter__(self):
+        self.x = -1
+        return self
+
+
+def lambda_pc():
+    a = 1
+    b = 2
+    c = 3
+    add = lambda x: (x == x + 1)
+    print(add(a))
+    a = add(a)
+    print(a)
+
+
+from suds import client, WebFault
+
+
+def web_pc():
+    web_service = client.Client(url='http://120.24.235.105:9010/sms-service-war-1.0/ws/smsFacade.ws?wsdl')
+    web_service = client.Client(
+        url='http://120.24.235.105:9010/finance-user_info-war-1.0/ws/financeUserInfoFacade.ws?wsdl')
+    print(web_service)
+
+
+
 if __name__ == '__main__':
     pass
-    s = time.strftime('%Y%m%d%H', time.localtime())
+    # s = time.strftime('%Y%m%d%H', time.localtime())
     # print(s)
     # print(pinjie())
     # csv_pc2()
     # print(max_min(100, 101))
     # tt = one_number("1391254|0000-9999|")
     # print(re_ps2())
-    re_pc_22()
+    # re_pc_22()
+    random_pc3()
+    # print(number_cmp([5, 2, 3, 54, 4]))
+    # for i in CountIter(5):
+    #     print(i)
+    lambda_pc()
+    # print(time.asctime() - time.asctime())
+    print(datetime.datetime.now() - datetime.datetime.now())

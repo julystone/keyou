@@ -1,0 +1,12 @@
+2019-07-08 16:37:04,403 | 29992 | [read_request_myself.py-->line:63] | INFO : TestCase 发送验证码成功 starting------
+2019-07-08 16:37:04,823 | 29992 | [read_request_myself.py-->line:44] | INFO : 【Success】：E{'retCode': '0', 'retInfo': 'ok'} == A{'retCode': 0, 'retInfo': ok}
+2019-07-08 16:37:05,318 | 29992 | [read_request_myself.py-->line:47] | INFO : TestCase 发送验证码成功 end------
+2019-07-08 16:37:37,497 | 28492 | [read_request_myself.py-->line:63] | INFO : TestCase 发送验证码成功 starting------
+2019-07-08 16:37:37,848 | 28492 | [read_request_myself.py-->line:44] | INFO : 【Success】：E{'retCode': '0', 'retInfo': 'ok'} == A{'retCode': 0, 'retInfo': ok}
+2019-07-08 16:37:38,259 | 28492 | [read_request_myself.py-->line:47] | INFO : TestCase 发送验证码成功 end------
+2019-07-08 16:38:53,591 | 28492 | [read_request_myself.py-->line:63] | INFO : TestCase 发送失败，无手机号 starting------
+2019-07-08 16:38:53,727 | 28492 | [read_request_myself.py-->line:44] | INFO : 【Success】：E{'retCode': 'soap:Server', 'retInfo': '手机号码错误'} == A{'retCode': soap:Server, 'retInfo': 手机号码错误}
+2019-07-08 16:38:54,129 | 28492 | [read_request_myself.py-->line:47] | INFO : TestCase 发送失败，无手机号 end------
+2019-07-08 16:38:55,614 | 28492 | [read_request_myself.py-->line:63] | INFO : TestCase 发送失败，无ip地址 starting------
+2019-07-08 16:38:55,703 | 28492 | [read_request_myself.py-->line:44] | INFO : 【Success】：E{'retCode': 'soap:Server', 'retInfo': '用户IP不能为空'} == A{'retCode': soap:Server, 'retInfo': 用户IP不能为空}
+2019-07-08 16:38:56,099 | 28492 | [read_request_myself.py-->line:47] | INFO : TestCase 发送失败，无ip地址 end------

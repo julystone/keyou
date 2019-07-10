@@ -231,7 +231,7 @@ class ReadExcel(object):
 
 
 if __name__ == '__main__':
-    r = ReadExcel('../data/api_test.xlsx', 'withdraw')
+    r = ReadExcel('../data/api_test.xlsx', 'sendMCode')
     # print('---------------------------------------------------')
     # data = r.r_data_from_colunm([1, 2, 3])
     # print(data)

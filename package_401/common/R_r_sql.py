@@ -13,7 +13,7 @@ from package_401.common.R_r_config import my_config
 
 
 class Mysql:
-    def __init__(self, database):
+    def __init__(self, database=None):
         section = 'database'
         host = my_config.get(section, 'host')
         user = my_config.get(section, 'user')
@@ -40,6 +40,12 @@ class Mysql:
         elif resultmode == 2:
             temp = self.cur.fetchmany(size=4)
         # df = pd.read_sql(sql=sql, con=self.con)
+        return temp
+
+    def affect(self, sql):
+        self.con.commit()
+        temp = self.cur.execute(sql)
+        self.con.commit()
         return temp
 
     def insert(self, sql):

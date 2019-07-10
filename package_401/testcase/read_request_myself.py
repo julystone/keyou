@@ -26,19 +26,6 @@ def one_number(number):
     return head
 
 
-def get_ret(request_url, request_data, method_name):
-    try:
-        web_service = client.Client(url=request_url)
-        string = f'web_service.service.{method_name}({request_data})'
-        actual = eval(string)
-    except WebFault as e:
-        actual = {'retCode': e.fault.faultcode, 'retInfo': e.fault.faultstring}
-        print(e)
-    else:
-        actual = dict(actual)
-    return actual
-
-
 def do_assert(actual, expect, cls, case):
     try:
         cls.assertEqual((expect["retCode"], expect['retInfo']), (actual['retCode'], actual['retInfo']))
@@ -59,21 +46,39 @@ def do_assert(actual, expect, cls, case):
     return result
 
 
+class CommonMethods:
+    @staticmethod
+    def get_ret(case):
+        try:
+            web_service = client.Client(url=case.url)
+            string = f'web_service.service.{case.api_name}({case.request_data})'
+            actual = eval(string)
+        except WebFault as e:
+            actual = {'retCode': e.fault.faultcode, 'retInfo': e.fault.faultstring}
+            print(e)
+        else:
+            actual = dict(actual)
+        return actual
+
+    def do_sql(self, sql):
+        print(self.db.affect(sql))
+        return self.db.select(sql)
+
 @ddt
-class TestSendMCode(unittest.TestCase):
+class TestSendMCode(unittest.TestCase, CommonMethods):
     sheet_name = 'sendMCode'
     wb = ReadExcel(file_path, sheet_name)
     cases = wb.read_data_obj()
 
     @classmethod
-    def tearDownClass(cls):
-        pass
+    def setUpClass(cls) -> None:
+        cls.db = Mysql()
 
     @data(*cases)
     def test(self, case):
         my_log.info(f'TestCase {case.case_name} starting------')
         case.url = api + case.url
-        actual = get_ret(case.url, case.request_data, 'sendMCode')
+        actual = self.get_ret(case)
         expect = json.loads(case.expected_data)
         do_assert(actual, expect, self, case)
         if case.checkSql:
@@ -82,8 +87,7 @@ class TestSendMCode(unittest.TestCase):
             setattr(ParmTemp, 'tableno', mobile[-3:-2])
             setattr(ParmTemp, 'dbno', mobile[-2:])
             case.checkSql = my_replace(case.checkSql)
-            db2check = Mysql(f"sms_db_{ParmTemp.dbno}")
-            verify_code = db2check.select(case.checkSql)
+            verify_code = self.db.affect(case.checkSql)
             self.assertNotEqual(verify_code, None)
 
 
@@ -104,7 +108,7 @@ class TestUserRegister(unittest.TestCase):
             res = db2pre.select(case.preSql)[0]
             setattr(ParmTemp, 'uid', res)
         case.request_data = my_replace(case.request_data)
-        actual = get_ret(case.url, case.request_data, case.api_name)
+        actual = self.get_ret(case.url, case.request_data, case.api_name)
         expect = json.loads(case.expected_data)
         do_assert(actual, expect, self, case)
         if case.checkSql:

@@ -75,8 +75,8 @@ class Generate:
         expected_data = json.dumps(res2, ensure_ascii=False)
         # request_data = str(res1)
         # expected_data = str(res2)  # 直接强转换为str，双引号会变成单引号，暂不知如何解决
-        self.origin_data.w_data(item.row, 8, request_data)
-        self.origin_data.w_data(item.row, 9, expected_data)
+        self.origin_data.w_data(item.row, 9, request_data)
+        self.origin_data.w_data(item.row, 10, expected_data)
 
     def generate(self, sheet_name, file_path, yaml_file):
         pass
@@ -97,4 +97,4 @@ my_generate = Generate()
 
 if __name__ == '__main__':
     sheet_all = ['register', 'login', 'recharge', 'withdraw', 'add', 'bidLoan', 'audit']
-    my_generate.generate('verifyUserAuth', '../data/api_test.xlsx', yaml_file='../config/parms.yaml')
+    my_generate.generate('sendMCode', '../data/api_test.xlsx', yaml_file='../config/parms.yaml')

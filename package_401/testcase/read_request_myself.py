@@ -9,7 +9,7 @@ from package_401.common.R_r_log import my_log
 from package_401.common.R_r_os import DATA_DIR, CONF_DIR
 from package_401.library.ddt import ddt, data
 from package_401.common.R_r_sql import Mysql
-from package_401.common.R_r_re import my_replace, ParmTemp
+from package_401.common.R_r_re import myRex, ParmTemp
 import random
 
 api = my_config.get('env', 'api')
@@ -62,7 +62,7 @@ class CommonMethods:
 
     def do_sql(self, sql):
         print(self.db.affect(sql))
-        return self.db.select(sql)
+        return self.db.select(sql)[0]
 
 @ddt
 class TestSendMCode(unittest.TestCase, CommonMethods):
@@ -86,29 +86,36 @@ class TestSendMCode(unittest.TestCase, CommonMethods):
             setattr(ParmTemp, 'mobile', mobile)
             setattr(ParmTemp, 'tableno', mobile[-3:-2])
             setattr(ParmTemp, 'dbno', mobile[-2:])
-            case.checkSql = my_replace(case.checkSql)
+            case.checkSql = myRex.my_replace(case.checkSql)
             verify_code = self.db.affect(case.checkSql)
             self.assertNotEqual(verify_code, None)
 
 
 @ddt
-class TestUserRegister(unittest.TestCase):
+class TestUserRegister(unittest.TestCase, CommonMethods):
     sheet_name = 'userRegister'
     wb = ReadExcel(file_path, sheet_name)
     cases = wb.read_data_obj()
+
+    @classmethod
+    def setUpClass(cls) -> None:
+        setattr(ParmTemp, 'randomNo', one_number(6))
+        setattr(ParmTemp, 'unRegPhone', one_number(11))
+        cls.db = Mysql()
 
     @data(*cases)
     def test(self, case):
         my_log.info(f'TestCase {case.case_name} starting------')
         # 数据预处理
         case.url = api + case.url
+        # ParmTemp.__setattr__('randomNo', one_number(6))
         if case.preSql:
-            case.preSql = my_replace(case.preSql)
-            db2pre = Mysql('user_db')
-            res = db2pre.select(case.preSql)[0]
-            setattr(ParmTemp, 'uid', res)
-        case.request_data = my_replace(case.request_data)
-        actual = self.get_ret(case.url, case.request_data, case.api_name)
+            case.preSql = myRex.my_replace(case.preSql)
+            res = self.do_sql(case.preSql)
+            attr = myRex.my_find(case.preSql, "as (.*?) from")
+            setattr(ParmTemp, attr, res)
+        case.request_data = myRex.my_replace(case.request_data)
+        actual = self.get_ret(case)
         expect = json.loads(case.expected_data)
         do_assert(actual, expect, self, case)
         if case.checkSql:
@@ -116,8 +123,6 @@ class TestUserRegister(unittest.TestCase):
             setattr(ParmTemp, 'mobile', mobile)
             setattr(ParmTemp, 'tableno', mobile[-3:-2])
             setattr(ParmTemp, 'dbno', mobile[-2:])
-            case.checkSql = my_replace(case.checkSql)
-            db2check = Mysql(f"sms_db_{ParmTemp.dbno}")
-            verify_code = db2check.select(case.checkSql)[0]
+            case.checkSql = myRex.my_replace(case.checkSql)
+            verify_code = self.do_sql(case.checkSql)
             self.assertNotEqual(verify_code, None)
-            setattr(ParmTemp, 'verify_code', verify_code)

@@ -14,17 +14,25 @@ class ParmTemp:
     pass
 
 
-def my_replace(string, content=None, split='#'):
-    while split in string:
-        pattern = f"{split}(.+?){split}"
-        try:
-            arg = re.search(pattern, string).group(1)
-            word = my_config.get('account', arg)
-        except configparser.NoOptionError:
-            word = content if content is not None else getattr(ParmTemp, arg)
-        string = re.sub(pattern, word, string, count=1)
-    return string
+class MyRegex:
+    @staticmethod
+    def my_replace(string, content=None, split='#'):
+        while split in string:
+            pattern = f"{split}(.+?){split}"
+            try:
+                arg = re.search(pattern, string).group(1)
+                word = my_config.get('account', arg)
+            except configparser.NoOptionError:
+                word = content if content is not None else getattr(ParmTemp, arg)
+            string = re.sub(pattern, word, string, count=1)
+        return string
 
+    @staticmethod
+    def my_find(string, pattern):
+        return re.search(pattern, string).group(1)
+
+
+myRex = MyRegex()
 
 if __name__ == '__main__':
     list = ['123', None, '2+3']

@@ -96,5 +96,6 @@ class Generate:
 my_generate = Generate()
 
 if __name__ == '__main__':
-    sheet_all = ['register', 'login', 'recharge', 'withdraw', 'add', 'bidLoan', 'audit']
-    my_generate.generate('sendMCode', '../data/api_test.xlsx', yaml_file='../config/parms.yaml')
+    # sheet_all = ['register', 'login', 'recharge', 'withdraw', 'add', 'bidLoan', 'audit']
+    sheet_all = ['sendMCode', 'userRegister', 'verifyUserAuth', 'bindBankCard']
+    my_generate.generate('userRegister', '../data/api_test.xlsx', yaml_file='../config/parms.yaml')

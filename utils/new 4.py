@@ -293,6 +293,12 @@ def web_pc():
     print(web_service)
 
 
+def interview_pc():
+    a = [1, 2, 4, 2, 4, 5, 6, 7, 8, 9, 0]
+    # a = list(set(a))
+    print(a)
+
+
 
 if __name__ == '__main__':
     pass
@@ -304,10 +310,11 @@ if __name__ == '__main__':
     # tt = one_number("1391254|0000-9999|")
     # print(re_ps2())
     # re_pc_22()
-    random_pc3()
+    # random_pc3()
     # print(number_cmp([5, 2, 3, 54, 4]))
     # for i in CountIter(5):
     #     print(i)
-    lambda_pc()
+    # lambda_pc()
     # print(time.asctime() - time.asctime())
+    interview_pc()
     print(datetime.datetime.now() - datetime.datetime.now())

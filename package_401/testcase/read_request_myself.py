@@ -1,4 +1,5 @@
 import json
+import random
 import unittest
 
 from suds import client, WebFault
@@ -7,10 +8,9 @@ from package_401.common.R_r_config import my_config
 from package_401.common.R_r_excel import ReadExcel
 from package_401.common.R_r_log import my_log
 from package_401.common.R_r_os import DATA_DIR, CONF_DIR
-from package_401.library.ddt import ddt, data
-from package_401.common.R_r_sql import Mysql
 from package_401.common.R_r_re import myRex, ParmTemp
-import random
+from package_401.common.R_r_sql import Mysql
+from package_401.library.ddt import ddt, data
 
 api = my_config.get('env', 'api')
 
@@ -64,6 +64,7 @@ class CommonMethods:
         print(self.db.affect(sql))
         return self.db.select(sql)[0]
 
+
 @ddt
 class TestSendMCode(unittest.TestCase, CommonMethods):
     sheet_name = 'sendMCode'
@@ -100,29 +101,68 @@ class TestUserRegister(unittest.TestCase, CommonMethods):
     @classmethod
     def setUpClass(cls) -> None:
         setattr(ParmTemp, 'randomNo', one_number(6))
-        setattr(ParmTemp, 'unRegPhone', one_number(11))
+        mobile = one_number(11)
+        setattr(ParmTemp, 'unRegPhone', mobile)
+        setattr(ParmTemp, 'mobile', mobile)
+        setattr(ParmTemp, 'tableno', mobile[-3:-2])
+        setattr(ParmTemp, 'dbno', mobile[-2:])
         cls.db = Mysql()
 
     @data(*cases)
     def test(self, case):
         my_log.info(f'TestCase {case.case_name} starting------')
         # 数据预处理
-        case.url = api + case.url
-        # ParmTemp.__setattr__('randomNo', one_number(6))
         if case.preSql:
             case.preSql = myRex.my_replace(case.preSql)
             res = self.do_sql(case.preSql)
             attr = myRex.my_find(case.preSql, "as (.*?) from")
             setattr(ParmTemp, attr, res)
-        case.request_data = myRex.my_replace(case.request_data)
+        for item in case.__dict__.items():
+            if isinstance(item[1], str):
+                case.__setattr__(item[0], myRex.my_replace(item[1], class_temp=case))
+        case.url = api + case.url
+
+        # 接口交互
         actual = self.get_ret(case)
         expect = json.loads(case.expected_data)
+
+        # 断言判断
         do_assert(actual, expect, self, case)
         if case.checkSql:
-            mobile = eval(case.request_data)['mobile']
-            setattr(ParmTemp, 'mobile', mobile)
-            setattr(ParmTemp, 'tableno', mobile[-3:-2])
-            setattr(ParmTemp, 'dbno', mobile[-2:])
-            case.checkSql = myRex.my_replace(case.checkSql)
             verify_code = self.do_sql(case.checkSql)
             self.assertNotEqual(verify_code, None)
+
+# class TestUserRegister(unittest.TestCase, CommonMethods):
+#     sheet_name = 'userRegister'
+#     wb = ReadExcel(file_path, sheet_name)
+#     cases = wb.read_data_obj()
+#
+#     @classmethod
+#     def setUpClass(cls) -> None:
+#         setattr(ParmTemp, 'randomNo', one_number(6))
+#         setattr(ParmTemp, 'unRegPhone', one_number(11))
+#         cls.db = Mysql()
+#
+#     @data(*cases)
+#     def test(self, case):
+#         my_log.info(f'TestCase {case.case_name} starting------')
+#         # 数据预处理
+#         case.url = api + case.url
+#         # ParmTemp.__setattr__('randomNo', one_number(6))
+#         if case.preSql:
+#             case.preSql = myRex.my_replace(case.preSql)
+#             res = self.do_sql(case.preSql)
+#             attr = myRex.my_find(case.preSql, "as (.*?) from")
+#             setattr(ParmTemp, attr, res)
+#         case.request_data = myRex.my_replace(case.request_data)
+#         actual = self.get_ret(case)
+#         expect = json.loads(case.expected_data)
+#         do_assert(actual, expect, self, case)
+#         if case.checkSql:
+#             mobile = eval(case.request_data)['mobile']
+#             setattr(ParmTemp, 'mobile', mobile)
+#             setattr(ParmTemp, 'tableno', mobile[-3:-2])
+#             setattr(ParmTemp, 'dbno', mobile[-2:])
+#             case.checkSql = myRex.my_replace2(case)
+#             verify_code = self.do_sql(case.checkSql)
+#             self.assertNotEqual(verify_code, None)

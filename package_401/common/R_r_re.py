@@ -16,14 +16,17 @@ class ParmTemp:
 
 class MyRegex:
     @staticmethod
-    def my_replace(string, content=None, split='#'):
+    def my_replace(string, content=None, split='#', class_temp=None):
         while split in string:
             pattern = f"{split}(.+?){split}"
             try:
                 arg = re.search(pattern, string).group(1)
                 word = my_config.get('account', arg)
             except configparser.NoOptionError:
-                word = content if content is not None else getattr(ParmTemp, arg)
+                try:
+                    word = content if content is not None else getattr(ParmTemp, arg)
+                except AttributeError:
+                    word = content if content is not None else getattr(class_temp, arg)
             string = re.sub(pattern, word, string, count=1)
         return string
 

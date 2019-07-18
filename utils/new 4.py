@@ -294,14 +294,43 @@ def web_pc():
 
 
 def interview_pc():
-    a = [1, 2, 4, 2, 4, 5, 6, 7, 8, 9, 0]
-    # a = list(set(a))
+    a = [8, 9, 10, 11, 12, 13, 14, 15]
+    b = a.insert(1, 'w')
     print(a)
+    print(b)
 
+
+def calcu_pc():
+    with open("history.txt", "r", encoding="utf-8") as f:
+        history = f.readlines()
+        for lineNo in range(len(history)):
+            print(f"第{lineNo + 1}次计算的值：{history[lineNo]}")
+        if 'lineNo' not in dir():
+            print("未有过计算记录")
+    string = " 10.. # 012 #-3#11.2#9"
+    list = string.split("#")
+    print(list)
+    temp = 0
+    for number in list:
+        try:
+            temp += eval(number)
+        except:
+            print(f"wrong input: {number} is not a number\n")
+    print(temp)
+    with open("history.txt", "a+", encoding="utf-8") as f:
+        f.writelines(str(temp) + '\n')
 
 
 if __name__ == '__main__':
     pass
+    # dict2 = {3: 5}
+    # dict3 = {(1, 2, 3): "uestc"}
+    # dict3 = {[1, 2, 3]: "uestc"}
+    # calcu_pc()
+    list1 = [1, 2, 3]
+    list2 = [4, 5, 6]
+    list1.insert(0, list2)
+    print(list1)
     # s = time.strftime('%Y%m%d%H', time.localtime())
     # print(s)
     # print(pinjie())
@@ -316,5 +345,5 @@ if __name__ == '__main__':
     #     print(i)
     # lambda_pc()
     # print(time.asctime() - time.asctime())
-    interview_pc()
-    print(datetime.datetime.now() - datetime.datetime.now())
+    # interview_pc()
+    # print(datetime.datetime.now() - datetime.datetime.now())

@@ -301,49 +301,60 @@ def interview_pc():
 
 
 def calcu_pc():
-    with open("history.txt", "r", encoding="utf-8") as f:
-        history = f.readlines()
+    with open("history.txt", "r", encoding="utf-8") as f1:
+        history = f1.readlines()
         for lineNo in range(len(history)):
-            print(f"第{lineNo + 1}次计算的值：{history[lineNo]}")
+            print(f"No.{lineNo + 1} result: {history[lineNo]}")
         if 'lineNo' not in dir():
-            print("未有过计算记录")
-    string = " 10.. # 012 #-3#11.2#9"
-    list = string.split("#")
-    print(list)
-    temp = 0
-    for number in list:
+            print("Not even one cal recorded")
+    # string = " 10.. # 012 #-3#11.2#9"  # test data
+    string = input("enter ur string:")
+    list_temp = string.split("#")
+    print(list_temp)
+    temp = 1
+    for number in list_temp:
         try:
-            temp += eval(number)
+            if eval(number) == 0:
+                continue
+            temp *= eval(number)
         except:
-            print(f"wrong input: {number} is not a number\n")
-    print(temp)
-    with open("history.txt", "a+", encoding="utf-8") as f:
-        f.writelines(str(temp) + '\n')
+            print(f"wrong input: {number} is not a number")
+    with open("history.txt", "a+", encoding="utf-8") as f2:
+        f2.writelines(str(temp % 23) + '\n')
+
+
+def eval_pc():
+    i = 12
+    j = 13
+    answer = 0
+    loc = locals()
+    exec("answer=i*j")
+    print("Answer is %s" % answer)
+
+
+def test2():
+    a = 23
+    b = 56
+    loc = locals()
+    for i in [1, 2, 3]:
+        exec(f"c{i} = a + b + {i}", loc)
+        exec(f"c{i} = loc['c{i}']")
+        exec(f"print(c{i})")
+
+
+def in_pc():
+    happy = 11
+    sad = 12
+    print('happy' in dir())
+    print('happy' in locals())
 
 
 if __name__ == '__main__':
-    pass
-    # dict2 = {3: 5}
-    # dict3 = {(1, 2, 3): "uestc"}
-    # dict3 = {[1, 2, 3]: "uestc"}
-    # calcu_pc()
-    list1 = [1, 2, 3]
-    list2 = [4, 5, 6]
-    list1.insert(0, list2)
-    print(list1)
-    # s = time.strftime('%Y%m%d%H', time.localtime())
-    # print(s)
-    # print(pinjie())
-    # csv_pc2()
-    # print(max_min(100, 101))
-    # tt = one_number("1391254|0000-9999|")
-    # print(re_ps2())
-    # re_pc_22()
-    # random_pc3()
-    # print(number_cmp([5, 2, 3, 54, 4]))
-    # for i in CountIter(5):
-    #     print(i)
-    # lambda_pc()
-    # print(time.asctime() - time.asctime())
-    # interview_pc()
+    # test2()
+    calcu_pc()
+    # in_pc()
     # print(datetime.datetime.now() - datetime.datetime.now())
+
+    # with open('history.txt', 'r', encoding='utf-8') as f:
+    #     res = f.read()
+    #     print(res)

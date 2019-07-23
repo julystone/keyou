@@ -23,6 +23,8 @@ from configparser import ConfigParser
 #         return section_tuple_obj
 class ReadConfig(ConfigParser):
     def __init__(self):
+        ConfigParser.__init__(self)
+        ConfigParser.__init__()
         super().__init__()
         self.read(r'C:\Users\Administrator\PycharmProjects\keyou\package_101\config\july_config.cfg', encoding='utf8')
 

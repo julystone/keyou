@@ -10,9 +10,9 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver import ActionChains
 
-driver = webdriver.Firefox()
+# driver = webdriver.Firefox()
+driver = webdriver.Chrome()
 driver.maximize_window()
 # driver.implicitly_wait(20)  # 等待元素存在，等待命令执行完成
 
@@ -32,7 +32,9 @@ wait.until(EC.visibility_of_element_located(loc0))
 driver.find_element(*loc0).click()
 
 # 需要鼠标移动一下
-ActionChains(driver).move_by_offset(100, 300)
+# ActionChains(driver).move_by_offset(100, 300)
+
+
 
 loc00 = (By.XPATH, "//a[@id='switcher_plogin']")
 WebDriverWait(driver, 30).until(EC.visibility_of_element_located(loc00))

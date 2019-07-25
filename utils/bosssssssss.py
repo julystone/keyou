@@ -31,9 +31,9 @@ if __name__ == '__main__':
         print(f"第{_}年".center(18, "*"))
         Julei1 = Employee(300)
         GuoHong.hire(Julei1)
-        for people in GuoHong.emp_list:
+        for people, No in zip(GuoHong.emp_list, range(len(GuoHong.emp_list))):
             people.work_per_year(GuoHong)
-            # print(f"员工工资为：{people.salary}")
+            print(f"第{No + 1}号员工共获得工资为：{people.salary}")
         GuoHong.sell_product()
         print(f"第{_}年结余：{GuoHong.finance}")
 

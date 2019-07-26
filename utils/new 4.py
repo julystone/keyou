@@ -3,6 +3,7 @@ import random
 import re
 from math import ceil
 from math import floor
+import itertools as it
 
 
 # import pandas as pd
@@ -377,6 +378,24 @@ def inst_pc(list2sort, N):
         i += 1
 
 
+def inst_pc1(list2sort, N):
+    temp = {}
+    for i, j in it.groupby(sorted(list2sort)):
+        temp[i] = len(list(j))
+    res = sorted(temp.items(), key=fun, reverse=True)
+    # i = 1
+    # while N > 0:
+    #     out = res.pop(0)
+    #     print(f"第{i}个重复数字为：{out[0]}，重复了{out[1]}次")
+    #     N -= 1
+    #     i += 1
+    for key, value in res:
+        print(key, value)
+        N -= 1
+        if N == 0:
+            break
+
+
 def login():
     passwd = {"july": "123"}
     time = 0
@@ -404,10 +423,17 @@ def file_path():
             print("1")
 
 
+def inter_pc():
+    for i, j in it.groupby(sorted("aavbvcc")):
+        print(i, list(j))
+
+
 if __name__ == '__main__':
     # test2()
     # calcu_pc()
+    inst_pc1([1, 2, 3, 4, 5, 6, 1, 3, 5, 6, 2, 1, 3, 1, 5], 4)
     inst_pc([1, 2, 3, 4, 5, 6, 1, 3, 5, 6, 2, 1, 3, 1, 5], 4)
+    # inter_pc()
     # login()
     # file_path()
     # in_pc()

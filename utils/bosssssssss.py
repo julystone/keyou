@@ -34,7 +34,7 @@ if __name__ == '__main__':
         for people in GuoHong.emp_list:
             people.work_per_year(GuoHong)
             # print(f"员工工资为：{people.salary}")
-        print(f"总产品数量为：{GuoHong.product}")
+        GuoHong.sell_product()
+        print(f"第{_}年结余：{GuoHong.finance}")
 
-    GuoHong.sell_product()
     print(GuoHong.finance)

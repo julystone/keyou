@@ -9,10 +9,11 @@ E-mail:785038575@qq.com
 ====================================
 """
 import time
+
 from selenium import webdriver
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.wait import WebDriverWait
 
 # 开启一个浏览器会话
 # driver = webdriver.Firefox()

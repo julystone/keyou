@@ -4,6 +4,7 @@ import re
 from math import ceil
 from math import floor
 import itertools as it
+import datetime
 
 
 # import pandas as pd
@@ -428,12 +429,40 @@ def inter_pc():
         print(i, list(j))
 
 
+def climb_stairs(n):
+    if n != 1 and n != 2:
+        if n - 1 in exist.keys() and n - 2 in exist.keys():
+            pass
+        else:
+            exist[n - 1] = climb_stairs(n - 1)
+            exist[n - 2] = climb_stairs(n - 2)
+        exist[n] = exist[n - 1] + exist[n - 2]
+        return exist[n]
+    elif n == 2:
+        return 2
+    elif n == 1:
+        return 1
+
+
+def yield_pc(n):
+    for _ in range(n):
+        yield _ ** 2
+
+
+
 if __name__ == '__main__':
     # test2()
     # calcu_pc()
-    inst_pc1([1, 2, 3, 4, 5, 6, 1, 3, 5, 6, 2, 1, 3, 1, 5], 4)
-    inst_pc([1, 2, 3, 4, 5, 6, 1, 3, 5, 6, 2, 1, 3, 1, 5], 4)
+    # inst_pc1([1, 2, 3, 4, 5, 6, 1, 3, 5, 6, 2, 1, 3, 1, 5], 4)
+    # inst_pc([1, 2, 3, 4, 5, 6, 1, 3, 5, 6, 2, 1, 3, 1, 5], 4)
     # inter_pc()
+    exist = {1: 1, 2: 2}
+    for i in range(1, 101, 1):
+        print(f"{i}层楼梯，有{climb_stairs(i)}种方式")
+
+    print(yield_pc(5))
+    # climb_stairs(3)
+
     # login()
     # file_path()
     # in_pc()

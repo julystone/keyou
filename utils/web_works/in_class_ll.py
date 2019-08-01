@@ -1,10 +1,11 @@
 # -*-coding:utf8-*-
 
 
+import time
+
 from selenium import webdriver
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
-import time
 
 driver = webdriver.Firefox()
 driver.maximize_window()

@@ -2,6 +2,7 @@ import csv
 import itertools as it
 import random
 import re
+
 from math import ceil
 from math import floor
 
@@ -39,7 +40,7 @@ def exception_practise():
             if player_choice_init not in ["1", "2", "3"]:
                 raise TypeError
             break
-        except (ValueError, TypeError) as Err:
+        except (ValueError, TypeError):
             print('出错了，必须是[1,2,3]区间的\n')
 
         # i -= 1
@@ -427,6 +428,19 @@ def inter_pc():
         print(i, list(j))
 
 
+import functools
+
+
+@functools.lru_cache(10)
+def climb_stairs2(n):
+    if n != 1 and n != 2:
+        return climb_stairs2(n - 1) + climb_stairs2(n - 2)
+    elif n == 2:
+        return 2
+    elif n == 1:
+        return 1
+
+
 def climb_stairs(n):
     if n != 1 and n != 2:
         if n - 1 in exist.keys() and n - 2 in exist.keys():
@@ -447,28 +461,17 @@ def yield_pc(n):
         yield _ ** 2
 
 
-import functools
+def ft_pc():
+    def add_raw(a, b, c, d):
+        return a + b + c + d
+
+    add_all = functools.partial(add_raw, 1, 2, 3, 4)
+    print(add_all())
 
 
-# 加上cache提高性能
-@functools.lru_cache(5)
-def climb_stairs3(n):
-    if n not in [1, 2, 3]:
-        return climb_stairs3(n - 1) + climb_stairs3(n - 2) + climb_stairs3(n - 3)
-    elif n == 3:
-        return 4
-    elif n == 2:
-        return 2
-    elif n == 1:
-        return 1
-
-
-class xo:
-    count = 0
-
-    def __new__(cls, *args, **kwargs):
-        cls.count += 1
-        print(cls.count)
+def gene_dic_pc():
+    dict1 = {a: a ** 2 for a in range(0, 10, 2)}
+    print(dict1)
 
 
 if __name__ == '__main__':
@@ -477,16 +480,14 @@ if __name__ == '__main__':
     # inst_pc1([1, 2, 3, 4, 5, 6, 1, 3, 5, 6, 2, 1, 3, 1, 5], 4)
     # inst_pc([1, 2, 3, 4, 5, 6, 1, 3, 5, 6, 2, 1, 3, 1, 5], 4)
     # inter_pc()
-    # exist = {1: 1, 2: 2}
-    # for i in range(1, 101, 1):
-    #     print(f"{i}层楼梯，有{climb_stairs3(i)}种方式")
-
-    ki = xo()
-    k2 = xo()
+    exist = {1: 1, 2: 2}
+    for i in range(1, 101, 1):
+        print(f"{i}层楼梯，有{climb_stairs2(i)}种方式")
 
     # print(yield_pc(5))
     # climb_stairs(3)
-
+    # ft_pc()
+    gene_dic_pc()
     # login()
     # file_path()
     # in_pc()

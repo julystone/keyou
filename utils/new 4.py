@@ -1,10 +1,9 @@
 import csv
+import itertools as it
 import random
 import re
 from math import ceil
 from math import floor
-import itertools as it
-import datetime
 
 
 # import pandas as pd
@@ -349,7 +348,6 @@ def in_pc():
     print('happy' in locals())
 
 
-import operator
 from collections import Counter
 
 
@@ -449,6 +447,29 @@ def yield_pc(n):
         yield _ ** 2
 
 
+import functools
+
+
+# 加上cache提高性能
+@functools.lru_cache(5)
+def climb_stairs3(n):
+    if n not in [1, 2, 3]:
+        return climb_stairs3(n - 1) + climb_stairs3(n - 2) + climb_stairs3(n - 3)
+    elif n == 3:
+        return 4
+    elif n == 2:
+        return 2
+    elif n == 1:
+        return 1
+
+
+class xo:
+    count = 0
+
+    def __new__(cls, *args, **kwargs):
+        cls.count += 1
+        print(cls.count)
+
 
 if __name__ == '__main__':
     # test2()
@@ -456,11 +477,14 @@ if __name__ == '__main__':
     # inst_pc1([1, 2, 3, 4, 5, 6, 1, 3, 5, 6, 2, 1, 3, 1, 5], 4)
     # inst_pc([1, 2, 3, 4, 5, 6, 1, 3, 5, 6, 2, 1, 3, 1, 5], 4)
     # inter_pc()
-    exist = {1: 1, 2: 2}
-    for i in range(1, 101, 1):
-        print(f"{i}层楼梯，有{climb_stairs(i)}种方式")
+    # exist = {1: 1, 2: 2}
+    # for i in range(1, 101, 1):
+    #     print(f"{i}层楼梯，有{climb_stairs3(i)}种方式")
 
-    print(yield_pc(5))
+    ki = xo()
+    k2 = xo()
+
+    # print(yield_pc(5))
     # climb_stairs(3)
 
     # login()

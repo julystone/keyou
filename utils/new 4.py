@@ -441,24 +441,24 @@ def climb_stairs2(n):
         return 1
 
 
-def climb_stairs(n):
-    if n != 1 and n != 2:
-        if n - 1 in exist.keys() and n - 2 in exist.keys():
-            pass
-        else:
-            exist[n - 1] = climb_stairs(n - 1)
-            exist[n - 2] = climb_stairs(n - 2)
-        exist[n] = exist[n - 1] + exist[n - 2]
-        return exist[n]
-    elif n == 2:
-        return 2
-    elif n == 1:
-        return 1
+def foo():
+    print("starting...")
+    while True:
+        for _ in range(5):
+            yield _
 
 
-def yield_pc(n):
-    for _ in range(n):
-        yield _ ** 2
+def climb_stairs3(n):
+    def fibo():
+        (a, b, c) = (1, 2, 4)
+        while 1:
+            yield a + b + c
+            (a, b, c) = (b, c, a + b + c)
+
+    k = fibo()
+    for _ in range(4, n, 1):
+        # print(next(k))
+        print(f"{_}层楼梯，有{next(k)}种方式")
 
 
 def ft_pc():
@@ -474,25 +474,30 @@ def gene_dic_pc():
     print(dict1)
 
 
+def fibo_pc(n):
+    def inner():
+        (a, b) = (1, 2)
+        while 1:
+            yield a + b
+            (a, b) = (b, a + b)
+
+    g = inner()
+    for _ in range(4, 101, 1):
+        print(f"第{_}：{next(g)}")
+
 if __name__ == '__main__':
     # test2()
     # calcu_pc()
     # inst_pc1([1, 2, 3, 4, 5, 6, 1, 3, 5, 6, 2, 1, 3, 1, 5], 4)
     # inst_pc([1, 2, 3, 4, 5, 6, 1, 3, 5, 6, 2, 1, 3, 1, 5], 4)
     # inter_pc()
-    exist = {1: 1, 2: 2}
-    for i in range(1, 101, 1):
-        print(f"{i}层楼梯，有{climb_stairs2(i)}种方式")
-
-    # print(yield_pc(5))
-    # climb_stairs(3)
-    # ft_pc()
-    gene_dic_pc()
-    # login()
-    # file_path()
-    # in_pc()
-    # print(datetime.datetime.now() - datetime.datetime.now())
-
-    # with open('history.txt', 'r', encoding='utf-8') as f:
-    #     res = f.read()
-    #     print(res)
+    # for i in range(1, 101, 1):
+    #     print(f"{i}层楼梯，有{climb_stairs2(i)}种方式")
+    # g = fibo_pc(100)
+    h = climb_stairs3(100)
+    # for _ in range(50):
+    #     print(next(g))
+    # print(next(g))
+    # print(next(g))
+    # print(next(g))
+    # print(next(g))

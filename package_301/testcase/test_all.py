@@ -93,7 +93,8 @@ class RegisterTestCase(unittest.TestCase):
         case.url = api + case.url
         actual = testRequest.request(method=case.method, url=case.url, data=eval(case.request_data),
                                      params=eval(case.request_data))
-        actual = json.loads(actual)
+        actual = json.loads(actual
+                            )
         expect = json.loads(case.expected_data)
         try:
             result = None

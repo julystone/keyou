@@ -1,10 +1,10 @@
 import csv
+import itertools as it
 import random
 import re
+
 from math import ceil
 from math import floor
-import itertools as it
-import datetime
 
 
 # import pandas as pd
@@ -40,7 +40,7 @@ def exception_practise():
             if player_choice_init not in ["1", "2", "3"]:
                 raise TypeError
             break
-        except (ValueError, TypeError) as Err:
+        except (ValueError, TypeError):
             print('出错了，必须是[1,2,3]区间的\n')
 
         # i -= 1
@@ -349,7 +349,6 @@ def in_pc():
     print('happy' in locals())
 
 
-import operator
 from collections import Counter
 
 
@@ -429,6 +428,19 @@ def inter_pc():
         print(i, list(j))
 
 
+import functools
+
+
+@functools.lru_cache(10)
+def climb_stairs2(n):
+    if n != 1 and n != 2:
+        return climb_stairs2(n - 1) + climb_stairs2(n - 2)
+    elif n == 2:
+        return 2
+    elif n == 1:
+        return 1
+
+
 def climb_stairs(n):
     if n != 1 and n != 2:
         if n - 1 in exist.keys() and n - 2 in exist.keys():
@@ -449,6 +461,18 @@ def yield_pc(n):
         yield _ ** 2
 
 
+def ft_pc():
+    def add_raw(a, b, c, d):
+        return a + b + c + d
+
+    add_all = functools.partial(add_raw, 1, 2, 3, 4)
+    print(add_all())
+
+
+def gene_dic_pc():
+    dict1 = {a: a ** 2 for a in range(0, 10, 2)}
+    print(dict1)
+
 
 if __name__ == '__main__':
     # test2()
@@ -458,11 +482,12 @@ if __name__ == '__main__':
     # inter_pc()
     exist = {1: 1, 2: 2}
     for i in range(1, 101, 1):
-        print(f"{i}层楼梯，有{climb_stairs(i)}种方式")
+        print(f"{i}层楼梯，有{climb_stairs2(i)}种方式")
 
-    print(yield_pc(5))
+    # print(yield_pc(5))
     # climb_stairs(3)
-
+    # ft_pc()
+    gene_dic_pc()
     # login()
     # file_path()
     # in_pc()

@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 # Name: login_page
-# Author: 简
+# Author: july
 # Time: 2019/7/31
 
 from selenium.webdriver.common.by import By

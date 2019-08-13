@@ -6,6 +6,7 @@
 from collections import namedtuple
 
 import openpyxl
+from openpyxl.styles import Font
 
 
 class Case:
@@ -26,26 +27,29 @@ class ReadExcel(object):
         """
 
         # 先将多余的行列预处理删除掉
-        wb = openpyxl.load_workbook(file_name)
-        sheet = wb[sheet_name]
-        self.max_row = sheet.max_row
-        self.max_column = sheet.max_column
-        for row in list(sheet.rows)[::-1]:
+        self.wb = openpyxl.load_workbook(file_name)
+        self.sheet = self.wb[sheet_name]
+        self.max_row = self.sheet.max_row
+        self.max_column = self.sheet.max_column
+        for row in list(self.sheet.rows)[::-1]:
             if row[0].value is None:
-                sheet.delete_rows(row[0].row, 1)
-        for column in list(sheet.columns)[::-1]:
+                self.sheet.delete_rows(row[0].row, 1)
+        for column in list(self.sheet.columns)[::-1]:
             if column[0].value is None:
-                sheet.delete_cols(column[0].column, 1)
-        wb.save(file_name)
-        wb.close()
+                self.sheet.delete_cols(column[0].column, 1)
+        self.wb.save(file_name)
+        self.wb.close()
 
         self.file_name = file_name
         self.sheet_name = sheet_name
-        self.wb = None
-        self.sheet = None
 
     def __del__(self):
         self.close()
+
+    def clear_sheet(self):
+        self.wb.remove(self.wb[self.sheet_name])
+        self.wb.create_sheet(self.sheet_name, 0)
+        self.save()
 
     def read_data_line(self):
         """
@@ -206,6 +210,7 @@ class ReadExcel(object):
     def open(self):
         self.wb = openpyxl.load_workbook(self.file_name)
         self.sheet = self.wb[self.sheet_name]
+        self.save()
 
     def close(self):
         self.wb.close()
@@ -215,6 +220,15 @@ class ReadExcel(object):
         self.sheet.cell(row, column, data)
         self.save()
         self.close()
+
+    def set_column_width(self, column, width):
+        self.sheet.column_dimensions[column].width = width
+        self.save()
+
+    def set_font(self, row, column, Font=Font(u'宋体', size=11, bold=True, color='000000')):
+        cell = chr(ord("A") + column - 1) + str(row)
+        self.sheet[cell].font = Font
+        self.save()
 
     def w_data_origin(self, row, column, data):
         self.sheet.cell(row, column, data)
@@ -231,7 +245,7 @@ class ReadExcel(object):
 
 
 if __name__ == '__main__':
-    r = ReadExcel('../data/api_test.xlsx', 'sendMCode')
+    r = ReadExcel('../data/api_test2.xlsx', 'userRegister')
     # print('---------------------------------------------------')
     # data = r.r_data_from_colunm([1, 2, 3])
     # print(data)
@@ -239,5 +253,10 @@ if __name__ == '__main__':
     # print('---------------------------------------------------')
     # data = r.r_data_obj_from_column([1, 2, 3])
     # print(data)
-    r.read_data_obj()
-    print(r.r_max()[1])
+    # r.read_data_obj()
+    # r.clear_sheet()
+    r.set_column_width("D", 14)
+    FONT = Font(u'宋体', size=12, bold=True, color='000000')
+    # r.sheet.column_dimensions["A"].font = FONT
+    r.set_font("A3", FONT)
+    r.save()

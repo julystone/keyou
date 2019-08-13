@@ -157,16 +157,16 @@ def csv_pc2():
             file1writer.writerow(i[10])
 
 
-def pd_pc():
-    res = pd.read_csv('测试成绩统计_back.csv', encoding='gb2312')
-    res.insert(res.shape[1], 'avg', None)
-    for x in range(res.shape[0]):
-        sum = 0
-        for y in range(res.shape[1] - 2):
-            sum += res.iloc[x][y + 1]
-        avg = sum / 9
-        res.loc[x, 'avg'] = round(avg, 2)
-    res.to_csv('测试成绩统计2.csv', index=False)
+# def pd_pc():
+#     res = pd.read_csv('测试成绩统计_back.csv', encoding='gb2312')
+#     res.insert(res.shape[1], 'avg', None)
+#     for x in range(res.shape[0]):
+#         sum = 0
+#         for y in range(res.shape[1] - 2):
+#             sum += res.iloc[x][y + 1]
+#         avg = sum / 9
+#         res.loc[x, 'avg'] = round(avg, 2)
+#     res.to_csv('测试成绩统计2.csv', index=False)
 
 
 def one_number(word):
@@ -485,6 +485,24 @@ def fibo_pc(n):
     for _ in range(4, 101, 1):
         print(f"第{_}：{next(g)}")
 
+
+def checkIfInfoLine(string):
+    pattern = r"\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2} "
+    return re.search(pattern, string)
+
+
+def intergalTrans(inter):
+    inter = inter.lower()
+    special_symbol = ["w", "万"]
+    for symbol in special_symbol:
+        if symbol in inter:
+            raw_int = inter.split(symbol)[0]
+            if "." in raw_int:
+                return float(raw_int) * 10000
+            raw_float = inter.split(symbol)[1]
+            return float(raw_int + "." + raw_float) * 10000
+
+
 if __name__ == '__main__':
     # test2()
     # calcu_pc()
@@ -494,10 +512,12 @@ if __name__ == '__main__':
     # for i in range(1, 101, 1):
     #     print(f"{i}层楼梯，有{climb_stairs2(i)}种方式")
     # g = fibo_pc(100)
-    h = climb_stairs3(100)
+    # h = climb_stairs3(100)
     # for _ in range(50):
     #     print(next(g))
     # print(next(g))
     # print(next(g))
     # print(next(g))
     # print(next(g))
+    # print(checkIfInfoLine("aaa"))
+    print(intergalTrans("1万"))

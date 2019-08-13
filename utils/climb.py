@@ -24,7 +24,6 @@ def common():
         pass
 
 
-@timer
 def climb_1(n):
     def _climb_1(n):
         global dict_t
@@ -46,6 +45,16 @@ def climb_2(n):
             return n
 
     return _climb_2(n)
+
+
+def climb_2a(steps):
+    dp = ["inf"] * (steps + 1)
+    for i in range(1, steps + 1):
+        if i not in [1, 2]:
+            dp[i] = dp[i - 1] + dp[i - 2]
+        else:
+            dp[i] = i
+    return dp[-1]
 
 
 @functools.lru_cache(3)
@@ -77,6 +86,7 @@ if __name__ == '__main__':
     steps = 30
     dict_t = {1: 1, 2: 2}  # 给方案一特地设定的局部变量
     print(climb_1(steps))
-    print(climb_2(steps))  # 速度非常慢
+    # print(climb_2(steps))  # 速度非常慢
+    print(climb_2a(steps))
     print(climb_3(steps))
     print(climb_4(steps))

@@ -6,6 +6,7 @@
 import pandas as pd
 
 
+
 def pd_pc():
     res = pd.read_excel('cases.xlsx', 'Sheet1')
     # 读取单列
@@ -31,8 +32,10 @@ def pd_pc():
     # loc 支持bool判断
     print(res.iloc[[1, 3], [1, 3]])
     print(res.loc[[1, 3], ['data', 'expected']])
-    print(res.case_id == 0)  # 返回true 或者 false
-    print(res.loc[res.case_id == 0])  # loc出来true的返回
+    print("".center(12, "_"))
+    print(res.case_id == 1)  # 返回true 或者 false
+    print("".center(12, "_"))
+    print(res.loc[res.case_id == 2], [1, 2])  # loc出来true的返回
 
     # pandas 写入操作不够强大，它会重置格式
     # res['result'][0] = 'success'

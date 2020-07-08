@@ -1,6 +1,6 @@
 def pc_1():
     a = {"A": 1, "B": 2}
-    return {key: value for value, key in a.items()}
+    return {value: key for key, value in a.items()}
 
 
 if __name__ == '__main__':

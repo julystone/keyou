@@ -186,7 +186,7 @@ class ReadExcel(object):
 
 
 if __name__ == '__main__':
-    r = ReadExcel('cases.xlsx', 'Sheet1')
+    r = ReadExcel('../data/cases.xlsx', 'Sheet1')
     print('---------------------------------------------------')
     data = r.r_data_from_colunm([1, 2, 3])
     print(data)

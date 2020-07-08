@@ -14,7 +14,7 @@ url = 'http://118.25.173.30:9000/'
 my_session = Session()
 
 start_page = 1
-end_page = 1038
+end_page = 1672
 
 
 def get_csrf():

@@ -6,9 +6,6 @@
 
 from selenium.webdriver.common.by import By
 
-from package_WEB_Framework_V1.PageObjects.mix_page import MixInPage
-
-
 class LoginPage(MixInPage):
     # 用户名输入框
     user_loc = (By.XPATH, '//input[@name="phone"]')

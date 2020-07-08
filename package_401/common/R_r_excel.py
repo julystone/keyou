@@ -37,18 +37,31 @@ class ReadExcel(object):
         for column in list(self.sheet.columns)[::-1]:
             if column[0].value is None:
                 self.sheet.delete_cols(column[0].column, 1)
-        self.wb.save(file_name)
-        self.wb.close()
-
         self.file_name = file_name
         self.sheet_name = sheet_name
+
+        self.save()
+        self.close()
 
     def __del__(self):
         self.close()
 
+    @staticmethod
+    def create_new_workbook(filename):
+        if ".xlsx" not in filename:
+            filename = filename + ".xlsx"
+        wb = openpyxl.Workbook()
+        wb.create_sheet(title="Sheet1", index=0)
+        wb.save(filename)
+
     def clear_sheet(self):
         self.wb.remove(self.wb[self.sheet_name])
         self.wb.create_sheet(self.sheet_name, 0)
+        self.save()
+
+    def clear_sheet_except_title(self):
+        for row in list(self.sheet.rows)[:0:-1]:
+            self.sheet.delete_rows(row[0].row, 1)
         self.save()
 
     def read_data_line(self):
@@ -255,8 +268,9 @@ if __name__ == '__main__':
     # print(data)
     # r.read_data_obj()
     # r.clear_sheet()
-    r.set_column_width("D", 14)
-    FONT = Font(u'宋体', size=12, bold=True, color='000000')
+    # r.set_column_width("D", 14)
+    # FONT = Font(u'宋体', size=12, bold=True, color='000000')
     # r.sheet.column_dimensions["A"].font = FONT
-    r.set_font("A3", FONT)
-    r.save()
+    # r.set_font("A3", FONT)
+    # r.save()
+    ReadExcel.create_new_workbook("july.xlsx")

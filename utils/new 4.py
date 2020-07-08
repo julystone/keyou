@@ -3,6 +3,7 @@ import itertools as it
 import random
 import re
 
+import yaml
 from math import ceil
 from math import floor
 
@@ -357,6 +358,9 @@ def fun(tup):
 
 
 def inst_pc(list2sort, N):
+    # 直接用Counter
+    print(Counter(list2sort))
+
     temp = {}
     for item in list2sort:
         if item not in temp.keys():
@@ -364,11 +368,6 @@ def inst_pc(list2sort, N):
         else:
             temp[item] += 1
 
-    print(temp)
-    print(Counter(list2sort))
-
-    # res = sorted(temp.items(), key=operator.itemgetter(1), reverse=True)
-    # res = sorted(temp.items(), key=lambda x: x[1], reverse=True)
     res = sorted(temp.items(), key=fun, reverse=True)
     i = 1
     while N > 0:
@@ -383,12 +382,7 @@ def inst_pc1(list2sort, N):
     for i, j in it.groupby(sorted(list2sort)):
         temp[i] = len(list(j))
     res = sorted(temp.items(), key=fun, reverse=True)
-    # i = 1
-    # while N > 0:
-    #     out = res.pop(0)
-    #     print(f"第{i}个重复数字为：{out[0]}，重复了{out[1]}次")
-    #     N -= 1
-    #     i += 1
+
     for key, value in res:
         print(key, value)
         N -= 1
@@ -503,11 +497,141 @@ def intergalTrans(inter):
             return float(raw_int + "." + raw_float) * 10000
 
 
+def yaml_read():
+    YAML_PATH = "./config.yaml"
+    with open(YAML_PATH, 'r', encoding='utf-8') as f:
+        conf = yaml.safe_load(f)
+        print(conf['txt']['path'])
+
+
+def split_pc():
+    sample = r"C://dasdswdq//cqcno\bvwsedco\x.txt"
+    res = sample.split("//|/")[-1]
+    res = re.split(r"//|/|\\", sample)
+    print(res)
+
+
+def sort_list(li):
+    for i in range(li.__len__() - 1):
+        for j in range(i, li.__len__()):
+            if li[i] > li[j]:
+                li[i], li[j] = li[j], li[i]
+    return li
+
+
+def find_pc():
+    s1 = "abcdefg"
+    s2 = "def"
+    print(s1[1:-1])
+    print(s1.find(s2))
+    print("%s_%s" % (s1, s2))
+
+
+#
+# class inter_pattern:
+#
+#     def __init__(self, N):
+#         self.pat = [[0 for i in range(N)] for j in range(N)]
+#         self.N = N
+#         # self.direction = {"left": (0, 1), "down": (1, 0), "right": (0, -1), "up": (-1, 0)}
+#         self.direction = [(0, 1), (1, 0), (0, -1), (-1, 0)]
+#
+#     def cal_dir(self, row, column, direction):
+#         try: self.pat[row + direction[0]][column + direction[1]] == 0
+#         except IndexError: return direction["down"]
+#
+#     def run(self):
+#         for data in range(1, self.N * self.N + 1):
+#
+#     def climb_4(self, n):
+#         def inner():
+#             (a, b) = (0, 0)
+#             yield (a, b)
+#             d = self.direction[0]
+#             while 1:
+#                 try:
+#                     self.pat[a + d[0]][b + d[1]] = n
+#                 except IndexError:
+#                     d = self.direction
+#                 yield (a, b)
+#
+#         bo = inner()
+#         for _ in range(n):
+#             s = next(bo)
+#         return s
+class tuple(tuple):
+    def __add__(self, other):
+        new_tuple = []
+        for index in range(len(self)):
+            new_tuple.append(self[index] + other[index])
+        return tuple(new_tuple)
+
+    def __sub__(self, other):
+        new_tuple = []
+        for index in range(len(self)):
+            new_tuple.append(self[index] - other[index])
+        return tuple(new_tuple)
+
+
+def rotate(N):
+    table = [[0 for i in range(N)] for j in range(N)]
+    (i, j, k) = (0, 0, 0)
+    direction = [(0, 1), (1, 0), (0, -1), (-1, 0)]
+    length = len(str(N * N))
+    li = [f"{i:0{length}d}" for i in range(1, N * N + 1)]
+    # zz1 = (i, j)
+    # zz1 = MyTuple(zz1)
+    for _ in li:
+        try:
+            if i < 0 or j < 0 or table[i][j] != 0:
+                raise IndexError
+            table[i][j] = _
+            (i, j) = (i + direction[k][0], j + direction[k][1])
+        except IndexError:
+            (i, j) = (i - direction[k][0], j - direction[k][1])
+            k += 1
+            try:
+                (i, j) = (i + direction[k][0], j + direction[k][1])
+            except IndexError:
+                k = 0
+                (i, j) = (i + direction[k][0], j + direction[k][1])
+            table[i][j] = _
+            (i, j) = (i + direction[k][0], j + direction[k][1])
+
+    for item in table:
+        print(item)
+
+
+def zxc():
+    string = "a=1,b=2,c=3"
+    string_out = ""
+    pattern1 = r".*(?<=\=)"
+    pattern2 = r"(?=\=).*"
+    for item in string.split(","):
+        out = re.sub(pattern1, "123", item)
+        print(out)
+    print(string)
+
+
 if __name__ == '__main__':
     # test2()
     # calcu_pc()
     # inst_pc1([1, 2, 3, 4, 5, 6, 1, 3, 5, 6, 2, 1, 3, 1, 5], 4)
     # inst_pc([1, 2, 3, 4, 5, 6, 1, 3, 5, 6, 2, 1, 3, 1, 5], 4)
+    # split_pc()
+    # print(sort_list([2, 5, 1, 2, 6, 1, 6, 321, 3, 5, 51]))
+    # find_pc()inter_pcc
+    # rotate(10)
+    # zz1 = (1, 2)
+    # zz1 = tuple(zz1)
+    # zz2 = (3, 4)
+    # zz2 = tuple(zz2)
+    # zz2 = MyTuple()
+    # zz2 = tuple(2, 3)
+    # print(zz1 + zz2)
+    # print(zz1 + zz2)
+    # zxc()
+    re_ps2()
     # inter_pc()
     # for i in range(1, 101, 1):
     #     print(f"{i}层楼梯，有{climb_stairs2(i)}种方式")
@@ -520,4 +644,5 @@ if __name__ == '__main__':
     # print(next(g))
     # print(next(g))
     # print(checkIfInfoLine("aaa"))
-    print(intergalTrans("1万"))
+    # print(intergalTrans("1万"))
+    # yaml_read()

@@ -1,0 +1,9 @@
+---
+# 配置各接口的输入参数及其type
+txt:
+      path: ./          # 当前目录
+      name: 『联盟群』花落闪暖，国服安一.txt
+excel:
+      path: ./          # 当前目录
+      name: ALL.xlsx
+
